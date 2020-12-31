@@ -1,9 +1,13 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="outer-wrapper">
+    <div class="header">Header</div>
+    <div class="inner-wrapper">
+      <div class="sidenav">Sidenav</div>
+      <main>
+        <router-view />
+      </main>
+    </div>
   </div>
-  <router-view />
 </template>
 
 <style>
@@ -15,16 +19,23 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.outer-wrapper {
+  outline: 1px solid black;
+  display: grid;
+  grid-template-rows: 180px auto;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.inner-wrapper {
+  outline: 1 px solid green;
+  display: grid;
+  grid-template-columns: 240px auto;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.sidenav {
+  outline: 1 px solid purple;
+}
+
+main {
+  outline: 1px solid red;
 }
 </style>
