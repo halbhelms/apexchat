@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+
+.hal {
+    @apply rounded-md text-purple-800;
+}
+
+@tailwind utilities;
