@@ -1,14 +1,39 @@
 <template>
   <div class="outer-wrapper">
-    <div class="header">Header</div>
+    <Header />
     <div class="inner-wrapper">
-      <div class="sidenav">Sidenav</div>
+      <div class="sidenav">
+        <div></div>
+        <Dashboard />
+        <Leads />
+        <Videos />
+        <CustomerSupport />
+      </div>
       <main>
         <router-view />
       </main>
     </div>
   </div>
 </template>
+
+<script>
+import Dashboard from './components/sidenav/Dashboard'
+import Leads from './components/sidenav/Leads'
+import Videos from './components/sidenav/Videos'
+import CustomerSupport from './components/sidenav/CustomerSupport'
+import Header from './components/site/Header'
+  
+  export default {
+    name: 'App',
+    components: {
+      Dashboard,
+      Leads,
+      Videos,
+      CustomerSupport,
+      Header
+    }
+  }
+</script>
 
 <style>
 #app {
@@ -20,22 +45,35 @@
 }
 
 .outer-wrapper {
-  outline: 1px solid black;
   display: grid;
-  grid-template-rows: 180px auto;
+  grid-template-rows: 70px auto;
+  height: 100vh;
 }
 
 .inner-wrapper {
-  outline: 1 px solid green;
   display: grid;
-  grid-template-columns: 240px auto;
+  grid-template-columns: 180px auto;
+  height: 100vh;
+}
+
+.header {
+  border-bottom: 1px solid silver;
 }
 
 .sidenav {
-  outline: 1 px solid purple;
+  display: grid;
+  grid-template-rows: repeat(5, 50px);
+  background-color:rgb(0,138,230);
+  height: 100vh;
 }
 
+html, body {
+  height: 100vh !important;
+}
+
+
+
 main {
-  outline: 1px solid red;
+  height: 100vh;
 }
 </style>

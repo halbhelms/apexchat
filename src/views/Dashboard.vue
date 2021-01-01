@@ -1,0 +1,70 @@
+<template>
+  <div class="content">
+      <DashboardHeader />
+      <div class="main">
+        <EngagedWidget :engaged="engaged"/>
+        <LeadsWidget :leads="leads" :sales="sales" :service="service"/>
+        <SinceLoginWidget :videos="timeFilter.videos" :salesLeads="timeFilter.salesLeads" :serviceLeads="timeFilter.serviceLeads"/>
+      </div>
+      <div class="graph">
+
+      </div>
+  </div>
+</template>
+
+<script>
+import DashboardHeader from '../components/dashboard/DashboardHeader'
+import EngagedWidget from '../components/dashboard/EngagedWidget'
+import LeadsWidget from '../components/dashboard/LeadsWidget'
+import SinceLoginWidget from '../components/dashboard/SinceLoginWidget'
+
+export default {
+    name: 'Dashboard',
+    components: {
+        DashboardHeader,
+        EngagedWidget,
+        LeadsWidget,
+        SinceLoginWidget
+    },
+    data() {
+        return {
+            engaged: 7874,
+            leads: 1249,
+            sales: 1000,
+            service: 249,
+            timeFilter: {
+                videos: 12,
+                salesLeads: 110,
+                serviceLeads: 56
+            }
+        }
+    }
+}
+</script>
+
+<style scoped>
+    .content {
+        background-color: rgb(237,240,245);
+        height: 100vh;
+        overflow-y: auto;
+        width: 100%;
+    }
+
+    .graph {
+        /* width: 100%; */
+        height: 100vh;
+        border: 1px solid silver;
+        margin: 20px;
+        margin-right: 40px;
+        border: 1px solid silver;
+        border-radius: 12px;
+        box-shadow: 0 0 6px 0 silver;
+        background-color: white;
+    }
+
+    .main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 12px;
+    }
+</style>
