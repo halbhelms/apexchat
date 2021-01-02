@@ -12,7 +12,7 @@
             <label for="message">
                 How can we help you?
             </label>
-            <textarea id="message" cols="30" rows="10"></textarea>
+            <textarea id="message" cols="30" rows="10" v-model="message"></textarea>
         </div>
         <!-- button -->
         <button>Save</button>              
@@ -32,7 +32,9 @@
         },
         methods: {
             submitForm() {
-
+                this.$store.dispatch('register_support_request', { title: this.title, message: this.message})
+                this.title = " "
+                this.message = " "
             }
         },
         computed: {}
@@ -55,9 +57,14 @@
         color: rgb(196,220,239)
     }
 
+    button:hover {
+        background-color: blue;
+    }
+
     label {
         display: block;
         margin-top: 20px;
+        margin-bottom: 6px;
         font-size: 0.9rem;
         color: rgb(134,134,135);
     }
@@ -68,6 +75,11 @@
         border-radius: 8px;
         padding-left: 4px;
         font-family: 'Dosis', sans-serif;
+        box-shadow: 0 0 6px silver;
+    }
+
+    textarea {
+        box-shadow: 0 0 6px silver;
     }
 
     input:active {
