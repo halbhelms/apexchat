@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <div class="title">Dashboard</div>
+        <div class="title"><router-link to="{name: 'Dashboard'}">Dashboard</router-link></div>
         <div class="date-filter">
             <div class="filter">
                 <input name="date-filter" type="radio" id="last-login" @change="setDateFilter('last-login')" />
@@ -55,8 +55,5 @@
         font-weight: bold;
         text-align: left;
         padding-left: 20px;
-    }
-
-    input {
     }
 </style>

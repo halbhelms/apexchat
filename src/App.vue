@@ -37,11 +37,21 @@ import Header from './components/site/Header'
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+  font-family: 'Dosis', sans-serif;
+/* font-family: 'Mukta', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-weight: 600;
 }
 
 .outer-wrapper {
