@@ -28,6 +28,8 @@ const routes = [
     name: "Videos",
     component: Videos
   }
+
+
 ];
 
 const router = createRouter({

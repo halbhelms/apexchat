@@ -17,7 +17,7 @@
 
 <script>
 export default {
-    name: 'CustomerSupport',
+    name: 'Support',
     props: {},
     data() {
         return {}

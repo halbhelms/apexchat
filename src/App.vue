@@ -21,10 +21,9 @@
         </div>
         <div class="sidebar-element">
           <router-link :to="{name: 'Support'}">
-            <CustomerSupport />
+            <Support />
           </router-link>
         </div>
-
       </div>
       <main>
         <router-view />
@@ -37,7 +36,7 @@
 import Dashboard from './components/sidenav/Dashboard'
 import Leads from './components/sidenav/Leads'
 import Videos from './components/sidenav/Videos'
-import CustomerSupport from './components/sidenav/CustomerSupport'
+import Support from './components/sidenav/Support'
 import Header from './components/site/Header'
   
   export default {
@@ -46,7 +45,7 @@ import Header from './components/site/Header'
       Dashboard,
       Leads,
       Videos,
-      CustomerSupport,
+      Support,
       Header
     }
   }
@@ -89,7 +88,7 @@ h1 {
 
 .sidenav {
   display: grid;
-  grid-template-rows: repeat(5, 50px);
+  grid-template-rows: repeat(6, 50px);
   background-color:rgb(0,138,230);
   height: 100vh;
 }
