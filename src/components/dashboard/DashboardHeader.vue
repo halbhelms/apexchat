@@ -38,8 +38,10 @@
 
 <style scoped>
     .header {
+        width: 780px;
         display: grid;
-        grid-template-columns: 2fr 300px;
+        grid-template-columns: 472px 308px;
+        text-align: right;
         box-shadow: 0 0 6px 0 silver;
     }
 
@@ -47,6 +49,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         padding-top: 10px;
+        padding-right: 12px;
         font-size: 0.75rem;
     }
 

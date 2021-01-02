@@ -70,6 +70,11 @@ h1 {
   font-weight: 600;
 }
 
+body {
+  width: 960px;
+  height: 100vh;
+}
+
 .outer-wrapper {
   display: grid;
   grid-template-rows: 70px auto;

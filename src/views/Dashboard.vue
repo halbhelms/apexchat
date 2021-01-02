@@ -47,13 +47,13 @@ export default {
         background-color: rgb(237,240,245);
         height: 100vh;
         /* overflow-y: auto; */
-        width: 740px;
+        width: 780px;
     }
 
     .graph {
         /* width: 100%; */
-        height: 100vh;
-        width: 700px;
+        height: 100%;
+        width: 740px;
         border: 1px solid silver;
         margin: 20px;
         margin-right: 40px;

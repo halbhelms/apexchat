@@ -1,10 +1,12 @@
 <template>
-    <LeadsHeader />
-    <div class="content">
-        <div class="contact-info">Contact</div>
-        <div class="leads">
-            <LeadLineHeader />
-            <LeadLineItem />
+    <div class="leads">
+        <LeadsHeader />
+        <div class="content">
+            <div class="contact-info">Contact</div>
+            <div class="leads">
+                <LeadLineHeader />
+                <LeadLineItem />
+            </div>
         </div>
     </div>
 </template>
@@ -30,14 +32,17 @@
 </script>
 
 <style scoped>
+    .leads {
+        height: 100vh;
+        background-color: rgb(237,240,245) 
+    }
     .content {
         display: grid;
-        grid-template-columns: 320px 640px;
-        outline: 1px solid navy;
+        grid-template-columns: 360px 420px;
+        margin-top: 12px;
     }
 
     .contact-info {
-        outline: 1px solid green;
     }
 
 </style>

@@ -23,6 +23,6 @@
 <style scoped>
     .line-item {
         display: grid;
-        grid-template-columns: 80px 80px 160px 60px
+        grid-template-columns: 80px 80px 180px 40px;
     }
 </style>

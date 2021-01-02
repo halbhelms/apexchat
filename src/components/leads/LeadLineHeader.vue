@@ -23,8 +23,9 @@
 <style scoped>
     .lead-line-header {
         display: grid;
-        grid-template-columns: 80px 80px 160px 60px;
+        grid-template-columns: 80px 80px 180px 40px;
         background-color: rgb(0,138,230);
         color: white;
+        width: 420px;
     }
 </style>

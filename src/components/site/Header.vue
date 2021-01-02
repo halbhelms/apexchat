@@ -29,16 +29,21 @@
 
 <style scoped>
     .account-area{
-        position: absolute;
-        top: 6px;
-        right: 12px;
+        /* position: absolute; */
+        /* top: 6px; */
+        /* right: 12px; */
+        /* align-items: right; */
         width: 60px;
+        margin-top: 6px;
         margin-left: 100px;
     }
 
     .header {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 320px 320px 320px;
+        width: 960px;
+        max-width: 960px;
+        outline: 1px solid red;
     }
 
     #faq-logo{
