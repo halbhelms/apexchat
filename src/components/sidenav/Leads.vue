@@ -46,6 +46,7 @@ export default {
         padding-left: 21px;
         padding-top: 12px;
         cursor: pointer;
+        height: 48px
     }
 
     .label {

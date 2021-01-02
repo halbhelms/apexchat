@@ -4,10 +4,27 @@
     <div class="inner-wrapper">
       <div class="sidenav">
         <div></div>
-        <Dashboard />
-        <Leads />
-        <Videos />
-        <CustomerSupport />
+        <div class="sidebar-element">
+          <router-link :to="{name: 'Dashboard'}">
+            <Dashboard />
+          </router-link>
+        </div>
+        <div class="sidebar-element">
+          <router-link :to="{name: 'Leads'}">
+            <Leads />
+          </router-link>
+        </div>
+        <div class="sidebar-element">
+          <router-link :to="{name: 'Videos'}">
+            <Videos />
+          </router-link>
+        </div>
+        <div class="sidebar-element">
+          <router-link :to="{name: 'Support'}">
+            <CustomerSupport />
+          </router-link>
+        </div>
+
       </div>
       <main>
         <router-view />
