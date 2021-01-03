@@ -6,7 +6,7 @@ export default createStore({
     active: 'dashboard',
     lastLogin: new Date('12/29/2021 08:09:10 pm PST'),
     leads: [
-      {id: 1, leadtype:'Sales',date: new Date('01/02/2021 08:09:10 pm PST'), contact: 'Donna Holmes', location: 'Capital City, TX, US', phone: '2537077195', email: 'dholmes@gmail.com', chat: `[8:25:35 pm] Zach: Welcome to CJS Heating and Air! How can we help you?
+      {id: 1, leadtype:'Sales',date: new Date('01/02/2021 08:09:10 pm PST'), contact: 'Donna Holmes', location: 'Capital City, TX, US', address: '2102 Meadows Parkway, Katy, TN 84586',phone: '2537077195', email: 'dholmes@gmail.com', chat: `[8:25:35 pm] Zach: Welcome to CJS Heating and Air! How can we help you?
 [8:26:46 pm (71.0s)] Zach: Are you there?
 [8:28:37 pm (110.6s)] Visitor: Hi I have a high efficiency furnace that is leaking water from the flue joints a couple of feet above the furnace. I have noticed some rust spots on top of the furnace.
 [8:29:00 pm (23.2s)] Zach: I would be happy to help you. What city/state is the jobsite located in?
@@ -24,7 +24,7 @@ export default createStore({
 [8:32:27 pm (20.0s)] Zach: You're most welcome, Bryan. Thank you for contacting CJS Heating & Air.
 [8:33:02 pm (35.6s)] System: The chat session has ended.`
       },
-      {id: 2, leadtype:'Sales',date: new Date('12/17/2020 08:09:10 pm PST'), contact: 'Davis Gladwell', location: 'Nashville, TN, US', phone: '2537077195', email: 'dholmes@gmail.com', chat: `[7:50:42 pm] Zach: Welcome to CJS Heating & Air! A live, real person is available to talk at no obligation. How can we help you?
+      {id: 2, leadtype:'Sales',date: new Date('12/17/2020 08:09:10 pm PST'), contact: 'Davis Gladwell', location: 'Nashville, TN, US', address: '271 Oak St., Davis, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat: `[7:50:42 pm] Zach: Welcome to CJS Heating & Air! A live, real person is available to talk at no obligation. How can we help you?
 [7:51:29 pm (47.1s)] Visitor: Trying to install a new GFCI at the end of a line... installed black to black, white to white, ground. Will not reset.
 [7:52:07 pm (38.5s)] Zach: Hi, there. Let me see if I can get some information on that. Which of our electrical services are you interested in?
 [7:53:33 pm (85.4s)] Visitor: Just need advice on adding a GFCI outlet for a new DW. The line is the old electrical line for a hardwired DW. converting to a plug
@@ -34,7 +34,7 @@ export default createStore({
 [7:55:37 pm (41.7s)] Zach: Same to you. Thank you for contacting CJS Heating & Air.
 [7:55:40 pm (3.3s)] System: The chat session has ended.`
       },
-      {id: 3, leadtype:'Sales', date: new Date('12/15/2020 08:09:10 pm PST'), contact: 'Edgar Holgren', location: 'Grand Prairie, TN, US', phone: '2537077195', email: 'dholmes@gmail.com', chat: `[7:39:12 pm] Zach: Welcome to CJS Heating & Air! A live, real person is available to talk at no obligation. How can we help you?
+      {id: 3, leadtype:'Sales', date: new Date('12/15/2020 08:09:10 pm PST'), contact: 'Edgar Holgren', location: 'Grand Prairie, TN, US', address: '5667 Broad, Nashville, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat: `[7:39:12 pm] Zach: Welcome to CJS Heating & Air! A live, real person is available to talk at no obligation. How can we help you?
 [7:40:05 pm (52.9s)] Visitor: i have a leak in my roof that is leaking thru my bedroom ceiling
 [7:40:26 pm (21.3s)] Zach: I would be happy to help you. What zip code is the job site located in?
 [7:40:43 pm (16.3s)] Visitor: 98388
@@ -55,7 +55,7 @@ export default createStore({
 [7:46:04 pm (6.8s)] Zach: Thank you for contacting CJS Heating & Air.
 [7:46:06 pm (2.0s)] System: The chat session has ended.`
       },
-      {id: 4, leadtype:'Sales',date: new Date('11/28/2020 08:09:10 pm PST'), contact: 'Dianna Furstenburg', location: 'Idlewild, TN, US', phone: '2537077195', email: 'dholmes@gmail.com', chat: `[5:44:12 pm] Zach: Welcome to Kanon Electric! How can we help you?
+      {id: 4, leadtype:'Sales',date: new Date('11/28/2020 08:09:10 pm PST'), contact: 'Dianna Furstenburg', location: 'Idlewild, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat: `[5:44:12 pm] Zach: Welcome to Kanon Electric! How can we help you?
 [5:44:36 pm (23.6s)] Visitor: I had my panel replaced this past summer. A breaker tripped and cannot reset
 [5:45:26 pm (50.5s)] Zach: Okay. I'd be happy to help you. Is this for a residential or commercial property?
 [5:45:35 pm (8.6s)] Visitor: Residential
@@ -75,6 +75,15 @@ export default createStore({
 [5:50:23 pm (4.3s)] System: The chat session has ended.`
       },
     ]
+  },
+  getters: {
+    getLeadById (state) {
+      return (id) => {
+        return state.leads.find( lead => {
+          return lead.id == id
+        })
+      }
+    }
   },
   mutations: {
     SET_ACTIVE_NAV(state, navElement) {

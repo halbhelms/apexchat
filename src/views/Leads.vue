@@ -2,7 +2,9 @@
     <div class="leads">
         <LeadsHeader />
         <div class="content">
-            <div class="contact-info">Contact</div>
+            <div class="contact-info">
+                <Contact :lead="activeLead" />
+            </div>
             <div class="leads">
                 <LeadLineHeader />
                 <LeadLineItem 
@@ -24,22 +26,27 @@
     import LeadsHeader from '../components/leads/LeadsHeader'
     import LeadLineHeader from '../components/leads/LeadLineHeader'
     import LeadLineItem from '../components/leads/LeadLineItem'
+    import Contact from '../components/leads/Contact'
     export default {
         name: 'Leads',
         components: {
             LeadsHeader,
             LeadLineHeader,
-            LeadLineItem
+            LeadLineItem,
+            Contact
         },
         props: [],
         data() {
             return {
-                active: ''
+                active: '',
+                activeLead: null
             }
         },
         methods: {
             showLead(id) {
                 this.active = id
+                this.activeLead = this.$store.getters.getLeadById(id)
+                
             }
         },
         computed: {}
