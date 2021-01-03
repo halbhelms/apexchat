@@ -29,10 +29,6 @@
 
 <style scoped>
     .account-area{
-        /* position: absolute; */
-        /* top: 6px; */
-        /* right: 12px; */
-        /* align-items: right; */
         width: 60px;
         margin-top: 6px;
         margin-left: 100px;

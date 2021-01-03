@@ -1,9 +1,9 @@
 <template>
 <div class="lead-line-header">
-    <div class="date-label">Date</div>
-    <div class="time-label">Time</div>
-    <div class="contact-label">Contact</div>
-    <div class="lead-type-label">Lead</div>
+    <div class="date-label header-col">Date</div>
+    <div class="contact-label header-col">Contact</div>
+    <div class="lead-type-label header-col">Lead</div>
+    <div class="location-label header-col">Location</div>
 </div>
 </template>
 
@@ -23,9 +23,19 @@
 <style scoped>
     .lead-line-header {
         display: grid;
-        grid-template-columns: 80px 80px 180px 40px;
+        grid-template-columns: 64px 140px 45px 150px;
         background-color: rgb(0,138,230);
         color: white;
         width: 420px;
+        border-radius: 4px 4px 0 0;
+    }
+
+    .header-col {
+        text-align: left;
+    }
+
+    .date-label {
+        text-align: right;
+        margin-right: 5px;
     }
 </style>
