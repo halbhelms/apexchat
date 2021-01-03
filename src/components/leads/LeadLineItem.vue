@@ -1,5 +1,5 @@
 <template>
-    <div ref="lineItem" class="line-item">
+    <div class="line-item" :class="active == id ? 'highlight' : ''">
         <div @click="drillDown" class="date data-col">{{ shortDate }}</div>
         <div @click="drillDown" class="contact data-col">{{ contact }}</div>
         <div @click="drillDown" class="lead-type data-col">{{ leadtype }}</div>
@@ -16,14 +16,14 @@
             'datetime',
             'location',
             'contact',
-            'leadtype'
+            'leadtype',
+            'active'
         ],
         data() {
             return {}
         },
         methods: {
             drillDown() {
-                this.$refs.lineItem.classList.add('highlight')
                 this.$emit('drilldown', this.$props.id)
             }
         },

@@ -13,6 +13,7 @@
                     :location="lead.location" 
                     :contact="lead.contact"
                     :leadtype="lead.leadtype"
+                    :active="active"
                     @drilldown="showLead"/>
             </div>
         </div>
@@ -32,12 +33,13 @@
         },
         props: [],
         data() {
-            return {}
+            return {
+                active: ''
+            }
         },
         methods: {
             showLead(id) {
-                console.log('id', id);
-                
+                this.active = id
             }
         },
         computed: {}
