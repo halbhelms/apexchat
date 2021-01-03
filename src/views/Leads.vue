@@ -12,7 +12,8 @@
                     :datetime="lead.date" 
                     :location="lead.location" 
                     :contact="lead.contact"
-                    :leadtype="lead.leadtype"/>
+                    :leadtype="lead.leadtype"
+                    @drilldown="showLead"/>
             </div>
         </div>
     </div>
@@ -33,7 +34,12 @@
         data() {
             return {}
         },
-        methods: {},
+        methods: {
+            showLead(id) {
+                console.log('id', id);
+                
+            }
+        },
         computed: {}
     }
 </script>

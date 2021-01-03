@@ -1,9 +1,9 @@
 <template>
-    <div class="line-item">
-        <div class="date data-col">{{ shortDate }}</div>
-        <div class="contact data-col">{{ contact }}</div>
-        <div class="lead-type data-col">{{ leadtype }}</div>
-        <div class="location data-col">{{ shortLocation }}</div>
+    <div ref="lineItem" class="line-item">
+        <div @click="drillDown" class="date data-col">{{ shortDate }}</div>
+        <div @click="drillDown" class="contact data-col">{{ contact }}</div>
+        <div @click="drillDown" class="lead-type data-col">{{ leadtype }}</div>
+        <div @click="drillDown" class="location data-col">{{ shortLocation }}</div>
     </div>
 </template>
 
@@ -21,7 +21,12 @@
         data() {
             return {}
         },
-        methods: {},
+        methods: {
+            drillDown() {
+                this.$refs.lineItem.classList.add('highlight')
+                this.$emit('drilldown', this.$props.id)
+            }
+        },
         computed: {
             shortDate() {
                 let d = this.$props.datetime
@@ -47,9 +52,15 @@
         background-color: white;
     }
 
+    .highlight{
+        background-color: blue;
+        color: white;
+    }
+
     .data-col {
         text-align: left;
         margin-right: 5px;
+        cursor: pointer;
     }
 
     .date {
