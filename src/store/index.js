@@ -139,7 +139,11 @@ export default createStore({
 
     getChatById(state) {
       return (id) => {
+        console.log('id', id);
+        
         return state.chats.find( chat => {
+          console.log('chat.id', chat.id);
+          
           return chat.id == id
         })
       }
@@ -151,7 +155,7 @@ export default createStore({
       state.active = navElement;
     }
   },
-  
+
   actions: {
     set_active_nav({ commit }, navElement) {
       commit('SET_ACTIVE_NAV', navElement)

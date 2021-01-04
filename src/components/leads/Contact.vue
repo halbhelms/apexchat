@@ -32,7 +32,7 @@
         <!-- chat -->
         <div :class="[expanded ? 'card-2-expanded' : 'card-2']" ref="card2">
             <div class="chat-label">Chat <span class="expand" @click="toggleExpand">Expand</span></div>
-            {{ formattedChat }}
+            <div class="chat-line" v-for="(chatline, index) in chat.texts" :key="index"><span :class="[chatline.participantDisplayName == 'Visitor' ? 'visitor' : 'agent']">{{ chatline.participantDisplayName }}: {{ chatline.text }}</span></div>
         </div>
     </div>
 </template>
@@ -44,6 +44,9 @@
         components: {},
         props: {
             lead: {
+                required: false
+            },
+            chat: {
                 required: false
             }
         },
@@ -69,7 +72,11 @@
                 return format(this.$props.lead.date, 'h.mm')
             },
             formattedChat() {
-                return this.$props.lead.chat.replace(/\[(.*?)\]/g, '')
+                let chatText = ``
+                this.$props.chat.texts.forEach( text => {
+                    chatText += `<div>${text.participantDisplayName}: ${text.text}</div>`
+                })
+                return chatText
             }
         }
     }
@@ -147,5 +154,10 @@
     .expand {
         margin-left: 200px;
         cursor: pointer;
+    }
+
+    .visitor{
+        font-weight: bolder;
+        color: green;
     }
 </style>

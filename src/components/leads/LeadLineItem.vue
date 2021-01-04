@@ -1,9 +1,9 @@
 <template>
-    <div class="line-item" :class="active == id ? 'highlight' : ''">
-        <div @click="drillDown" class="date data-col">{{ shortDate }}</div>
-        <div @click="drillDown" class="contact data-col">{{ contact }}</div>
-        <div @click="drillDown" class="lead-type data-col">{{ leadtype }}</div>
-        <div @click="drillDown" class="location data-col">{{ shortLocation }}</div>
+    <div @click="drillDown" class="line-item" :class="active == id ? 'highlight' : ''">
+        <div class="date data-col">{{ shortDate }}</div>
+        <div class="contact data-col">{{ contact }}</div>
+        <div class="lead-type data-col">{{ leadtype }}</div>
+        <div class="location data-col">{{ shortLocation }}</div>
     </div>
 </template>
 

@@ -3,7 +3,7 @@
         <LeadsHeader />
         <div class="content">
             <div class="contact-info">
-                <Contact :lead="activeLead" />
+                <Contact :lead="activeLead" :chat="activeChat" />
             </div>
             <div class="leads">
                 <LeadLineHeader />
@@ -39,14 +39,15 @@
         data() {
             return {
                 active: '',
-                activeLead: null
+                activeLead: null,
+                activeChat: null,
             }
         },
         methods: {
             showLead(id) {
                 this.active = id
                 this.activeLead = this.$store.getters.getLeadById(id)
-                
+                this.activeChat = this.$store.getters.getChatById(this.activeLead.chatId)
             }
         },
         computed: {}
