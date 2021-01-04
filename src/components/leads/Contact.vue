@@ -4,7 +4,7 @@
             <!-- contact date -->
             <div class="contact-element">
                 <div class="date-label label">Contact</div>
-                <div class="date-data data">{{ lead.date }}</div>
+                <div class="date-data data">{{ contactDate }} <span class="time">{{ contactTime }}</span></div>
             </div>
             <!-- contact name -->
             <div class="contact-element">
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+    import format from 'date-fns/format'
     export default {
         name: 'Contact',
         components: {},
@@ -49,14 +50,21 @@
             return {}
         },
         methods: {},
-        computed: {}
+        computed: {
+            contactDate() {
+                return format(this.$props.lead.date, "MM.dd.yy")
+            },
+            contactTime() {
+                return format(this.$props.lead.date, 'h.mm')
+            }
+        }
     }
 </script>
 
 <style scoped>
     .card {
         width: 320px;
-        height: 150px;
+        height: 170px;
         border: 1px solid silver;
         margin-left: 20px;
         border-radius: 12px;
@@ -99,5 +107,9 @@
         background-color: red;
         font-weight: 600;
         color: rgb(196,220,239)
+    }
+
+    .time {
+        margin-left: 12px;
     }
 </style>
