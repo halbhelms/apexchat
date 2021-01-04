@@ -74,6 +74,36 @@ export default createStore({
 [5:50:18 pm (21.9s)] Zach: You are welcome, Dwayne. Thank you for contacting Kanon Electric, Inc.
 [5:50:23 pm (4.3s)] System: The chat session has ended.`
       },
+      {
+        id: 5, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
+      {
+        id: 6, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
+      {
+        id: 7, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
+      {
+        id: 8, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
+      {
+        id: 9, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
+      {
+        id: 10, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
+      {
+        id: 11, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
+      {
+        id: 12, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
+      {
+        id: 13, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
+      {
+        id: 14, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chat:''
+      },
     ]
   },
   getters: {
