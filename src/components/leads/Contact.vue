@@ -29,8 +29,9 @@
             <!-- dispute -->
             <button class="dispute">Dispute</button>
         </div>
-
-        <div class="card-2">
+        <!-- chat -->
+        <div :class="[expanded ? 'card-2-expanded' : 'card-2']" ref="card2">
+            <div class="chat-label">Chat <span class="expand" @click="toggleExpand">Expand</span></div>
             {{ lead.chat }}
         </div>
     </div>
@@ -47,9 +48,19 @@
             }
         },
         data() {
-            return {}
+            return {
+                expanded: false,
+            }
         },
-        methods: {},
+        methods: {
+            toggleExpand() {
+                console.log('this.expanded', this.expanded);
+                
+                this.expanded = !this.expanded
+                console.log('this.expanded', this.expanded);
+                
+            }
+        },
         computed: {
             contactDate() {
                 return format(this.$props.lead.date, "MM.dd.yy")
@@ -74,13 +85,30 @@
 
     .card-2{
         width: 320px;
-        /* height: 150px; */
         border: 1px solid silver;
         margin-left: 20px;
         margin-top: 20px;
         border-radius: 12px;
         background-color: white;
         box-shadow: 0 0 6px silver;
+        text-align: left;
+        padding-left: 6px;
+        padding-right: 4px;
+    }
+
+    .card-2-expanded{
+        position: absolute;
+        z-index: 2;
+        width: 740px;
+        border: 1px solid silver;
+        margin-left: 20px;
+        margin-top: 20px;
+        border-radius: 12px;
+        background-color: white;
+        box-shadow: 0 0 6px silver;
+        text-align: left;
+        padding-left: 6px;
+        padding-right: 4px;
     }
 
     .contact-element {
@@ -111,5 +139,10 @@
 
     .time {
         margin-left: 12px;
+    }
+
+    .expand {
+        margin-left: 200px;
+        cursor: pointer;
     }
 </style>
