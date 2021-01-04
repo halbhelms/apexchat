@@ -32,7 +32,7 @@
         <!-- chat -->
         <div :class="[expanded ? 'card-2-expanded' : 'card-2']" ref="card2">
             <div class="chat-label">Chat <span class="expand" @click="toggleExpand">Expand</span></div>
-            {{ lead.chat }}
+            {{ formattedChat }}
         </div>
     </div>
 </template>
@@ -67,6 +67,9 @@
             },
             contactTime() {
                 return format(this.$props.lead.date, 'h.mm')
+            },
+            formattedChat() {
+                return this.$props.lead.chat.replace(/\[(.*?)\]/g, '')
             }
         }
     }
