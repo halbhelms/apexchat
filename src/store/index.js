@@ -161,6 +161,12 @@ export default createStore({
       commit('SET_ACTIVE_NAV', navElement)
     },
 
+    register_dispute(_, dispute) {
+      // API call to send mail
+      console.log('dispute.leadId', dispute.leadId);
+      console.log('dispute.dispute', dispute.dispute);
+    },
+
     register_support_request(_, supportRequest) {
       console.log('supportRequest', supportRequest);
       router.push({name: 'Dashboard'})

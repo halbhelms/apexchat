@@ -27,12 +27,28 @@
                 <div class="email-data data">{{ lead.email }}</div>
             </div>
             <!-- dispute -->
-            <button class="dispute">Dispute</button>
+            <div class="contact-element dispute">
+                <div class="label"><input type="checkbox" id="dispute" @change="toggleInDispute" /></div>
+                <div class="data"><label for="dispute">Dispute</label></div>
+            </div>
+            <!-- dispute form -->
+            <div v-if="inDispute" class="dispute-form">
+                <!-- form contents -->
+                <form @submit.prevent="registerDispute">
+                    <div class="dispute-form-control_">
+                        <div><label class="label" for="message">Message</label></div>
+                        <textarea v-model="disputeMessage" name="message" id="message" placeholder="What is the nature of the dispute?"></textarea>
+                    </div>
+                    <!-- form button -->
+                    <button class="dispute-button">Dispute!</button>
+                </form>
+            </div>
+            
         </div>
         <!-- chat -->
         <div :class="[expanded ? 'card-2-expanded' : 'card-2']" ref="card2">
-            <div class="chat-label">Chat <span class="expand" @click="toggleExpand">Expand</span></div>
-            <div class="chat-line" v-for="(chatline, index) in chat.texts" :key="index"><span :class="[chatline.participantDisplayName == 'Visitor' ? 'visitor' : 'agent']">{{ chatline.participantDisplayName }}: {{ chatline.text }}</span></div>
+            <div class="chat-label">Chat <span class="expand"><input type="checkbox" @change="toggleExpand" id="expand"><label for="expand">Expand</label></span><span class="visitor-only"><input @change="toggleVisitorOnly" type="checkbox" id="visitor-only" /><label for="visitor-only">Visitor chat only</label></span></div>
+            <div class="chat-line" v-for="(chatline, index) in chatTexts" :key="index"><span :class="[chatline.participantDisplayName == 'Visitor' ? 'visitor' : 'agent']">{{ chatline.participantDisplayName }}: {{ chatline.text }}</span></div>
         </div>
     </div>
 </template>
@@ -46,37 +62,55 @@
             lead: {
                 required: false
             },
+
             chat: {
                 required: false
             }
         },
+
         data() {
             return {
                 expanded: false,
+                visitorOnly: false,
+                inDispute: false,
+                disputeMessage: null
             }
         },
+
         methods: {
+            registerDispute() {
+                this.$store.dispatch('register_dispute', {leadId: this.$props.lead.id, dispute: this.disputeMessage})
+                this.inDispute = false
+                this.disputeMessage = null
+            },
+
             toggleExpand() {
-                console.log('this.expanded', this.expanded);
-                
                 this.expanded = !this.expanded
-                console.log('this.expanded', this.expanded);
-                
+            },
+
+            toggleVisitorOnly() {
+                this.visitorOnly = !this.visitorOnly
+            },
+
+            toggleInDispute() {
+                this.inDispute = !this.inDispute
             }
         },
+
         computed: {
             contactDate() {
                 return format(this.$props.lead.date, "MM.dd.yy")
             },
+
             contactTime() {
                 return format(this.$props.lead.date, 'h.mm')
             },
-            formattedChat() {
-                let chatText = ``
-                this.$props.chat.texts.forEach( text => {
-                    chatText += `<div>${text.participantDisplayName}: ${text.text}</div>`
-                })
-                return chatText
+
+            chatTexts() {
+                if (this.visitorOnly) {
+                    return this.chat.texts.filter( chat => chat.participantDisplayName == 'Visitor' )
+                } 
+                return this.chat.texts
             }
         }
     }
@@ -85,7 +119,7 @@
 <style scoped>
     .card {
         width: 320px;
-        height: 170px;
+        min-height: 170px;
         border: 1px solid silver;
         margin-left: 20px;
         border-radius: 12px;
@@ -126,38 +160,77 @@
         grid-template-columns: 80px auto;
     }
 
-    .label {
-        text-align: right;
-        font-weight:bolder;
-        color: black;
-    }
-
     .data {
         text-align: left;
         margin-left: 6px;
     }
 
     .dispute {
-        margin-top: 10px;
+        /* margin-top: 10px;
         width: 7rem;
         border: 1px solid navy;
         border-radius: 8px;
         background-color: red;
         font-weight: 600;
-        color: rgb(196,220,239)
+        color: rgb(196,220,239) */
+        color: red;
+        font-weight: bolder;
+    }    
+
+    .dispute-button {
+        width: 30%;
+        margin: 0 auto;
+        margin-top: 6px;
+        border: 1px solid silver;
+        border-radius: 12px;
+        background-color: red;
+        color: white;
+    }
+
+    .dispute-form {
+        width: 310px;
+        height: 300px;
+        background-color: white;
+    }
+
+    .dispute-form-control {
+        display: grid;
+        grid-template-columns: 80px 150px;
+    }
+
+    .expand {
+        margin-left: 40px;
+        cursor: pointer;
+    }
+
+    .label {
+        text-align: right;
+        font-weight:bolder;
+        color: black;
+    }
+
+    textarea {
+        border: 1px solid silver;
+        padding-left: 5px;
+        width: 300px;
+        height: 220px;
+        margin-top: 12px;
+        margin-left: 6px;
+        border-radius: 6px;
+        box-shadow: 0 0 6px 0 silver;
     }
 
     .time {
         margin-left: 12px;
     }
 
-    .expand {
-        margin-left: 200px;
-        cursor: pointer;
-    }
-
     .visitor{
         font-weight: bolder;
         color: green;
+    }
+
+    .visitor-only {
+        margin-left: 20px;
+        cursor: pointer;
     }
 </style>
