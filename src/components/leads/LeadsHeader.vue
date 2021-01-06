@@ -1,17 +1,18 @@
 <template>
     <div class="header">
         <div class="title">Leads</div>
+        <!-- date filter -->
         <div class="date-filter">
             <div class="filter">
-                <input name="date-filter" type="radio" id="last-login" @change="setDateFilter('last-login')" />
+                <input name="date-filter" type="radio" id="last-login" @change="setDateFilter('lastLogin')" />
                 <label for="last-login" name="date-filter"> Since last login</label>
             </div>
             <div class="filter">
-                <input name="date-filter" type="radio" id="last-30" @change="setDateFilter('last-30')" />
+                <input name="date-filter" type="radio" id="last-30" @change="setDateFilter('last30')" />
                 <label for="last-30" name="date-filter"> Last 30 Days</label>
             </div>
             <div class="filter">
-                <input name="date-filter" type="radio" id="last-60" @change="setDateFilter('last-60')" />
+                <input name="date-filter" type="radio" id="last-60" @change="setDateFilter('last60')" />
                 <label for="last-60" name="date-filter"> Last 60 days</label>
             </div>
         </div>
@@ -21,17 +22,24 @@
 <script>
     export default {
         name: 'DashboardHeader',
+
         components: {},
+        
         props: {},
+        
         data() {
-            return {}
-        },
-        methods: {
-            setDateFilter(filter) {
-                console.log('filter', filter);
-                
+            return {
+                dateFilter: ''
             }
         },
+        
+        methods: {
+            setDateFilter(filter) {
+                this.dateFilter = filter
+                // TODO: Get leads based on date filter
+            }
+        },
+        
         computed: {}
     }
 </script>

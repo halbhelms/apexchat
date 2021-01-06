@@ -137,6 +137,10 @@ export default createStore({
       }
     },
 
+    getLeadsByTimeFilter( state) {
+      console.log('state', state);
+    },
+
     getChatById(state) {
       return (id) => {
         console.log('id', id);
