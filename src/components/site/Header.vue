@@ -1,11 +1,14 @@
 <template>
     <div class="header">
+        <!-- faq logo -->
         <div class="faq-logo">
             <img id="faq-logo" src="./FAQlogo.png">
         </div>
+        <!-- customer logo -->
         <div class="customer-logo">
             <img src="./sample-client-logo.png" id="customer-logo">
         </div>
+        <!-- account area -->
         <div class="account-area">
             <div class="border-only">
                 <img src="./sample-gravatar.jpeg" alt="" id="sample-gravatar">
