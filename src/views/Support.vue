@@ -27,6 +27,7 @@
 <style scoped>
     main {
         background-color: rgb(237,240,245);
+        height: 100%;
     }
 
 </style>
