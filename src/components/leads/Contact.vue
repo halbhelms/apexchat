@@ -39,7 +39,7 @@
                         <div><label class="label" for="message">Message</label></div>
                         <textarea v-model="disputeMessage" name="message" id="message" placeholder="What is the nature of the dispute?"></textarea>
                     </div>
-                    <!-- form button -->
+                    <!-- dispute form button -->
                     <button class="dispute-button">Dispute!</button>
                 </form>
             </div>
@@ -47,8 +47,21 @@
         </div>
         <!-- chat -->
         <div :class="[expanded ? 'card-2-expanded' : 'card-2']" ref="card2">
-            <div class="chat-label">Chat <span class="expand"><input type="checkbox" @change="toggleExpand" id="expand"><label for="expand">Expand</label></span><span class="visitor-only"><input @change="toggleVisitorOnly" type="checkbox" id="visitor-only" /><label for="visitor-only">Visitor chat only</label></span></div>
-            <div class="chat-line" v-for="(chatline, index) in chatTexts" :key="index"><span :class="[chatline.participantDisplayName == 'Visitor' ? 'visitor' : 'agent']">{{ chatline.participantDisplayName }}: {{ chatline.text }}</span></div>
+            <!-- Chat header -->
+            <div class="chat-label">Chat 
+                <span class="expand">
+                    <input type="checkbox" @change="toggleExpand" id="expand">
+                    <label for="expand">Expand</label></span><span class="visitor-only">
+                        <input @change="toggleVisitorOnly" type="checkbox" id="visitor-only" />
+                    <label for="visitor-only">Visitor chat only</label>
+                </span>
+            </div>
+            <!-- individual chats messages -->
+            <div class="chat-line" v-for="(chatline, index) in chatTexts" :key="index">
+                <span :class="[chatline.participantDisplayName == 'Visitor' ? 'visitor' : 'agent']">
+                    {{ chatline.participantDisplayName }}: {{ chatline.text }}
+                </span>
+            </div>
         </div>
     </div>
 </template>

@@ -1,4 +1,5 @@
 <template>
+    <!-- Dashboard Engaged widget -->
     <div class="card">
         <div class="title">Engaged</div>
         <div class="engaged">{{ formattedEngage }}</div>

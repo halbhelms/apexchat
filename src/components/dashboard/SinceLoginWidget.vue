@@ -1,4 +1,5 @@
 <template>
+    <!-- Since last logged in Dashboard widget -->
     <div class="card">
         <div class="title">Since you last logged in...</div>
         <div class="login-item">

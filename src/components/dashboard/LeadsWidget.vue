@@ -1,8 +1,10 @@
 <template>
+    <!-- Leads widget -->
     <div class="card">
         <div class="title">Leads</div>
         <div class="leads">{{ formattedNum(leads) }}</div>
         <div class="leads-breakdown">
+            <!-- Breakdown by sales leads -->
             <div class="by-sales">
                 <div class="breakdown-title">
                     Sales
@@ -11,6 +13,7 @@
                     {{ formattedNum(sales) }}
                 </div>
             </div>
+            <!-- Breakdown by service leads -->
             <div class="by-service">
                 <div class="breakdown-title">
                     Service

@@ -1,7 +1,10 @@
 <template>
+<div class="container">
+    <DashboardHeader />
   <div class="content">
-      <DashboardHeader />
+      
       <div class="main">
+        
         <EngagedWidget :engaged="engaged"/>
         <LeadsWidget :leads="leads" :sales="sales" :service="service"/>
         <SinceLoginWidget :videos="timeFilter.videos" :salesLeads="timeFilter.salesLeads" :serviceLeads="timeFilter.serviceLeads"/>
@@ -9,6 +12,7 @@
       <div class="graph">
 
       </div>
+  </div>
   </div>
 </template>
 
@@ -43,16 +47,21 @@ export default {
 </script>
 
 <style scoped>
+    .container {
+        background-color: rgb(237,240,245);    
+        height: 100%;    
+    }
+
     .content {
         background-color: rgb(237,240,245);
-        height: 100vh;
+        /* height: 100%; */
         /* overflow-y: auto; */
         width: 780px;
     }
 
     .graph {
         /* width: 100%; */
-        height: 100%;
+        /* min-height: 100%; */
         width: 740px;
         border: 1px solid silver;
         margin: 20px;

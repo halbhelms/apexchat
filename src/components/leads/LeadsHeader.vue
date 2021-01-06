@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="title">Leads</div>
-        <!-- date filter -->
+        <!-- time filter -->
         <div class="date-filter">
             <div class="filter">
                 <input name="date-filter" type="radio" id="last-login" @change="setDateFilter('lastLogin')" />

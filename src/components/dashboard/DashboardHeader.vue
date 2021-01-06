@@ -1,18 +1,21 @@
 <template>
-    <div class="header">
-        <div class="title">Dashboard</div>
-        <div class="date-filter">
-            <div class="filter">
-                <input name="date-filter" type="radio" id="last-login" @change="setDateFilter('last-login')" />
-                <label for="last-login" name="date-filter"> Since last login</label>
-            </div>
-            <div class="filter">
-                <input name="date-filter" type="radio" id="last-30" @change="setDateFilter('last-30')" />
-                <label for="last-30" name="date-filter"> Last 30 Days</label>
-            </div>
-            <div class="filter">
-                <input name="date-filter" type="radio" id="last-60" @change="setDateFilter('last-60')" />
-                <label for="last-60" name="date-filter"> Last 60 days</label>
+    <div class="dashboard-header-container">
+        <div class="header">
+            <div class="title">Dashboard</div>
+            <!-- time filter -->
+            <div class="date-filter">
+                <div class="filter">
+                    <input name="date-filter" type="radio" id="last-login" @change="setDateFilter('lastLogin')" />
+                    <label for="last-login" name="date-filter"> Since last login</label>
+                </div>
+                <div class="filter">
+                    <input name="date-filter" type="radio" id="last-30" @change="setDateFilter('last30')" />
+                    <label for="last-30" name="date-filter"> Last 30 Days</label>
+                </div>
+                <div class="filter">
+                    <input name="date-filter" type="radio" id="last-60" @change="setDateFilter('last60')" />
+                    <label for="last-60" name="date-filter"> Last 60 days</label>
+                </div>
             </div>
         </div>
     </div>
@@ -37,12 +40,15 @@
 </script>
 
 <style scoped>
-    .header {
-        width: 780px;
-        display: grid;
-        grid-template-columns: 472px 308px;
-        text-align: right;
+    .dashboard-header-container {
         box-shadow: 0 0 6px 0 silver;
+    }
+
+    .header {
+        /* width: 780px; */
+        display: grid;
+        grid-template-columns: 472px auto;
+        text-align: right;
     }
 
     .date-filter {

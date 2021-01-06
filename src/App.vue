@@ -60,6 +60,7 @@ import Header from './components/site/Header'
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-height: 100vh;
 }
 
 * {
@@ -70,21 +71,16 @@ h1 {
   font-weight: 600;
 }
 
-body {
-  width: 960px;
-  height: 100vh;
-}
-
 .outer-wrapper {
   display: grid;
   grid-template-rows: 70px auto;
-  height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .inner-wrapper {
   display: grid;
   grid-template-columns: 180px auto;
-  height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .header {
@@ -95,16 +91,10 @@ body {
   display: grid;
   grid-template-rows: repeat(6, 50px);
   background-color:rgb(0,138,230);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 html, body {
-  height: 100vh !important;
-}
-
-
-
-main {
-  height: 100vh;
+  min-height: 100vh !important;
 }
 </style>

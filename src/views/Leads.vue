@@ -2,11 +2,14 @@
     <div class="leads">
         <LeadsHeader />
         <div class="content">
+            <!-- Contact component -->
             <div class="contact-info">
                 <Contact :lead="activeLead" :chat="activeChat" />
             </div>
             <div class="leads">
+                <!-- LeadLineHeader component -->
                 <LeadLineHeader />
+                <!-- individual LeadLineItems -->
                 <LeadLineItem 
                     v-for="lead in $store.state.leads" 
                     :key="lead.id" 
@@ -63,7 +66,7 @@
         display: grid;
         grid-template-columns: 360px 420px;
         margin-top: 12px;
-        height: 100vh;
+        height: 100%;
     }
 
     .contact-info {
