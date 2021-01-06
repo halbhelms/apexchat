@@ -159,6 +159,8 @@
         text-align: left;
         padding-left: 6px;
         padding-right: 4px;
+        height: 100%;
+        overflow: auto;
     }
 
     .card-2-expanded{

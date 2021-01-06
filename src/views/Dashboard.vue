@@ -49,7 +49,7 @@ export default {
 <style scoped>
     .container {
         background-color: rgb(237,240,245);    
-        height: 100%;    
+        /* height: 100%;     */
     }
 
     .content {
@@ -57,7 +57,7 @@ export default {
         /* height: 100%; */
         /* overflow-y: auto; */
         width: 780px;
-        min-height: 100vh;
+        /* min-height: 100vh; */
     }
 
     .graph {
