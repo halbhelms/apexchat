@@ -1,6 +1,7 @@
 <template>
     <div class="dashboard-header-container">
         <div class="header">
+            <!-- title -->
             <div class="title">Dashboard</div>
             <!-- time filter -->
             <div class="date-filter">
@@ -47,8 +48,9 @@
     .header {
         /* width: 780px; */
         display: grid;
-        grid-template-columns: 472px auto;
+        grid-template-columns: 446px 380px;
         text-align: right;
+        border: 1px solid silver;
     }
 
     .date-filter {
@@ -57,6 +59,7 @@
         padding-top: 10px;
         padding-right: 12px;
         font-size: 0.75rem;
+        text-align: left;
     }
 
     .title {
