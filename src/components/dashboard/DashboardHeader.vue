@@ -48,18 +48,23 @@
     .header {
         /* width: 780px; */
         display: grid;
-        grid-template-columns: 446px 380px;
-        text-align: right;
+        grid-template-columns: 472px 308px;
+        text-align: left;
         border: 1px solid silver;
+        
     }
 
     .date-filter {
-        display: grid;
+        /* display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         padding-top: 10px;
         padding-right: 12px;
         font-size: 0.75rem;
-        text-align: left;
+        text-align: left; */
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding-top: 10px;
+        font-size: 0.75rem;
     }
 
     .title {
