@@ -39,7 +39,6 @@
         grid-template-columns: 320px 320px 320px;
         width: 960px;
         max-width: 960px;
-        outline: 1px solid red;
     }
 
     #faq-logo{

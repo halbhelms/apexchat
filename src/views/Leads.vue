@@ -59,14 +59,14 @@
 
 <style scoped>
     .leads {
-        /* height: 100vh; */
+        /* height: 100%; */
         background-color: rgb(237,240,245) 
     }
     .content {
         display: grid;
         grid-template-columns: 360px 420px;
         margin-top: 12px;
-        height: 100%;
+        height: 100vh;
     }
 
     .contact-info {
