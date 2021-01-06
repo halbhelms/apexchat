@@ -70,7 +70,9 @@
     import format from 'date-fns/format'
     export default {
         name: 'Contact',
+        
         components: {},
+        
         props: {
             lead: {
                 required: false
@@ -116,7 +118,9 @@
             },
 
             contactTime() {
-                return format(this.$props.lead.date, 'h.mm')
+                console.log('this.$props.lead.date', this.$props.lead.date);
+                
+                return format(this.$props.lead.date, 'h.mm bbbb')
             },
 
             chatTexts() {
