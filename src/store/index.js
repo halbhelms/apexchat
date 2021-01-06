@@ -3,8 +3,19 @@ import router from '../router/index';
 
 export default createStore({
   state: {
+    currentUser: {
+      firstName: 'Brad',
+      lastName: 'Chase',
+      username: 'bchase',
+      password: 'password',
+      companyName: 'CJS Heating and Air',
+      role: 'moger-media-customer'
+    },
+
     active: 'dashboard',
+    
     lastLogin: new Date('12/29/2021 08:09:10 pm PST'),
+    
     leads: [
       {id: 1, leadtype:'Sales',date: new Date('01/02/2021 08:09:10 pm PST'), contact: 'Donna Holmes', location: 'Capital City, TX, US', address: '2102 Meadows Parkway, Katy, TN 84586',phone: '2537077195', email: 'dholmes@gmail.com', chatId:3 
       },
@@ -45,6 +56,7 @@ export default createStore({
         id: 14, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
     ],
+    
     chats: [
       {
         id: 1,
@@ -128,7 +140,20 @@ export default createStore({
       }
     ]
   },
+  
   getters: {
+    getChatById(state) {
+      return (id) => {
+        console.log('id', id);
+        
+        return state.chats.find( chat => {
+          console.log('chat.id', chat.id);
+          
+          return chat.id == id
+        })
+      }
+    },
+
     getLeadById (state) {
       return (id) => {
         return state.leads.find( lead => {
@@ -140,18 +165,6 @@ export default createStore({
     getLeadsByTimeFilter( state) {
       console.log('state', state);
     },
-
-    getChatById(state) {
-      return (id) => {
-        console.log('id', id);
-        
-        return state.chats.find( chat => {
-          console.log('chat.id', chat.id);
-          
-          return chat.id == id
-        })
-      }
-    }
   },
 
   mutations: {
@@ -161,6 +174,11 @@ export default createStore({
   },
 
   actions: {
+    change_account_info(_, accountInfo) {
+      console.log('accountInfo', accountInfo);
+      
+    },
+    
     set_active_nav({ commit }, navElement) {
       commit('SET_ACTIVE_NAV', navElement)
     },
