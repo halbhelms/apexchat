@@ -57,6 +57,7 @@ export default {
         /* height: 100%; */
         /* overflow-y: auto; */
         width: 780px;
+        min-height: 100vh;
     }
 
     .graph {

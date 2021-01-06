@@ -51,6 +51,7 @@
         display: grid;
         grid-template-columns: 64px 140px 45px 150px;
         background-color: white;
+        font-size: 0.7rem;
     }
 
     .highlight{

@@ -54,7 +54,7 @@ import Header from './components/site/Header'
 <style>
 #app {
   /* font-family: Avenir, Helvetica, Arial, sans-serif; */
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 /* font-family: 'Mukta', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -91,7 +91,7 @@ h1 {
   display: grid;
   grid-template-rows: repeat(6, 50px);
   background-color:rgb(0,138,230);
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 html, body {

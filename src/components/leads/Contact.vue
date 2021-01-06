@@ -130,6 +130,10 @@
 </script>
 
 <style scoped>
+    .agent {
+        font-size: 0.8rem;
+    }
+
     .card {
         width: 320px;
         min-height: 170px;
@@ -240,6 +244,7 @@
     .visitor{
         font-weight: bolder;
         color: green;
+        font-size: 0.8rem;
     }
 
     .visitor-only {
