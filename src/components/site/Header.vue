@@ -121,6 +121,7 @@
         padding: 6px;
         width: 260px;
         height: 140px;
+        z-index: 99;
     }
 
     .account-logo {
