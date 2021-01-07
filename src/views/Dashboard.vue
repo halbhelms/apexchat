@@ -10,7 +10,9 @@
         <SinceLoginWidget :videos="timeFilter.videos" :salesLeads="timeFilter.salesLeads" :serviceLeads="timeFilter.serviceLeads"/>
       </div>
       <div class="graph">
-
+          <div id="curve_chart"></div>
+          <!-- <BarChart :chartData="chartData" /> -->
+          <LineChart />
       </div>
   </div>
   </div>
@@ -21,6 +23,8 @@ import DashboardHeader from '../components/dashboard/DashboardHeader'
 import EngagedWidget from '../components/dashboard/EngagedWidget'
 import LeadsWidget from '../components/dashboard/LeadsWidget'
 import SinceLoginWidget from '../components/dashboard/SinceLoginWidget'
+import LineChart from '../components/charts/LineChart'
+
 
 export default {
     name: 'Dashboard',
@@ -28,7 +32,8 @@ export default {
         DashboardHeader,
         EngagedWidget,
         LeadsWidget,
-        SinceLoginWidget
+        SinceLoginWidget,
+        LineChart
     },
     data() {
         return {
@@ -40,7 +45,14 @@ export default {
                 videos: 12,
                 salesLeads: 110,
                 serviceLeads: 56
-            }
+            },
+            chartData: [
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]
         }
     }
 }
@@ -58,6 +70,13 @@ export default {
         /* overflow-y: auto; */
         width: 780px;
         /* min-height: 100vh; */
+    }
+
+    #curve_chart {
+        border-radius: 12px;
+        /* border: 1px solid silver; */
+        padding: 6px;
+        /* padding-right: 12px; */
     }
 
     .graph {
@@ -78,4 +97,8 @@ export default {
         grid-template-columns: 1fr 1fr 1fr;
         grid-column-gap: 12px;
     }
+
+    /* rect {
+        
+    } */
 </style>
