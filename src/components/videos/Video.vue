@@ -39,7 +39,7 @@
                 el.select()
                 document.execCommand('copy')
                 const toast = useToast()
-                toast.info("The embed code has been copied to your clipboard")
+                toast.info("The embed code has been copied to your clipboard", {toastClassName: 'Vue-Toastification__toast--default.toast'})
             }
         },
         
@@ -75,7 +75,7 @@
         border-radius: 12px;
     }
 
-    .Vue-Toastification__toast--default.my-custom-toast-class {
+    .Vue-Toastification__toast--default.toast{
         font-size: .7rem;
     }   
 
