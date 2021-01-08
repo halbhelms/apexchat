@@ -1,7 +1,11 @@
 <template>
-    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_moe1ngjydt videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/moe1ngjydt/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
-
-    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_ki8jpas8mm videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/ki8jpas8mm/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+    <div>
+        <div class="video" v-html="_embedCode"></div>
+        <textarea ref="input" :value="embedCode"></textarea>
+        <button @click="showEmbedCode" class="embed-code">
+            Get embed code
+        </button>
+    </div>
 </template>
 
 <script>
@@ -10,19 +14,70 @@
 
         components: {},
 
-        props: [_embedClass],
+        props: ['_embedCode', '_rand'],
 
         data() {
-
-            return {}
+            return {
+                embedCode: null,
+                videoId: null
+            }
         },
 
-        methods: {},
+        methods: {
+            showEmbedCode() {
+                let el = this.$refs.input
+                el.innerHTML = this.embedCode
+                el.select()
+                document.execCommand('copy')
+                
+                
+                // console.log(document.getElementById(this.videoId))
+                // this.$refs[this.videoId].select()
+                // document.getElementById(this.videoId).select()
+                // document.execCommand('copy')
+            }
+        },
+        
+        computed: {},
 
-        computed: {}
+        // inject: ['__randomId'],
+
+        mounted() {
+            this.embedCode = this.$props._embedCode 
+            // let inputId ='v-' + this.__randomId(7)
+            // document.querySelector('input').id = inputId
+            // this.videoId = inputId
+        }
     }
 </script>
 
 <style scoped>
+    button.embed-code {
+        margin-top: 6px;
+        /* margin-left: 20px; */
+        /* border: 1px solid navy; */
+        border: 0;
+        border-radius: 12px;
+        line-height: 1.5rem;
+        width: 8rem;
+        background-color: #008AE6;
+        color:aliceblue;
+        font-size: 0.8rem;
+    }
 
+    button.embed-code:hover {
+        background-color: #2d83af;
+        transition: all 0.5s ease;
+        transform: scale(1.05) perspective(1px)
+    }
+
+    button.embed-code:active, button.embed-code:focus {
+        border-radius: 12px;
+    }
+
+    textarea {
+        position:absolute;
+        left: -9999px;
+    }
 </style>
+        
