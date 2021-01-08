@@ -5,11 +5,16 @@
         <button @click="showEmbedCode" class="embed-code">
             Get embed code
         </button>
+
+        
     </div>
 </template>
 
 <script>
+    import { useToast } from 'vue-toastification'
+
     export default {
+
         name: '',
 
         components: {},
@@ -24,29 +29,24 @@
         },
 
         methods: {
+            getToast() {
+                return useToast()
+            },
+
             showEmbedCode() {
                 let el = this.$refs.input
                 el.innerHTML = this.embedCode
                 el.select()
                 document.execCommand('copy')
-                
-                
-                // console.log(document.getElementById(this.videoId))
-                // this.$refs[this.videoId].select()
-                // document.getElementById(this.videoId).select()
-                // document.execCommand('copy')
+                const toast = useToast()
+                toast.info("The embed code has been copied to your clipboard")
             }
         },
         
         computed: {},
 
-        // inject: ['__randomId'],
-
         mounted() {
             this.embedCode = this.$props._embedCode 
-            // let inputId ='v-' + this.__randomId(7)
-            // document.querySelector('input').id = inputId
-            // this.videoId = inputId
         }
     }
 </script>
@@ -74,6 +74,10 @@
     button.embed-code:active, button.embed-code:focus {
         border-radius: 12px;
     }
+
+    .Vue-Toastification__toast--default.my-custom-toast-class {
+        font-size: .7rem;
+    }   
 
     textarea {
         position:absolute;
