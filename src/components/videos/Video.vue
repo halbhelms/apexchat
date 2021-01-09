@@ -38,6 +38,7 @@
                 el.innerHTML = this.embedCode
                 el.select()
                 document.execCommand('copy')
+                
                 const toast = useToast()
                 toast.info("The embed code has been copied to your clipboard", {toastClassName: 'Vue-Toastification__toast--default.toast'})
             }

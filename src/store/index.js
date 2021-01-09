@@ -160,11 +160,7 @@ export default createStore({
   getters: {
     getChatById(state) {
       return (id) => {
-        console.log('id', id);
-        
         return state.chats.find( chat => {
-          console.log('chat.id', chat.id);
-          
           return chat.id == id
         })
       }
