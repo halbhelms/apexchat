@@ -188,7 +188,6 @@ export default createStore({
   actions: {
     change_account_info(_, accountInfo) {
       console.log('accountInfo', accountInfo);
-      
     },
     
     set_active_nav({ commit }, navElement) {
@@ -196,7 +195,6 @@ export default createStore({
     },
 
     register_dispute(_, dispute) {
-      // API call to send mail
       console.log('dispute.leadId', dispute.leadId);
       console.log('dispute.dispute', dispute.dispute);
     },
