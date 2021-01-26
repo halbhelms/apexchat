@@ -1,6 +1,6 @@
 <template>
     <div ref="body">
-    <div id="modal-container" ref="modal-container">
+    <div id="modal-container" ref="modal-container" @click="toggleModal">
     <div class="modal-background">
         <div class="modal">
         <h2>I'm a Modal</h2>
@@ -41,7 +41,6 @@
                     this.$refs['modal-container'].classList.remove('out')
                     this.$refs['modal-container'].classList.add('one')
                 } else {
-                    this.$refs['modal-container'].classList.remove('one')
                     this.$refs['modal-container'].classList.add('out')
                     this.$refs.body.classList.remove('modal-active')
                 }
@@ -66,7 +65,7 @@ html, body {
   font-family: helvetica neue, helvetica, arial, sans-serif;
   font-weight: 200;
 }
-html.modal-active, body.modal-active {
+.body.modal-active {
   overflow: hidden;
 }
 
@@ -95,161 +94,7 @@ html.modal-active, body.modal-active {
 #modal-container.one.out .modal-background .modal {
   animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
-#modal-container.two {
-  transform: scale(1);
-}
-#modal-container.two .modal-background {
-  background: rgba(0, 0, 0, 0);
-  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.two .modal-background .modal {
-  opacity: 0;
-  animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.two + .content {
-  animation: scaleBack 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.two.out {
-  animation: quickScaleDown 0s 0.5s linear forwards;
-}
-#modal-container.two.out .modal-background {
-  animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.two.out .modal-background .modal {
-  animation: scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.two.out + .content {
-  animation: scaleForward 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.three {
-  z-index: 0;
-  transform: scale(1);
-}
-#modal-container.three .modal-background {
-  background: rgba(0, 0, 0, 0.6);
-}
-#modal-container.three .modal-background .modal {
-  animation: moveUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.three + .content {
-  z-index: 1;
-  animation: slideUpLarge 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.three.out .modal-background .modal {
-  animation: moveDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.three.out + .content {
-  animation: slideDownLarge 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.four {
-  z-index: 0;
-  transform: scale(1);
-}
-#modal-container.four .modal-background {
-  background: rgba(0, 0, 0, 0.7);
-}
-#modal-container.four .modal-background .modal {
-  animation: blowUpModal 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.four + .content {
-  z-index: 1;
-  animation: blowUpContent 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.four.out .modal-background .modal {
-  animation: blowUpModalTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.four.out + .content {
-  animation: blowUpContentTwo 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.five {
-  transform: scale(1);
-}
-#modal-container.five .modal-background {
-  background: rgba(0, 0, 0, 0);
-  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.five .modal-background .modal {
-  transform: translateX(-1500px);
-  animation: roadRunnerIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.five.out {
-  animation: quickScaleDown 0s 0.5s linear forwards;
-}
-#modal-container.five.out .modal-background {
-  animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.five.out .modal-background .modal {
-  animation: roadRunnerOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.six {
-  transform: scale(1);
-}
-#modal-container.six .modal-background {
-  background: rgba(0, 0, 0, 0);
-  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.six .modal-background .modal {
-  background-color: transparent;
-  animation: modalFadeIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.six .modal-background .modal h2, #modal-container.six .modal-background .modal p {
-  opacity: 0;
-  position: relative;
-  animation: modalContentFadeIn 0.5s 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.six .modal-background .modal .modal-svg rect {
-  animation: sketchIn 0.5s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.six.out {
-  animation: quickScaleDown 0s 0.5s linear forwards;
-}
-#modal-container.six.out .modal-background {
-  animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.six.out .modal-background .modal {
-  animation: modalFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.six.out .modal-background .modal h2, #modal-container.six.out .modal-background .modal p {
-  animation: modalContentFadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.six.out .modal-background .modal .modal-svg rect {
-  animation: sketchOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.seven {
-  transform: scale(1);
-}
-#modal-container.seven .modal-background {
-  background: rgba(0, 0, 0, 0);
-  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.seven .modal-background .modal {
-  height: 75px;
-  width: 75px;
-  border-radius: 75px;
-  overflow: hidden;
-  animation: bondJamesBond 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.seven .modal-background .modal h2, #modal-container.seven .modal-background .modal p {
-  opacity: 0;
-  position: relative;
-  animation: modalContentFadeIn 0.5s 1.4s linear forwards;
-}
-#modal-container.seven.out {
-  animation: slowFade 0.5s 1.5s linear forwards;
-}
-#modal-container.seven.out .modal-background {
-  background-color: rgba(0, 0, 0, 0.7);
-  animation: fadeToRed 2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.seven.out .modal-background .modal {
-  border-radius: 3px;
-  height: 162px;
-  width: 227px;
-  animation: killShot 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.seven.out .modal-background .modal h2, #modal-container.seven.out .modal-background .modal p {
-  animation: modalContentFadeOut 0.5s 0.5 cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
+
 #modal-container .modal-background {
   display: table-cell;
   background: rgba(0, 0, 0, 0.8);
