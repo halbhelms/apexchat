@@ -2,12 +2,15 @@
     <div ref="body">
     <div id="modal-container" ref="modal-container" @click="toggleModal">
     <div class="modal-background">
-        <div class="modal">
+        <div class="modal" @click="doNotClose">
         <h2>I'm a Modal</h2>
         <p>Hear me roar.</p>
-        <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+        <!-- <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
                                     <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-                                </svg>
+                                </svg> -->
+            <div class="test">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit architecto sit voluptatibus! Incidunt velit facere repudiandae eligendi necessitatibus molestias esse, magni impedit, voluptatem nihil, minima perspiciatis eos dolores iste. Suscipit.
+            </div>
         </div>
     </div>
     </div>
@@ -44,6 +47,10 @@
                     this.$refs['modal-container'].classList.add('out')
                     this.$refs.body.classList.remove('modal-active')
                 }
+            },
+
+            doNotClose(e) {
+                e.stopPropagation();
             }
         },
 
@@ -56,14 +63,20 @@
   box-sizing: border-box;
 }
 
+div.modal {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    text-align: left;
+}
+
 html, body {
   min-height: 100%;
   height: 100%;
   background-image: url(http://theartmad.com/wp-content/uploads/Dark-Grey-Texture-Wallpaper-5.jpg);
   background-size: cover;
   background-position: top center;
-  font-family: helvetica neue, helvetica, arial, sans-serif;
-  font-weight: 200;
+  /* font-family: helvetica neue, helvetica, arial, sans-serif; */
+  /* font-weight: 200; */
 }
 .body.modal-active {
   overflow: hidden;
@@ -147,9 +160,10 @@ html, body {
   line-height: 30px;
 }
 .content .buttons {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0;
+  margin-left: 2rem;
+  margin-right: 2rem;
   text-align: center;
 }
 .content .buttons .button {
