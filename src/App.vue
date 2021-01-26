@@ -86,7 +86,7 @@ h1 {
 .outer-wrapper {
   display: grid;
   grid-template-rows: 70px auto;
-  /* min-height: 100vh; */
+  height: 100vh;
 }
 
 .inner-wrapper {
@@ -104,6 +104,10 @@ h1 {
   grid-template-rows: repeat(6, 50px);
   background-color:rgb(0,138,230);
   min-height: 100%;
+}
+
+.sidebar-nav-element:hover {
+  
 }
 
 html, body {

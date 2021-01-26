@@ -41,8 +41,8 @@ export default {
     }
 
     .sidebar-nav-element {
-        display: grid;
-        grid-template-columns: 20px auto;
+        /* display: grid;
+        grid-template-columns: 20px auto; */
         color: white;
         font-weight: bold;
         text-align: left;

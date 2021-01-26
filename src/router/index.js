@@ -3,6 +3,7 @@ import Dashboard from "../views/Dashboard"
 import Support from '../views/Support'
 import Videos from '../views/Videos'
 import Leads from '../views/Leads'
+import ModalTest from '../views/ModalTest'
 
 const routes = [
   {
@@ -27,6 +28,12 @@ const routes = [
     path: "/videos/",
     name: "Videos",
     component: Videos
+  },
+  // test of modal
+  {
+    path: "/modaltest/",
+    name: "ModalTest",
+    component: ModalTest
   }
 
 
