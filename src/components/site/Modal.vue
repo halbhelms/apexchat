@@ -19,9 +19,7 @@
         props: [],
 
         data() {
-            // return {
-            //     show: true,
-            // }
+            return {}
         },
 
         methods: {
@@ -33,6 +31,7 @@
             hideModal() {
                 this.$refs['modal-container'].classList.add('out')
                 this.$refs.body.classList.remove('modal-active')
+                this.$emit('modal-closing')
             },
 
             doNotClose(e) {
@@ -42,7 +41,7 @@
 
         computed: {},
 
-        beforeUpdate() {
+        updated() {
             this.showModal()
         }
     }

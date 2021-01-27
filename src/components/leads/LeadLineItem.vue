@@ -49,7 +49,7 @@
 <style scoped>
     .line-item {
         display: grid;
-        grid-template-columns: 64px 140px 45px 150px;
+        grid-template-columns: 64px 140px 45px 158px;
         background-color: white;
         font-size: 0.7rem;
     }

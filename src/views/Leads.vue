@@ -4,25 +4,27 @@
         <div class="content">
             <!-- Lead Detail inside Modal -->
             <div class="contact-info">
-                <Modal>
+                <Modal v-if="active" @modal-closing="removeActiveLead">
                     <Contact :lead="activeLead" :chat="activeChat" />
                 </Modal>
             </div>
 
             <div class="leads">
-                <!-- LeadLineHeader component -->
-                <LeadLineHeader />
-                <!-- individual LeadLineItems -->
-                <LeadLineItem 
-                    v-for="lead in $store.state.leads" 
-                    :key="lead.id" 
-                    :id="lead.id" 
-                    :datetime="lead.date" 
-                    :location="lead.location" 
-                    :contact="lead.contact"
-                    :leadtype="lead.leadtype"
-                    :active="active"
-                    @drilldown="showLead"/>
+                <div class="leads-inner-container">
+                    <!-- LeadLineHeader component -->
+                    <LeadLineHeader />
+                    <!-- individual LeadLineItems -->
+                    <LeadLineItem 
+                        v-for="lead in $store.state.leads" 
+                        :key="lead.id" 
+                        :id="lead.id" 
+                        :datetime="lead.date" 
+                        :location="lead.location" 
+                        :contact="lead.contact"
+                        :leadtype="lead.leadtype"
+                        :active="active"
+                        @drilldown="showLead"/>
+                </div>
             </div>
         </div>
     </div>
@@ -52,6 +54,12 @@
             }
         },
         methods: {
+            removeActiveLead() {
+                this.active = null;
+                this.activeLead = null;
+                this.activeChat = null;
+            },
+
             showLead(id) {
                 this.active = id
                 this.activeLead = this.$store.getters.getLeadById(id)
@@ -65,11 +73,18 @@
 <style scoped>
     .leads {
         height: 100%;
-        background-color: rgb(237,240,245) 
+        background-color: rgb(237,240,245);
+        width: 100%;
     }
+
+    .leads-inner-container {
+        margin-left: .6rem;
+        margin-right: .6rem;
+    }
+
     .content {
-        display: grid;
-        grid-template-columns: 360px 420px;
+        /* display: grid;
+        grid-template-columns: 360px 420px; */
         margin-top: 12px;
         height: 100%;
     }

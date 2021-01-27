@@ -46,8 +46,8 @@
 
 <style scoped>
     .header {
-        display: grid;
-        grid-template-columns: 472px 308px;
+        /* display: grid;
+        grid-template-columns: 472px 308px; */
         box-shadow: 0 0 6px 0 silver;
         /* width: 780px; */
     }

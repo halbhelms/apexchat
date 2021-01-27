@@ -23,10 +23,10 @@
 <style scoped>
     .lead-line-header {
         display: grid;
-        grid-template-columns: 64px 140px 45px 150px;
+        grid-template-columns: 64px 140px 45px 158px;
         background-color: rgb(0,138,230);
         color: white;
-        width: 420px;
+        /* width: 420px; */
         border-radius: 4px 4px 0 0;
     }
 
