@@ -4,7 +4,10 @@
         <div class="content">
             <!-- Contact component -->
             <div class="contact-info">
-                <Contact :lead="activeLead" :chat="activeChat" />
+                <Modal>
+                    <Contact :lead="activeLead" :chat="activeChat" />
+                </Modal>
+
             </div>
             <div class="leads">
                 <!-- LeadLineHeader component -->
@@ -29,6 +32,7 @@
     import LeadsHeader from '../components/leads/LeadsHeader'
     import LeadLineHeader from '../components/leads/LeadLineHeader'
     import LeadLineItem from '../components/leads/LeadLineItem'
+    import Modal from '../components/site/Modal'
     import Contact from '../components/leads/Contact'
     export default {
         name: 'Leads',
@@ -36,6 +40,7 @@
             LeadsHeader,
             LeadLineHeader,
             LeadLineItem,
+            Modal,
             Contact
         },
         props: [],

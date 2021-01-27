@@ -1,26 +1,20 @@
 <template>
     <div ref="body">
     <div id="modal-container" ref="modal-container" @click="toggleModal">
-    <div class="modal-background">
-        <div class="modal" @click="doNotClose">
-        <h2>I'm a Modal</h2>
-        <p>Hear me roar.</p>
-        <!-- <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-                                    <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-                                </svg> -->
-            <div class="test">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit architecto sit voluptatibus! Incidunt velit facere repudiandae eligendi necessitatibus molestias esse, magni impedit, voluptatem nihil, minima perspiciatis eos dolores iste. Suscipit.
+        <div class="modal-background">
+            <div class="modal" @click="doNotClose">
+                <slot></slot>
             </div>
         </div>
     </div>
     </div>
-    <div class="content">
+    <!-- <div class="content">
     <h1>Modal Animations</h1>
     <div class="buttons">
         <div id="one" class="button" @click="toggleModal">Unfolding</div>
     </div>
-    </div>
-    </div>
+    </div> -->
+    <!-- </div> -->
 </template>
 
 <script>
@@ -33,7 +27,7 @@
 
         data() {
             return {
-                showModal: false,
+                showModal: true,
             }
         },
 
@@ -51,6 +45,10 @@
 
             doNotClose(e) {
                 e.stopPropagation();
+            },
+
+            process() {
+                return this.$refs['modal-body']
             }
         },
 
