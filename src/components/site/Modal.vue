@@ -1,20 +1,13 @@
 <template>
     <div ref="body">
-    <div id="modal-container" ref="modal-container" @click="toggleModal">
-        <div class="modal-background">
-            <div class="modal" @click="doNotClose">
-                <slot></slot>
+        <div id="modal-container" ref="modal-container" @click="hideModal" class="one modal-active">
+            <div class="modal-background">
+                <div class="modal" @click="doNotClose">
+                    <slot></slot>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-    <!-- <div class="content">
-    <h1>Modal Animations</h1>
-    <div class="buttons">
-        <div id="one" class="button" @click="toggleModal">Unfolding</div>
-    </div>
-    </div> -->
-    <!-- </div> -->
 </template>
 
 <script>
@@ -26,33 +19,32 @@
         props: [],
 
         data() {
-            return {
-                showModal: true,
-            }
+            // return {
+            //     show: true,
+            // }
         },
 
         methods: {
-            toggleModal() {
-                this.showModal = !this.showModal
-                if (this.showModal) {
-                    this.$refs['modal-container'].classList.remove('out')
-                    this.$refs['modal-container'].classList.add('one')
-                } else {
-                    this.$refs['modal-container'].classList.add('out')
-                    this.$refs.body.classList.remove('modal-active')
-                }
+            showModal() {
+                this.$refs['modal-container'].classList.remove('out')
+                this.$refs['modal-container'].classList.add('one')
+            },
+            
+            hideModal() {
+                this.$refs['modal-container'].classList.add('out')
+                this.$refs.body.classList.remove('modal-active')
             },
 
             doNotClose(e) {
                 e.stopPropagation();
             },
-
-            process() {
-                return this.$refs['modal-body']
-            }
         },
 
         computed: {},
+
+        beforeUpdate() {
+            this.showModal()
+        }
     }
 </script>
 

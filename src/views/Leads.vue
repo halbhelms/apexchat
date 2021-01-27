@@ -2,13 +2,13 @@
     <div class="leads">
         <LeadsHeader />
         <div class="content">
-            <!-- Contact component -->
+            <!-- Lead Detail inside Modal -->
             <div class="contact-info">
                 <Modal>
                     <Contact :lead="activeLead" :chat="activeChat" />
                 </Modal>
-
             </div>
+
             <div class="leads">
                 <!-- LeadLineHeader component -->
                 <LeadLineHeader />
