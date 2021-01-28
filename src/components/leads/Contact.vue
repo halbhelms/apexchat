@@ -1,41 +1,46 @@
 <template>
     <div class="contact" v-if="lead !== null">
         <div class="card">
-            <!-- contact date -->
-            <div class="contact-element">
-                <div class="date-label label">Contact</div>
-                <div class="date-data data">{{ contactDate }} <span class="time">{{ contactTime }}</span></div>
+            <div class="grid-group">
+                <!-- contact date -->
+                <div class="contact-element date">
+                    <div class="date-label label">Date</div>
+                    <div class="date-data data">{{ contactDate }} <span class="time">{{ contactTime }}</span></div>
+                </div>
+                <!-- dispute -->
+                <div class="contact-element dispute">
+                    <div class="label"><input type="checkbox" id="dispute" @change="toggleInDispute" /></div>
+                    <div class="data"><label for="dispute">Dispute</label></div>
+                </div>
+  
+                <!-- contact name -->
+                <div class="contact-element">
+                    <div class="name-label label">Contact</div>
+                    <div class="name-data data">{{ lead.contact }}</div>
+                </div>
+                <!-- contact address -->
+                <div class="contact-element">
+                    <div class="address-label label">Address</div>
+                    <div class="address-data data">{{ lead.address }}</div>
+                </div>
+
+                <!-- contact phone -->
+                <div class="contact-element">
+                    <div class="phone-label label">Phone</div>
+                    <div class="phone-data data">{{ lead.phone }}</div>
+                </div>
+                <!-- contact email -->
+                <div class="contact-element">
+                    <div class="email-label label">Email</div>
+                    <div class="email-data data">{{ lead.email }}</div>
+                </div>
             </div>
-            <!-- contact name -->
-            <div class="contact-element">
-                <div class="name-label label">Contact</div>
-                <div class="name-data data">{{ lead.contact }}</div>
-            </div>
-            <!-- contact address -->
-            <div class="contact-element">
-                <div class="address-label label">Address</div>
-                <div class="address-data data">{{ lead.address }}</div>
-            </div>
-            <!-- contact phone -->
-            <div class="contact-element">
-                <div class="phone-label label">Phone</div>
-                <div class="phone-data data">{{ lead.phone }}</div>
-            </div>
-            <!-- contact email -->
-            <div class="contact-element">
-                <div class="email-label label">Email</div>
-                <div class="email-data data">{{ lead.email }}</div>
-            </div>
-            <!-- dispute -->
-            <div class="contact-element dispute">
-                <div class="label"><input type="checkbox" id="dispute" @change="toggleInDispute" /></div>
-                <div class="data"><label for="dispute">Dispute</label></div>
-            </div>
+            
             <!-- dispute form -->
             <div v-if="inDispute" class="dispute-form">
                 <!-- form contents -->
                 <form @submit.prevent="registerDispute">
-                    <div class="dispute-form-control_">
+                    <div class="dispute-form-control">
                         <div><label class="label" for="message">Message</label></div>
                         <textarea v-model="disputeMessage" name="message" id="message" placeholder="What is the nature of the dispute?"></textarea>
                     </div>
@@ -46,14 +51,16 @@
             
         </div>
         <!-- chat -->
-        <div :class="[expanded ? 'card-2-expanded' : 'card-2']" ref="card2">
+        <!-- <div :class="[expanded ? 'card-2-expanded' : 'card-2']" ref="card2"> -->
+            <div class="chat" ref="card2">
             <!-- Chat header -->
             <div class="chat-label">Chat 
-                <span class="expand">
+                <!-- <span class="expand">
                     <input type="checkbox" @change="toggleExpand" id="expand">
-                    <label for="expand">Expand</label></span><span class="visitor-only">
+                    <label for="expand">Expand</label></span> -->
+                    <span class="visitor-only">
                         <input @change="toggleVisitorOnly" type="checkbox" id="visitor-only" />
-                    <label for="visitor-only">Visitor chat only</label>
+                    <label for="visitor-only"> Visitor chat only</label>
                 </span>
             </div>
             <!-- individual chats messages -->
@@ -139,16 +146,18 @@
     }
 
     .card {
-        width: 320px;
-        min-height: 170px;
+        position: fixed; 
+        width: 620px;
+        z-index: 10;
         border: 1px solid silver;
         margin-left: 20px;
+        margin-bottom: 1rem;
         border-radius: 12px;
         background-color: white;
         box-shadow: 0 0 6px silver;
     }
 
-    .card-2{
+    /* .card-2{
         width: 320px;
         border: 1px solid silver;
         margin-left: 20px;
@@ -176,6 +185,24 @@
         text-align: left;
         padding-left: 6px;
         padding-right: 4px;
+    } */
+
+    .chat {
+        position: relative;
+        top: 5rem;;
+    }
+
+    .chat-label {
+        font-weight:800;
+    }
+
+    .chat-line {
+        line-height: 1.1rem;
+    }
+
+    .contact {
+        overflow-y: auto;
+        height: 400px;
     }
 
     .contact-element {
@@ -198,6 +225,8 @@
         color: rgb(196,220,239) */
         color: red;
         font-weight: bolder;
+        /* display:inline-block; */
+        /* float: right; */
     }    
 
     .dispute-button {
@@ -211,19 +240,30 @@
     }
 
     .dispute-form {
-        width: 310px;
+        /* width: 310px; */
         height: 300px;
         background-color: white;
     }
 
     .dispute-form-control {
-        display: grid;
-        grid-template-columns: 80px 150px;
+        /* display: grid;
+        grid-template-columns: 80px 800px; */
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+
+    div.modal-background {
+        overflow:scroll
     }
 
     .expand {
         margin-left: 40px;
         cursor: pointer;
+    }
+
+    .grid-group {
+        display: grid;
+        grid-template-columns: auto auto;
     }
 
     .label {
@@ -235,12 +275,13 @@
     textarea {
         border: 1px solid silver;
         padding-left: 5px;
-        width: 300px;
+        width: 36rem;
         height: 220px;
         margin-top: 12px;
         margin-left: 6px;
         border-radius: 6px;
         box-shadow: 0 0 6px 0 silver;
+
     }
 
     .time {

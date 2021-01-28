@@ -56,6 +56,7 @@ div.modal {
     margin-left: 2rem;
     margin-right: 2rem;
     text-align: left;
+    overflow:auto;
 }
 
 html, body {
@@ -105,7 +106,7 @@ html, body {
 }
 #modal-container .modal-background .modal {
   background: white;
-  padding: 50px;
+  padding: 20px;
   display: inline-block;
   border-radius: 3px;
   font-weight: 300;
