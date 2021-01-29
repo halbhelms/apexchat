@@ -103,7 +103,7 @@ h1 {
   display: grid;
   grid-template-rows: repeat(6, 50px);
   background-color:rgb(0,138,230);
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 .sidebar-nav-element:hover {
