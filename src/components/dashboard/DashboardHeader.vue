@@ -46,7 +46,7 @@
     }
 
     .header {
-        /* width: 780px; */
+        width: 100%;
         display: grid;
         grid-template-columns: 472px 308px;
         text-align: left;

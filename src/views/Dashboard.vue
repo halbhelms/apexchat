@@ -61,7 +61,7 @@ export default {
 <style scoped>
     .container {
         background-color: rgb(237,240,245);    
-        /* height: 100%;     */
+        height: 100%;    
     }
 
     .content {
