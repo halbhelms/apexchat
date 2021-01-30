@@ -3,7 +3,7 @@ import Dashboard from "../views/Dashboard"
 import Support from '../views/Support'
 import Videos from '../views/Videos'
 import Leads from '../views/Leads'
-import ModalTest from '../views/ModalTest'
+import Temp from '../views/Temp.vue'
 
 const routes = [
   {
@@ -31,9 +31,9 @@ const routes = [
   },
   // test of modal
   {
-    path: "/modaltest/",
-    name: "ModalTest",
-    component: ModalTest
+    path: "/temp/",
+    name: "Temp",
+    component: Temp
   }
 
 
