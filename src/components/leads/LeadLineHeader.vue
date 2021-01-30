@@ -23,9 +23,10 @@
 <style scoped>
     .lead-line-header {
         display: grid;
-        grid-template-columns: 64px 140px 45px 158px;
+        grid-template-columns: 102px 240px 145px auto;
         background-color: rgb(0,138,230);
         color: white;
+        text-align: left;
         /* width: 420px; */
         border-radius: 4px 4px 0 0;
     }
@@ -35,7 +36,7 @@
     }
 
     .date-label {
-        text-align: right;
+        text-align: left;
         margin-right: 5px;
     }
 </style>

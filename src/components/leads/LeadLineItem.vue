@@ -49,9 +49,10 @@
 <style scoped>
     .line-item {
         display: grid;
-        grid-template-columns: 64px 140px 45px 158px;
+        /* grid-template-columns: 64px 140px 45px 158px; */
+        grid-template-columns: 102px 240px 145px auto;
         background-color: white;
-        font-size: 0.7rem;
+        font-size: 1rem;
     }
 
     .highlight{
@@ -66,6 +67,7 @@
     }
 
     .date {
-        text-align: right;
+        text-align: left;
+        margin-left: 12px;
     }
 </style>
