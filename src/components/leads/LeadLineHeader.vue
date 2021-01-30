@@ -38,5 +38,6 @@
     .date-label {
         text-align: left;
         margin-right: 5px;
+        margin-left: 12px;
     }
 </style>
