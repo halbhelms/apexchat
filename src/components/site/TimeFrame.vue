@@ -1,12 +1,12 @@
 <template>
     <div class="time-frame">
+
         <label class="radio radio-before">
-        
         <span class="radio__input">
             <input type="radio" name="timeframe" value="lastLogin" v-model="picked">
             <span class="radio__control"></span>
         </span>
-        <span class="radio__label">Since last login</span>
+        <span class="radio__label"> Since last login</span>
         </label>
 
         <label class="radio radio-before">
@@ -14,7 +14,7 @@
             <input type="radio" name="timeframe" value="last30" v-model="picked">
             <span class="radio__control"></span>
         </span>
-        <span class="radio__label">Last 30 days</span>
+        <span class="radio__label"> Last 30 days</span>
         </label>
 
         <label class="radio radio-before">
@@ -22,11 +22,9 @@
             <input type="radio" name="timeframe" value="last60" v-model="picked">
             <span class="radio__control"></span>
         </span>
-        <span class="radio__label">Last 60 days</span>
+        <span class="radio__label"> Last 60 days</span>
         </label>
     </div>
-
-    Picked: {{ picked }}
 </template>
 
 <script>
@@ -65,12 +63,14 @@
 /* *{outline: 1px dashed blue}; */
 
 .time-frame {
-    position: absolute;
+    position: relative;
     width: 400px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    left: 400px;
+    /* align-items: center; */
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
 .radio {
@@ -83,19 +83,29 @@
   text-align: left;
   /* color: rgb(0,138,230); */
 }
+
+.radio-before {
+    display: inline-block;
+}
+
 .radio:focus-within .radio__label {
   transform: scale(1.05);
   opacity: 1;
+  
 }
 
 .radio__label {
+  display: inline-block;
   line-height: 1;
   transition: 200ms all ease-in-out;
   opacity: 0.8;
+  width: 100px;
+  margin-left: 6px;
 }
 
 .radio__input {
   display: flex;
+  display: inline-block;
 }
 .radio__input input {
   opacity: 0;
