@@ -16,7 +16,12 @@
         </div>
 
         <!-- Button -->
-        <button>Save</button>   
+        <div class="button">
+            <button class="btn fifth">
+                <span class="button-text">Save</span>
+            </button>
+        </div>
+    
     </div>
 </form>
 </template>
@@ -44,6 +49,84 @@
 </script>
 
 <style scoped>
+/* https://1stwebdesigner.com/20-amazing-pure-css-animated-buttons/ styling */
+.btn {
+  /* box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; */
+  /* background-color: transparent; */
+  background-color:lightblue;
+  /* border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c; */
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  /* font-size: 1rem;
+  font-weight: 400; */
+  line-height: 1;
+  /* margin: 20px; */
+  /* padding: 1.2em 2.8em; */
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  /* color: navy; */
+}
+.btn:hover, .btn:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.button {
+    position: relative;
+    margin-left: calc(60% - 6rem);
+    margin-top: 2rem;
+}
+
+.button-text {
+    position: relative;
+    margin: auto;
+}
+
+.fifth {
+  border-color: rgb(196,220,239);
+  border-radius: 32px;
+  color: rgb(0,138,230);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-transition: color 150ms ease-in-out;
+  transition: color 150ms ease-in-out;
+}
+.fifth:after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 0;
+  height: 100%;
+  background: rgb(0,138,230);
+  z-index: -1;
+  -webkit-transition: width 150ms ease-in-out;
+  transition: width 300ms ease-in-out;
+}
+.fifth:hover {
+  color: #fff;
+  border: 0;
+}
+.fifth:hover:after {
+  width: 110%;
+}
+
 /* My styling */
 button {
     margin-top: 20px;
@@ -52,10 +135,10 @@ button {
     border-radius: 8px;
     background-color: rgb(0,138,230);
     font-weight: 600;
-    color: rgb(196,220,239)
-}
-button:hover {
-    background-color: blue;
+    color: rgb(196,220,239);
+    /* text-align: center !important; */
+    height: 1.5rem;
+    border-color: navy !important;
 }
 
 form {
@@ -88,10 +171,6 @@ input {
   padding:4px 4px;
   display:block;
   width:100%;
-  /* height:30px; */
-  /* background-color: transparent; */
-  /* border:none; */
-  /* border-bottom:1px solid #757575; */
 }
 
 .floating-input:focus , .floating-select:focus {
