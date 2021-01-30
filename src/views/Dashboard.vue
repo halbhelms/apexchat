@@ -65,7 +65,7 @@ export default {
     }
 
     .content {
-        background-color: rgb(237,240,245);
+        background-color: rgb(237,240);
         /* height: 100%; */
         /* overflow-y: auto; */
         width: 780px;

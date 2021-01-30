@@ -66,7 +66,7 @@
     position: relative;
     width: 400px;
     display: flex;
-    left: 400px;
+    /* left: 400px; */
     /* align-items: center; */
     /* grid-template-columns: 1fr 1fr 1fr; */
     /* align-items: center; */
