@@ -178,6 +178,21 @@ export default createStore({
       }
     },
 
+    getLeadsForTimeFrame(state, getters) {
+      if(state.timeFrame === 'lastLogin') {
+        return getters.getLeadsSinceLastLogin
+      }
+
+      if(state.timeFrame === 'last30') {
+        return getters.getLeadsLast30
+      }
+
+      if (state.timeFrame === 'last60') {
+        return getters.getLeadsLast60
+      }
+
+    },
+
     getLeadsSinceLastLogin(state) {
       let leads = []
       state.leads.forEach( lead => {

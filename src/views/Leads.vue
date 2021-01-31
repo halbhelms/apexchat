@@ -1,7 +1,7 @@
 <template>
     <div class="leads">
             <!-- test of timeFrame getters -->
-    Leads Since...{{ $store.getters.getLeadsLast60 }}
+    Leads Since...{{ $store.getters.getLeadsForTimeFrame }}
         <LeadsHeader />
         <div class="content">
             <!-- Lead Detail inside Modal -->
