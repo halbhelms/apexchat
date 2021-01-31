@@ -1,6 +1,8 @@
 import { createStore } from "vuex";
 import router from '../router/index';
 
+import differenceInDays from 'date-fns/differenceInDays'
+
 export default createStore({
   state: {
     currentUser: {
@@ -11,6 +13,8 @@ export default createStore({
       companyName: 'CJS Heating and Air',
       role: 'moger-media-customer',
     },
+
+    timeFrame: 'lastLogin',
 
     active: 'dashboard',
 
@@ -30,46 +34,46 @@ export default createStore({
         `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_ki8jpas8mm videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/ki8jpas8mm/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`
     ],
     
-    lastLogin: new Date('12/29/2021 08:09:10 pm PST'),
+    lastLogin: new Date('12/29/2020 08:09:10 pm PST'),
     
     leads: [
-      {id: 1, leadtype:'Sales',date: new Date('01/02/2021 08:09:10 pm PST'), contact: 'Donna Holmes', location: 'Capital City, TX, US', address: '2102 Meadows Parkway, Katy, TN 84586',phone: '2537077195', email: 'dholmes@gmail.com', chatId:3 
+      {id: 1, leadtype:'Sales',date: new Date('1/02/2021 08:09:10 pm PST'), contact: 'Donna Holmes', location: 'Capital City, TX, US', address: '2102 Meadows Parkway, Katy, TN 84586',phone: '2537077195', email: 'dholmes@gmail.com', chatId:3 
       },
-      {id: 2, leadtype:'Sales',date: new Date('12/17/2020 08:09:10 pm PST'), contact: 'Davis Gladwell', location: 'Nashville, TN, US', address: '271 Oak St., Davis, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId: 2
+      {id: 2, leadtype:'Sales',date: new Date('1/17/2021 08:09:10 pm PST'), contact: 'Davis Gladwell', location: 'Nashville, TN, US', address: '271 Oak St., Davis, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId: 2
       },
       {id: 3, leadtype:'Sales', date: new Date('12/15/2020 08:09:10 pm PST'), contact: 'Edgar Holgren', location: 'Grand Prairie, TN, US', address: '5667 Broad, Nashville, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId: 1
       },
       {id: 4, leadtype:'Sales',date: new Date('11/28/2020 08:09:10 pm PST'), contact: 'Dianna Furstenburg', location: 'Idlewild, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId: 4 
       },
       {
-        id: 5, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 5, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 6, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 6, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 7, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 7, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 8, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 8, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 9, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 9, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 10, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 10, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 11, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 11, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 12, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 12, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 13, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 13, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 14, leadtype:'Sales',date: new Date('12/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 14, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
     ],
     
@@ -174,14 +178,50 @@ export default createStore({
       }
     },
 
-    getLeadsByTimeFilter( state) {
-      console.log('state', state);
+    getLeadsSinceLastLogin(state) {
+      let leads = []
+      state.leads.forEach( lead => {
+        console.log(lead.date - state.lastLogin)
+        if (lead.date - state.lastLogin > 0) {
+          leads.push(lead)
+        }
+      })
+      return leads;
+      // return ['hmmmm']
+    },
+
+    getLeadsLast30(state) {
+      let leads = []
+      state.leads.forEach( lead => {
+        console.log(differenceInDays(new Date(), lead.date))
+        if (differenceInDays(new Date(), lead.date) < 31) {
+          leads.push(lead)
+        }
+      })
+      return leads;
+      // return ['hmmmm']
+    },
+
+    getLeadsLast60(state) {
+      let leads = []
+      state.leads.forEach( lead => {
+        console.log(differenceInDays(new Date(), lead.date))
+        if (differenceInDays(new Date(), lead.date) < 61) {
+          leads.push(lead)
+        }
+      })
+      return leads;
+      // return ['hmmmm']
     },
   },
 
   mutations: {
     SET_ACTIVE_NAV(state, navElement) {
       state.active = navElement;
+    },
+
+    SET_TIME_FRAME(state, timeFrame) {
+      state.timeFrame = timeFrame;
     }
   },
 
@@ -202,9 +242,13 @@ export default createStore({
     register_support_request(_, supportRequest) {
       console.log('supportRequest', supportRequest);
       router.push({name: 'Dashboard'})
+    },
+
+    set_timeframe({commit}, timeFrame) {
+      commit('SET_TIME_FRAME', timeFrame)
     }
-  },
-  modules: {}
-});
+  }
+
+})
 
         

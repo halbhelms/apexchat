@@ -1,31 +1,36 @@
 <template>
     <div class="time-frame">
-        <TimeFrame />
+       Distance:  {{ dateDiff() }}
     </div>
 </template>
 
 <script>
-    import TimeFrame from '../components/site/TimeFrame'
+    import differenceInDays from 'date-fns/differenceInDays'
 
     export default {
         name: 'Temp',
 
-        components: {TimeFrame},
+        components: {},
 
         props: [],
 
         data() {
-            return {}
+            return {
+                today: new Date(),
+                date1: new Date(2021, 1, 15)
+            }
         },
 
-        methods: {},
+        methods: {
+            dateDiff() {
+                return differenceInDays(this.date1, this.today)
+            }
+        },
 
         computed: {},
     }
 </script>
 
 <style scoped>
-    .time-frame {
-        font-size: 1rem;
-    }
+
 </style>

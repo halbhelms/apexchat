@@ -41,7 +41,11 @@
             }
         },
 
-        methods: {},
+        methods: {
+            changeTimeFrame() {
+                this.$store.dispatch('set_timeframe', )
+            }
+        },
 
         computed: {}
     }
