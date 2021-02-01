@@ -34,7 +34,7 @@ export default createStore({
         `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_ki8jpas8mm videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/ki8jpas8mm/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`
     ],
     
-    lastLogin: new Date('12/29/2020 08:09:10 pm PST'),
+    lastLogin: new Date('1/2/2021 08:09:10 pm PST'),
     
     leads: [
       {id: 1, leadtype:'Sales',date: new Date('1/02/2021 08:09:10 pm PST'), contact: 'Donna Holmes', location: 'Capital City, TX, US', address: '2102 Meadows Parkway, Katy, TN 84586',phone: '2537077195', email: 'dholmes@gmail.com', chatId:3 
@@ -46,34 +46,106 @@ export default createStore({
       {id: 4, leadtype:'Sales',date: new Date('11/28/2020 08:09:10 pm PST'), contact: 'Dianna Furstenburg', location: 'Idlewild, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId: 4 
       },
       {
-        id: 5, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 5, leadtype:'Sales',date: new Date('1/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 6, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 6, leadtype:'Service',date: new Date('1/7/2020 10:09:10 pm PST'), contact: 'Servo Servicio', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 7, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 7, leadtype:'Sales',date: new Date('1/04/2020 10:09:10 pm PST'), contact: 'Mickey Mantle', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 8, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 8, leadtype:'Sales',date: new Date('12/01/2020 10:09:10 pm PST'), contact: 'Judi Dench', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 9, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 9, leadtype:'Sales',date: new Date('1/29/2020 10:09:10 pm PST'), contact: 'Alice Munro', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 10, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 10, leadtype:'Sales',date: new Date('12/4/2020 10:09:10 pm PST'), contact: 'Allen Jacobs', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 11, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 11, leadtype:'Sales',date: new Date('11/15/2020 10:09:10 pm PST'), contact: 'Helen Pluckrose', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 12, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 12, leadtype:'Sales',date: new Date('1/2/2021 10:09:10 pm PST'), contact: 'Alicia Silverstone', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 13, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 13, leadtype:'Sales',date: new Date('11/1/2020 10:09:10 pm PST'), contact: 'Dave Cully', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
       {
-        id: 14, leadtype:'Sales',date: new Date('8/27/2020 10:09:10 pm PST'), contact: 'Giovanni Ribisi', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+        id: 14, leadtype:'Sales',date: new Date('12/19/2020 10:09:10 pm PST'), contact: 'Alina Williams', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 15, leadtype:'Sales',date: new Date('11/19/2020 10:09:10 pm PST'), contact: 'Marsha Adams', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 16, leadtype:'Sales',date: new Date('2/1/2021 10:09:10 pm PST'), contact: 'Tyreek Hill', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 17, leadtype:'Sales',date: new Date('12/02/2020 10:09:10 pm PST'), contact: 'Mike Tyson', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 18, leadtype:'Sales',date: new Date('11/26/2020 10:09:10 pm PST'), contact: 'Andreas Botticelli', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 19, leadtype:'Sales',date: new Date('12/31/2020 10:09:10 pm PST'), contact: 'Mike Baker', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 20, leadtype:'Sales',date: new Date('11/17/2020 10:09:10 pm PST'), contact: 'Whitey Ford', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 21, leadtype:'Sales',date: new Date('2/1/2021 10:09:10 pm PST'), contact: 'Avdi Grimm', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 22, leadtype:'Sales',date: new Date('12/19/2020 10:09:10 pm PST'), contact: 'Gwen Stefani', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 23, leadtype:'Sales',date: new Date('11/21/2020 10:09:10 pm PST'), contact: 'Kanye West', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 24, leadtype:'Sales',date: new Date('12/17/2020 10:09:10 pm PST'), contact: 'Omar Little', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 25, leadtype:'Sales',date: new Date('11/30/2020 10:09:10 pm PST'), contact: 'Hanz Undfranz', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 26, leadtype:'Sales',date: new Date('1/19/2021 10:09:10 pm PST'), contact: 'Mahalia Jackson', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 27, leadtype:'Sales',date: new Date('2/2/2021 10:09:10 pm PST'), contact: 'Hosey Hoserson', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 28, leadtype:'Sales',date: new Date('11/30/2020 10:09:10 pm PST'), contact: 'Krystal Ball', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 29, leadtype:'Sales',date: new Date('2/3/2021 10:09:10 pm PST'), contact: 'Olivia Munster', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 30, leadtype:'Sales',date: new Date('2/2/2021 10:09:10 pm PST'), contact: 'Donna Baker', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 31, leadtype:'Sales',date: new Date('12/3/2020 10:09:10 pm PST'), contact: 'Thurman Munson', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 32, leadtype:'Sales',date: new Date('11/23/2020 10:09:10 pm PST'), contact: 'Chester Field', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 33, leadtype:'Sales',date: new Date('12/15/2020 10:09:10 pm PST'), contact: 'Phil Hellmuth', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 34, leadtype:'Sales',date: new Date('12/18/2020 10:09:10 pm PST'), contact: 'Betty White', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 35, leadtype:'Sales',date: new Date('12/15/2020 10:09:10 pm PST'), contact: 'TJ White', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 36, leadtype:'Sales',date: new Date('12/9/2020 10:09:10 pm PST'), contact: 'Sammy Davis', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 37, leadtype:'Sales',date: new Date('12/20/2020 10:09:10 pm PST'), contact: 'Fred First', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
+      },
+      {
+        id: 38, leadtype:'Sales',date: new Date('12/21/2020 10:09:10 pm PST'), contact: 'Barry White', location: 'Tanglewood, TN, US', address: '563 Count Deiro St, Idlewild, TN', phone: '2537077195', email: 'dholmes@gmail.com', chatId:''
       },
     ],
     

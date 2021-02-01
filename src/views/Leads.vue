@@ -75,7 +75,7 @@
 
 <style scoped>
     .leads {
-        height: 100%;
+        height: calc(100vh - 48px);
         background-color: rgb(237,240,245);
         width: 100%;
     }

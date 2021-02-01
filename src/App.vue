@@ -75,6 +75,10 @@ import Header from './components/site/Header'
   min-height: 100vh;
 }
 
+html {
+  height: 100vh;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -103,6 +107,7 @@ h1 {
   display: grid;
   grid-template-rows: repeat(6, 50px);
   background-color:rgb(0,138,230);
+  position: relative;
   min-height: 100vh;
 }
 
