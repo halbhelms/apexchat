@@ -14,6 +14,8 @@ export default createStore({
       role: 'moger-media-customer',
     },
 
+    leadsPerPage: 20,
+
     timeFrame: 'lastLogin',
 
     active: 'dashboard',
