@@ -15,10 +15,15 @@ export default createStore({
     },
 
     lastLogin: new Date('12/31/2020 07:09:10 pm PST'),
+
     // where do we start in the leads array?
     leadsOffset: 0,
+    
     // how many leads should be returned?
     leadsPerPage: 15,
+
+    // these are the leads to display
+    leadsActiveSlice: [],
     
     timeFrame: 'lastLogin',
     
@@ -271,22 +276,21 @@ export default createStore({
 
     getLeadsForTimeFrame(state, getters) {
       if(state.timeFrame === 'lastLogin') {
-        return getters.getLeadsSinceLastLogin.slice(state.leadsOffset, state.leadsPerPage)
+        return getters.getLeadsSinceLastLogin.slice(state.leadsOffset, state.leadsOffset + state.leadsPerPage)
       }
 
       if(state.timeFrame === 'last30') {
-        return getters.getLeadsLast30.slice(state.leadsOffset, state.leadsPerPage)
+        return getters.getLeadsLast30.slice(state.leadsOffset, state.leadsOffset + state.leadsPerPage)
       }
 
       if (state.timeFrame === 'last60') {
-        return getters.getLeadsLast60.slice(state.leadsOffset, state.leadsPerPage)
+        return getters.getLeadsLast60.slice(state.leadsOffset, state.leadsOffset + state.leadsPerPage)
       }
     },
 
     getLeadsSinceLastLogin(state) {
       let leads = []
       state.leads.forEach( lead => {
-        console.log(lead.date - state.lastLogin)
         if (lead.date - state.lastLogin > 0) {
           leads.push(lead)
         }
@@ -307,7 +311,6 @@ export default createStore({
     getLeadsLast60(state) {
       let leads = []
       state.leads.forEach( lead => {
-        console.log(differenceInDays(new Date(), lead.date))
         if (differenceInDays(new Date(), lead.date) < 61) {
           leads.push(lead)
         }
@@ -319,6 +322,10 @@ export default createStore({
   mutations: {
     SET_ACTIVE_NAV(state, navElement) {
       state.active = navElement
+    },
+
+    SET_LEADS_ACTIVE_SLICE(state, activeSlice) {
+      state.leadsActiveSlice = activeSlice
     },
 
     SET_LEADS_OFFSET(state, offset) {
@@ -335,13 +342,22 @@ export default createStore({
       console.log('accountInfo', accountInfo);
     },
 
-    decrement_leads_offset({commit, state}) {
+    prev_leads_active_slice({commit, state, getters}) {
       if (state.leadsOffset > 0) {
         commit('SET_LEADS_OFFSET', state.leadsOffset - state.leadsPerPage)
-        console.log("🚀 ~ file: index.js ~ line 335 ~ decrement_lead_offset ~ state.leadsOffset", state.leadsOffset)
+        commit('SET_LEADS_ACTIVE_SLICE', getters.getLeadsForTimeFrame)
       }
     },
     
+    next_leads_active_slice({commit, state, getters}) {  
+      commit('SET_LEADS_OFFSET', state.leadsOffset + state.leadsPerPage)
+      commit('SET_LEADS_ACTIVE_SLICE', getters.getLeadsForTimeFrame)
+    },
+
+    initialize_leads_active_slice({commit, getters}) {
+      commit('SET_LEADS_ACTIVE_SLICE', getters.getLeadsForTimeFrame)
+    },
+
     set_active_nav({ commit }, navElement) {
       commit('SET_ACTIVE_NAV', navElement)
     },
@@ -356,13 +372,10 @@ export default createStore({
       router.push({name: 'Dashboard'})
     },
 
-    increment_leads_offset({commit, state}) {  
-      commit('SET_LEADS_OFFSET', state.leadsOffset + state.leadsPerPage)
-      console.log("🚀 ~ file: index.js ~ line 352 ~ increment_leads_offset ~ state.leadsOffset", state.leadsOffset)
-    },
 
-    set_time_frame({commit}, timeFrame) {
+    set_time_frame({commit, getters}, timeFrame) {
       commit('SET_TIME_FRAME', timeFrame)
+      commit('SET_LEADS_ACTIVE_SLICE', getters.getLeadsForTimeFrame)
     },
   }
 

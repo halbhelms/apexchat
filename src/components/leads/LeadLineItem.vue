@@ -9,6 +9,7 @@
 </template>
 
 <script>
+    import {format} from 'date-fns/'
     export default {
         name: 'LeadLineItem',
         components: {},
@@ -31,10 +32,11 @@
         computed: {
             shortDate() {
                 let d = this.$props.datetime
-                let m = d.getMonth() + 1
-                let t = d.getDate()
-                let y = d.getFullYear()-2000
-                return `${m}.${t}.${y}`
+                // let m = d.getMonth() + 1
+                // let t = d.getDate()
+                // let y = d.getFullYear()-2000
+                // return `${m}.${t}.${y}`
+                return format(d, 'MM.dd.yy')
                 
               
             },

@@ -15,7 +15,7 @@
                     <LeadLineHeader />
                     <!-- individual LeadLineItems -->
                     <LeadLineItem 
-                        v-for="lead in currentLeads" 
+                        v-for="lead in $store.state.leadsActiveSlice" 
                         :key="lead.id" 
                         :id="lead.id" 
                         :datetime="lead.date" 
@@ -34,6 +34,8 @@
                 timeframe: {{ $store.state.timeFrame }} <br />
                 amount of leads for timeframe: {{ $store.getters.getNumberOfLeadsPerTimeFrame }} <br />
                 more leads? {{ moreLeads }} <br />
+                leadsOffset: {{ $store.state.leadsOffset }}<br />
+                number of leads in leadsActiveSlice: {{ $store.state.leadsActiveSlice }}
             </div>
         </div>
     </div>
@@ -65,7 +67,7 @@
         },
         methods: {
             nextLeads() {
-                this.$store.dispatch('increment_leads_offset')
+                this.$store.dispatch('next_leads_active_slice')
             },
             
             previousLeads() {
@@ -88,11 +90,11 @@
             moreLeads() {
                 return this.$store.getters.getNumberOfLeadsPerTimeFrame > this.$store.state.leadsOffset + this.$store.state.leadsPerPage
             },
+        },
 
-            currentLeads() {
-                return this.$store.getters.getLeadsForTimeFrame
-            },
-        }
+        created: function() {
+            this.$store.dispatch('initialize_leads_active_slice')
+        },
     }
 </script>
 
