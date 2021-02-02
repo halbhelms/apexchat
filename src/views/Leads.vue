@@ -15,7 +15,7 @@
                     <LeadLineHeader />
                     <!-- individual LeadLineItems -->
                     <LeadLineItem 
-                        v-for="lead in $store.getters.getLeadsForTimeFrame" 
+                        v-for="lead in currentLeads" 
                         :key="lead.id" 
                         :id="lead.id" 
                         :datetime="lead.date" 
@@ -87,7 +87,11 @@
         computed: {
             moreLeads() {
                 return this.$store.getters.getNumberOfLeadsPerTimeFrame > this.$store.state.leadsOffset + this.$store.state.leadsPerPage
-            }
+            },
+
+            currentLeads() {
+                return this.$store.getters.getLeadsForTimeFrame
+            },
         }
     }
 </script>
@@ -120,8 +124,8 @@
     .pagination {
         /* position: relative; */
         background-color: lightblue;
-        margin-left: 8px;
-        margin-right: 10px;
+        margin-left: 9px;
+        margin-right: 9px;
         border-radius: 0 0 8px 8px;
     }
 
