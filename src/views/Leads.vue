@@ -30,12 +30,6 @@
                     <div @click="previousLeads" class="prev" v-if="$store.state.leadsOffset !== 0">Prev</div>
                     <div @click="nextLeads" class="next" v-if="moreLeads">Next</div>
                 </div>
-                <!-- {{ $store.state.leadsOffset }} -->
-                timeframe: {{ $store.state.timeFrame }} <br />
-                amount of leads for timeframe: {{ $store.getters.getNumberOfLeadsPerTimeFrame }} <br />
-                more leads? {{ moreLeads }} <br />
-                leadsOffset: {{ $store.state.leadsOffset }}<br />
-                number of leads in leadsActiveSlice: {{ $store.state.leadsActiveSlice }}
             </div>
         </div>
     </div>
@@ -71,7 +65,7 @@
             },
             
             previousLeads() {
-
+                this.$store.dispatch('previous_leads_active_slice')
             },
 
             removeActiveLead() {

@@ -342,7 +342,7 @@ export default createStore({
       console.log('accountInfo', accountInfo);
     },
 
-    prev_leads_active_slice({commit, state, getters}) {
+    previous_leads_active_slice({commit, state, getters}) {
       if (state.leadsOffset > 0) {
         commit('SET_LEADS_OFFSET', state.leadsOffset - state.leadsPerPage)
         commit('SET_LEADS_ACTIVE_SLICE', getters.getLeadsForTimeFrame)
