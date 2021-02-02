@@ -27,8 +27,8 @@
                 </div>
                 <!-- Pagination -->
                 <div class="pagination">
-                    <div @click="previousLeads" class="prev" v-if="$store.state.leadsOffset !== 0">Prev</div>
-                    <div @click="nextLeads" class="next" v-if="moreLeads">Next</div>
+                    <div @click="previousLeads" class="previous arrow" v-if="$store.state.leadsOffset !== 0"><img src="../components/leads/button_left.png" alt=""></div>
+                    <div @click="nextLeads" class="next arrow" v-if="moreLeads"><img src="../components/leads/button_right.png" alt=""></div>
                 </div>
             </div>
         </div>
@@ -93,6 +93,13 @@
 </script>
 
 <style scoped>
+    .arrow {
+        position: relative;
+        width: 48px;
+        margin-top: 6px;
+        margin-bottom: -3px;
+    }
+
     .leads {
         height: calc(100vh - 48px);
         background-color: rgb(237,240,245);
@@ -119,13 +126,14 @@
 
     .pagination {
         /* position: relative; */
-        background-color: lightblue;
+        /* background-color: lightblue; */
+        /* border: 1px solid grey; */
         margin-left: 9px;
         margin-right: 9px;
         border-radius: 0 0 8px 8px;
     }
 
-    .prev {
+    .previous {
         margin-right: 20px;
         cursor: pointer;
         display:inline-block;
