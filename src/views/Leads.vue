@@ -1,7 +1,5 @@
 <template>
     <div class="leads">
-            <!-- test of timeFrame getters -->
-    <!-- Leads Since...{{ $store.getters.getLeadsForTimeFrame }} -->
         <LeadsHeader />
         <div class="content">
             <!-- Lead Detail inside Modal -->
@@ -27,6 +25,15 @@
                         :active="active"
                         @drilldown="showLead"/>
                 </div>
+                <!-- Pagination -->
+                <div class="pagination">
+                    <div @click="previousLeads" class="prev" v-if="$store.state.leadsOffset !== 0">Prev</div>
+                    <div @click="nextLeads" class="next" v-if="moreLeads">Next</div>
+                </div>
+                <!-- {{ $store.state.leadsOffset }} -->
+                timeframe: {{ $store.state.timeFrame }} <br />
+                amount of leads for timeframe: {{ $store.getters.getNumberOfLeadsPerTimeFrame }} <br />
+                more leads? {{ moreLeads }} <br />
             </div>
         </div>
     </div>
@@ -57,6 +64,14 @@
             }
         },
         methods: {
+            nextLeads() {
+                this.$store.dispatch('increment_leads_offset')
+            },
+            
+            previousLeads() {
+
+            },
+
             removeActiveLead() {
                 this.active = null;
                 this.activeLead = null;
@@ -69,7 +84,11 @@
                 this.activeChat = this.$store.getters.getChatById(this.activeLead.chatId)
             }
         },
-        computed: {}
+        computed: {
+            moreLeads() {
+                return this.$store.getters.getNumberOfLeadsPerTimeFrame > this.$store.state.leadsOffset + this.$store.state.leadsPerPage
+            }
+        }
     }
 </script>
 
@@ -92,7 +111,24 @@
         height: 100%;
     }
 
-    .contact-info {
+    .next {
+        margin-left: 20px;
+        cursor: pointer;
+        display:inline-block;
+    }
+
+    .pagination {
+        /* position: relative; */
+        background-color: lightblue;
+        margin-left: 8px;
+        margin-right: 10px;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .prev {
+        margin-right: 20px;
+        cursor: pointer;
+        display:inline-block;
     }
 
 </style>

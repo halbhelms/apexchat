@@ -43,7 +43,7 @@
 
         methods: {
             changeTimeFrame() {
-                this.$store.dispatch('set_timeframe', this.picked)
+                this.$store.dispatch('set_time_frame', this.picked)
             }
         },
 

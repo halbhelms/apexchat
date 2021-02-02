@@ -14,21 +14,25 @@ export default createStore({
       role: 'moger-media-customer',
     },
 
-    leadsPerPage: 20,
-
+    lastLogin: new Date('12/31/2020 07:09:10 pm PST'),
+    // where do we start in the leads array?
+    leadsOffset: 0,
+    // how many leads should be returned?
+    leadsPerPage: 15,
+    
     timeFrame: 'lastLogin',
-
+    
     active: 'dashboard',
-
+    
     videos: [
       `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/67hkx0ob00?videoFoam=true" title="FAQ_Disposal Care Video" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>`,
-
+      
       `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_hib29wm9h6 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/hib29wm9h6/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`,
-
-        `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_290f8sbgm7 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/290f8sbgm7/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`,
-
-        `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_lxtll40z2a videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/lxtll40z2a/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`,
-
+      
+      `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_290f8sbgm7 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/290f8sbgm7/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`,
+      
+      `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_lxtll40z2a videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/lxtll40z2a/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`,
+      
         `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_bfnz01syud videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/bfnz01syud/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`,
 
         `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_moe1ngjydt videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/moe1ngjydt/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`,
@@ -36,7 +40,6 @@ export default createStore({
         `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_ki8jpas8mm videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/ki8jpas8mm/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`
     ],
     
-    lastLogin: new Date('1/2/2021 08:09:10 pm PST'),
     
     leads: [
       {id: 1, leadtype:'Sales',date: new Date('1/02/2021 08:09:10 pm PST'), contact: 'Donna Holmes', location: 'Capital City, TX, US', address: '2102 Meadows Parkway, Katy, TN 84586',phone: '2537077195', email: 'dholmes@gmail.com', chatId:3 
@@ -236,6 +239,20 @@ export default createStore({
   },
   
   getters: {
+    getNumberOfLeadsPerTimeFrame(state, getters) {
+      if(state.timeFrame === 'lastLogin') {
+        return getters.getLeadsSinceLastLogin.length
+      }
+
+      if(state.timeFrame === 'last30') {
+        return getters.getLeadsLast30.length
+      }
+
+      if (state.timeFrame === 'last60') {
+        return getters.getLeadsLast60.length
+      }
+    },
+
     getChatById(state) {
       return (id) => {
         return state.chats.find( chat => {
@@ -254,17 +271,16 @@ export default createStore({
 
     getLeadsForTimeFrame(state, getters) {
       if(state.timeFrame === 'lastLogin') {
-        return getters.getLeadsSinceLastLogin
+        return getters.getLeadsSinceLastLogin.slice(state.leadsOffset, state.leadsPerPage)
       }
 
       if(state.timeFrame === 'last30') {
-        return getters.getLeadsLast30
+        return getters.getLeadsLast30.slice(state.leadsOffset, state.leadsPerPage)
       }
 
       if (state.timeFrame === 'last60') {
-        return getters.getLeadsLast60
+        return getters.getLeadsLast60.slice(state.leadsOffset, state.leadsPerPage)
       }
-
     },
 
     getLeadsSinceLastLogin(state) {
@@ -276,19 +292,16 @@ export default createStore({
         }
       })
       return leads;
-      // return ['hmmmm']
     },
 
     getLeadsLast30(state) {
       let leads = []
       state.leads.forEach( lead => {
-        console.log(differenceInDays(new Date(), lead.date))
         if (differenceInDays(new Date(), lead.date) < 31) {
           leads.push(lead)
         }
       })
       return leads;
-      // return ['hmmmm']
     },
 
     getLeadsLast60(state) {
@@ -300,23 +313,33 @@ export default createStore({
         }
       })
       return leads;
-      // return ['hmmmm']
     },
   },
 
   mutations: {
     SET_ACTIVE_NAV(state, navElement) {
-      state.active = navElement;
+      state.active = navElement
+    },
+
+    SET_LEADS_OFFSET(state, offset) {
+      state.leadsOffset = offset
     },
 
     SET_TIME_FRAME(state, timeFrame) {
-      state.timeFrame = timeFrame;
+      state.timeFrame = timeFrame
     }
   },
 
   actions: {
     change_account_info(_, accountInfo) {
       console.log('accountInfo', accountInfo);
+    },
+
+    decrement_leads_offset({commit, state}) {
+      if (state.leadsOffset > 0) {
+        commit('SET_LEADS_OFFSET', state.leadsOffset - state.leadsPerPage)
+        console.log("🚀 ~ file: index.js ~ line 335 ~ decrement_lead_offset ~ state.leadsOffset", state.leadsOffset)
+      }
     },
     
     set_active_nav({ commit }, navElement) {
@@ -333,9 +356,14 @@ export default createStore({
       router.push({name: 'Dashboard'})
     },
 
-    set_timeframe({commit}, timeFrame) {
+    increment_leads_offset({commit, state}) {  
+      commit('SET_LEADS_OFFSET', state.leadsOffset + state.leadsPerPage)
+      console.log("🚀 ~ file: index.js ~ line 352 ~ increment_leads_offset ~ state.leadsOffset", state.leadsOffset)
+    },
+
+    set_time_frame({commit}, timeFrame) {
       commit('SET_TIME_FRAME', timeFrame)
-    }
+    },
   }
 
 })
