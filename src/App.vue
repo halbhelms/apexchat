@@ -49,6 +49,26 @@ import Header from './components/site/Header'
       Header
     },
 
+    watch: {
+      $route(to) {
+        let namedRoute = to.matched[0].name
+        let activeNav = ''
+        if (namedRoute === 'Support') {
+          activeNav = 'support'
+        }
+        if (namedRoute === 'Dashboard') {
+          activeNav = 'dashboard'
+        }
+        if (namedRoute === 'Leads') {
+          activeNav = 'leads'
+        }
+        if (namedRoute === 'Videos') {
+          activeNav = 'videos'
+        }
+        this.$store.dispatch('set_active_nav', activeNav)
+      }
+    },
+
     provide: {
       __randomId: function(length) {
         let result           = ''
@@ -59,7 +79,9 @@ import Header from './components/site/Header'
         }
         return result;
       }
-    }
+    },
+
+
   }
 </script>
 
