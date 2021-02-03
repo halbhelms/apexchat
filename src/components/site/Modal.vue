@@ -53,10 +53,12 @@
 }
 
 div.modal {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    /* margin-left: 2rem;
+    margin-right: 2rem; */
     text-align: left;
     overflow:auto;
+    width: 80%;
+    margin: auto;
 }
 
 html, body {
