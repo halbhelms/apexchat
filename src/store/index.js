@@ -5,6 +5,8 @@ import differenceInDays from 'date-fns/differenceInDays'
 
 export default createStore({
   state: {
+    authenticated: false,
+
     currentUser: {
       firstName: 'Brad',
       lastName: 'Chase',

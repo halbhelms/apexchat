@@ -1,8 +1,8 @@
 <template>
   <div class="outer-wrapper">
-    <Header />
+    <Header v-if="$store.state.authenticated"/>
     <div class="inner-wrapper">
-      <div class="sidenav">
+      <div v-if="$store.state.authenticated" class="sidenav">
         <div></div>
         <div class="sidebar-element">
           <router-link :to="{name: 'Dashboard'}">

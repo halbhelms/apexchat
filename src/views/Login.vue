@@ -1,31 +1,35 @@
 <template>
     <div class="login">
-        <h2 class="title">User Login</h2>
-        <form @submit.prevent="submitForm">
-            <div class="floating-form">
-                <!-- Title -->
-                <div class="floating-label">      
-                    <input class="floating-input" type="text" placeholder=" ">
-                    <span class="highlight"></span>
-                    <label>User Name</label>
-                </div>
+        <div class="contents">
+            <div class="wrapper">
+                <h2 class="title">User Login</h2>
+                <form @submit.prevent="submitForm">
+                    <div class="floating-form">
+                        <!-- Title -->
+                        <div class="floating-label">      
+                            <input class="floating-input" type="text" placeholder=" ">
+                            <span class="highlight"></span>
+                            <label>User Name</label>
+                        </div>
 
-                <!-- Message -->
-                <div class="floating-label">      
-                    <input class="floating-input" type="text" placeholder=" ">
-                    <span class="highlight"></span>
-                    <label>Password</label>
-                </div>
+                        <!-- Message -->
+                        <div class="floating-label">      
+                            <input class="floating-input" type="text" placeholder=" ">
+                            <span class="highlight"></span>
+                            <label>Password</label>
+                        </div>
 
-                <!-- Button -->
-                <div class="button">
-                    <button class="btn fifth">
-                        <span class="button-text">Login</span>
-                    </button>
-                </div>
-            
+                        <!-- Button -->
+                        <div class="button">
+                            <button class="btn fifth">
+                                <span class="button-text">Login</span>
+                            </button>
+                        </div>
+                    
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -54,15 +58,7 @@
 
 <style scoped>
 .btn {
-  /* box-sizing: border-box;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none; */
-  /* background-color: transparent; */
   background-color:lightblue;
-  /* border: 2px solid #e74c3c;
-  border-radius: 0.6em;
-  color: #e74c3c; */
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -71,25 +67,31 @@
   -webkit-align-self: center;
       -ms-flex-item-align: center;
           align-self: center;
-  /* font-size: 1rem;
-  font-weight: 400; */
   line-height: 1;
-  /* margin: 20px; */
-  /* padding: 1.2em 2.8em; */
   text-decoration: none;
   text-align: center;
   font-weight: 700;
-  /* color: navy; */
 }
 .btn:hover, .btn:focus {
   color: #fff;
   outline: 0;
 }
 
-.button {
+button {
     position: relative;
-    margin-left: calc(60% - 6rem);
-    margin-top: 2rem;
+    /* margin-left: calc(60% - 6rem); */
+    /* margin-top: 2rem; */
+    margin: 0 auto;
+}
+
+h2.title {
+    margin-left: 1rem;
+    text-align: center;
+    font-weight: 900;
+}
+
+h2 {
+    text-align: center;
 }
 
 .button-text {
@@ -132,7 +134,8 @@
 
 /* My styling */
 button {
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    margin: 0 auto;
     width: 7rem;
     border: 1px solid navy;
     border-radius: 8px;
@@ -149,19 +152,44 @@ form {
     margin-left: 20px;
 }
 
+.login {
+    height: 100vh;
+    width: 100vw;
+}
+
+.contents {
+    height: 300px;
+    width: 500px;
+    display: table;
+    margin: 0 auto;
+}
+
+.wrapper {
+    position: relative;
+    margin-top: 5rem;
+}
+
 input {
     width: 50%;
     border: 1px solid silver;
     border-radius: 8px;
-    padding-left: 4px;
+    /* padding-left: 4px; */
     font-family: 'Dosis', sans-serif;
     box-shadow:L 0 0 6px silver;
+    /* margin: 0 auto !important; */
 }
+
+.floating-form {
+    margin: 0 auto;
+}
+
+
 
 
 /* https://codepen.io/dannibla/pen/amgRNR styling */
 .floating-form {
   width:50%;
+  margin: 0 auto;
 }
 
 /****  floating-Lable style start ****/
