@@ -36,6 +36,7 @@
         computed: {
             shortDate() {
                 let d = this.$props.datetime
+                // let d = new Date(parseInt(this.$props.datetime.substr(6)))
                 // let m = d.getMonth() + 1
                 // let t = d.getDate()
                 // let y = d.getFullYear()-2000

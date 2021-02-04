@@ -17,7 +17,7 @@ export default createStore({
       role: 'moger-media-customer',
     },
 
-    lastLogin: new Date('12/31/2020 07:09:10 pm PST'),
+    lastLogin: new Date('1/15/2021 07:09:10 pm PST'),
 
     // where do we start in the leads array?
     leadsOffset: 0,
@@ -387,10 +387,12 @@ export default createStore({
       //     obj[item[keyField]] = item
       //     return obj
       //   }, {})
-      console.log('date', new Date(leads[0].created_at))
+      // console.log('date', new Date(leads[0].created_at))
+      // console.log('convertedDate', new Date(parseInt(leads[0].raw_data.createdOn.substr(6)))
+// new Date(parseInt(leads[0].raw_data.createdOn.substr(6))
       let extractLeadInfo = (lead) => {
         const {raw_data, ...rest} = lead
-        return {...rest, date: new Date(lead.created_at), zipCode: raw_data.zipCode, name: raw_data.name}
+        return {...rest, date: new Date(parseInt(raw_data.createdOn.substr(6))), zipCode: raw_data.zipCode, name: raw_data.name}
       }
       commit('SET_LEADS', leads.map(extractLeadInfo))
     },
