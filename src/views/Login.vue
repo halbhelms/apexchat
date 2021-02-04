@@ -50,7 +50,11 @@
             }
         },
 
-        methods: {},
+        methods: {
+            submitForm() {
+                this.$store.dispatch('authenticate_login', this.login)
+            }
+        },
 
         computed: {}
     }

@@ -327,6 +327,10 @@ export default createStore({
       state.active = navElement
     },
 
+    SET_AUTHENTICATED(state, value) {
+      state.authenticated = value
+    },
+
     SET_LEADS(state, leads) {
       state.leads = leads
     },
@@ -345,6 +349,12 @@ export default createStore({
   },
 
   actions: {
+    authenticate_login({commit}, loginInfo) {
+      console.log("🚀 ~ file: index.js ~ line 349 ~ authenticate_login ~ loginInfo", loginInfo)
+      console.log('Need to call API to validate login' );
+      commit('SET_AUTHENTICATED', true)
+    },
+
     change_account_info(_, accountInfo) {
       console.log('accountInfo', accountInfo);
     },
