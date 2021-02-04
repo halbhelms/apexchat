@@ -2,7 +2,7 @@
 <div class="lead-line-header">
     <div class="date-label header-col">Date</div>
     <div class="contact-label header-col">Contact</div>
-    <div class="lead-type-label header-col">Lead</div>
+    <div class="lead-type-label header-col">Type</div>
     <div class="location-label header-col">Location</div>
 </div>
 </template>

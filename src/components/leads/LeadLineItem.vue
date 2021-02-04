@@ -5,7 +5,7 @@
         <div class="date data-col">{{ shortDate }}</div>
         <div class="contact data-col">{{ contact }}</div>
         <div class="lead-type data-col">{{ leadtype }}</div>
-        <div class="location data-col">{{ location }}</div>
+        <div class="location data-col">{{ address }} {{ city }} {{ state }} {{ zipcode }}</div>
     </div>
 </template>
 
@@ -17,7 +17,10 @@
         props: [
             'id',
             'datetime',
-            'location',
+            'address',
+            'city',
+            'state',
+            'zipcode',
             'contact',
             'leadtype',
             'active'
