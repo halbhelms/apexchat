@@ -6,6 +6,8 @@ import Leads from '../views/Leads'
 import Login from '../views/Login.vue'
 import Temp from '../views/Temp.vue'
 
+import store from '../store/index'
+
 const routes = [
   {
     path: "/login/",
@@ -48,5 +50,13 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 });
+
+router.beforeEach( (to, _, next) => {
+  if (to.name !== 'Login' && !store.state.authenticated) {
+    next({name: 'Login'})
+  } else {
+    next()
+  }
+})
 
 export default router;
