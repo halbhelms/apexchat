@@ -38,6 +38,8 @@ import Leads from './components/sidenav/Leads'
 import Videos from './components/sidenav/Videos'
 import Support from './components/sidenav/Support'
 import Header from './components/site/Header'
+
+import axios from 'axios'
   
   export default {
     name: 'App',
@@ -66,7 +68,22 @@ import Header from './components/site/Header'
           activeNav = 'videos'
         }
         this.$store.dispatch('set_active_nav', activeNav)
-      }
+      },
+    },
+
+    async mounted() {
+      const leads = await axios({
+        method: 'get',
+        url: 'https://codelifepro.herokuapp.com/leads',
+        headers: {
+          'X-User-Email': 'jquarto@berkees.com',
+          'X-User-Token': 'qEn8jQq3Ar7RyErpxtLU'
+        }
+      })
+      await this.$store.dispatch('load_leads_from_api', leads.data)
+      await this.$store.dispatch('initialize_leads_active_slice')
+      console.log('leads', this.$store.state.leads)
+      console.log('slice', this.$store.getters.getLeadsForTimeFrame)
     },
 
     provide: {

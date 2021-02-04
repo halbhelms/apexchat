@@ -19,9 +19,9 @@
                         :key="lead.id" 
                         :id="lead.id" 
                         :datetime="lead.date" 
-                        :location="lead.location" 
-                        :contact="lead.contact"
-                        :leadtype="lead.leadtype"
+                        :location="lead.zipCode" 
+                        :contact="lead.name"
+                        :leadtype="lead.lead_type"
                         :active="active"
                         @drilldown="showLead"/>
                 </div>
@@ -84,10 +84,6 @@
             moreLeads() {
                 return this.$store.getters.getNumberOfLeadsPerTimeFrame > this.$store.state.leadsOffset + this.$store.state.leadsPerPage
             },
-        },
-
-        created: function() {
-            this.$store.dispatch('initialize_leads_active_slice')
         },
     }
 </script>
