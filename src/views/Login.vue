@@ -7,14 +7,14 @@
                     <div class="floating-form">
                         <!-- Title -->
                         <div class="floating-label">      
-                            <input class="floating-input" type="text" placeholder=" ">
+                            <input class="floating-input" type="text" placeholder=" " v-model="login.username">
                             <span class="highlight"></span>
                             <label>User Name</label>
                         </div>
 
                         <!-- Message -->
                         <div class="floating-label">      
-                            <input class="floating-input" type="text" placeholder=" ">
+                            <input class="floating-input" type="password" placeholder=" " v-model="login.password">
                             <span class="highlight"></span>
                             <label>Password</label>
                         </div>
@@ -44,8 +44,8 @@
         data() {
             return {
                 login: {
-                    username: null,
-                    password: null
+                    username: '',
+                    password: ''
                 }
             }
         },

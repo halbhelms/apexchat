@@ -351,9 +351,10 @@ export default createStore({
 
   actions: {
     authenticate_login({commit}, loginInfo) {
-      console.log("🚀 ~ file: index.js ~ line 349 ~ authenticate_login ~ loginInfo", loginInfo)
+      console.log('loginInfo', loginInfo);
       console.log('Need to call API to validate login' );
       commit('SET_AUTHENTICATED', true)
+      router.push({name: 'Dashboard'})
     },
 
     change_account_info(_, accountInfo) {
