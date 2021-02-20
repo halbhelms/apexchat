@@ -1,5 +1,7 @@
 <template>
-  <div class="outer-wrapper">
+  <login-form v-if="!loggedIn"></login-form>
+
+  <div class="outer-wrapper" v-else>
     <Header v-if="$store.state.authenticated"/>
     <div class="inner-wrapper">
       <div v-if="$store.state.authenticated" class="sidenav">
@@ -38,8 +40,10 @@ import Leads from './components/sidenav/Leads'
 import Videos from './components/sidenav/Videos'
 import Support from './components/sidenav/Support'
 import Header from './components/site/Header'
+import LoginForm from './views/LoginForm'
 
 import axios from 'axios'
+import LoginForm from './views/LoginForm.vue'
   
   export default {
     name: 'App',
@@ -48,7 +52,15 @@ import axios from 'axios'
       Leads,
       Videos,
       Support,
-      Header
+      Header,
+      LoginForm
+        LoginForm,
+    },
+
+    computed: {
+      loggedIn() {
+        return window.sessionStorage.getItem('loggedIn')
+      }
     },
 
     watch: {
