@@ -41,9 +41,7 @@ import Videos from './components/sidenav/Videos'
 import Support from './components/sidenav/Support'
 import Header from './components/site/Header'
 import LoginForm from './views/LoginForm'
-
 import axios from 'axios'
-import LoginForm from './views/LoginForm.vue'
   
   export default {
     name: 'App',
@@ -54,7 +52,6 @@ import LoginForm from './views/LoginForm.vue'
       Support,
       Header,
       LoginForm
-        LoginForm,
     },
 
     computed: {
