@@ -3,7 +3,7 @@ import Dashboard from "../views/Dashboard"
 import Support from '../views/Support'
 import Videos from '../views/Videos'
 import Leads from '../views/Leads'
-import Login from '../views/Login.vue'
+import Login from '../views/LoginForm.vue'
 import Temp from '../views/Temp.vue'
 
 import store from '../store/index'
