@@ -56,7 +56,6 @@
         grid-template-columns: 372px 308px;
         text-align: left;
         border: 1px solid silver;
-        
     }
 
     .date-filter {

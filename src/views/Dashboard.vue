@@ -1,4 +1,5 @@
 <template>
+{{ timeFrame }}
 <div class="container">
     <DashboardHeader />
   <div class="content">
@@ -12,7 +13,7 @@
       <div class="graph">
           <div id="curve_chart"></div>
           <!-- <BarChart :chartData="chartData" /> -->
-          <LineChart />
+          <LineChart :chartData="chartData" v-if="chartData"/>
       </div>
   </div>
   </div>
@@ -49,32 +50,34 @@ export default {
                 salesLeads: null,
                 serviceLeads: null
             },
-            chartData: [
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
-        ]
+            chartData: null
         }
     },
     methods: {
         async getDashboardInfo() {
-            let endDate = null
-            let timeFrame = this.$store.state.timeFrame
+            let currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+            let startDate = null
+            
 
-            // set endDate for lastLogin
-            if (timeFrame == 'lastLogin') {
-                endDate = dateToApiDateString(this.$store.state.lastLogin)
+            // set startDate for lastLogin
+            if (this.$store.state.timeFrame == 'lastLogin') {
+                if (currentUser.last_login_at) {
+                    startDate = dateToApiDateString(currentUser.last_login_at)
+                } else {
+                    this.$store.dispatch('set_time_frame', 'last30')
+                }
             }
-            // set endDate for last30
-            if (timeFrame == 'last30') {
-                endDate = dateStringForDaysPrior(30)
+            // set startDate for last30
+            if (this.$store.state.timeFrame == 'last30') {
+                startDate = dateStringForDaysPrior(30)
             }
 
-            if (timeFrame == 'last60') {
-                endDate = dateStringForDaysPrior(60)
+            if (this.$store.state.timeFrame == 'last60') {
+                startDate = dateStringForDaysPrior(60)
             }
+
+            console.log('startDate', startDate);
+            
 
             // get dashboard info for appropriate state.timeFrame
             try {
@@ -86,22 +89,45 @@ export default {
                     method: 'get',
                     url: 'https://codelifepro.herokuapp.com/dashboard',
                     params: {
-                        start_date: dateToApiDateString(new Date()),
-                        end_date: endDate
+                        start_date: startDate,
+                        end_date: dateToApiDateString(new Date())
                     },
                     headers: {
                         'X-User-Email': email,
                         'X-User-Token': authentication_token  
                     }
                 })
-                console.dir(dashboardInfo)
+                console.log('dashboard info', dashboardInfo.data)
+                // set API results to local state
+                this.leads = dashboardInfo.data.leads
+                this.sales = dashboardInfo.data.sales
+                this.service = dashboardInfo.data.service
+                this.timeFilter.videos = dashboardInfo.data.since_last_login.videos
+                this.timeFilter.salesLeads = dashboardInfo.data.since_last_login.sales_leads
+                this.timeFilter.serviceLeads = dashboardInfo.data.since_last_login.service_leads
+                this.chartData = dashboardInfo.data.chart_data
+                console.log('array?', Array.isArray(dashboardInfo.data.chart_data))
             } catch (err) {
             console.log("🚀 ~ file: Dashboard.vue ~ line 68 ~ getDashboardInfo ~ err", err)
             }
         
         }
 
-    }
+    },
+    created() {
+        this.getDashboardInfo()
+    },
+    computed: {
+        timeFrame() {
+            return this.$store.state.timeFrame
+        }
+    },
+    watch: {
+        timeFrame: function() {
+            this.chartData = null
+            this.getDashboardInfo()
+        }
+    },
 }
 </script>
 

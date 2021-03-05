@@ -2,7 +2,7 @@
     <!-- Leads widget -->
     <div class="card">
         <div class="title">Leads</div>
-        <div class="leads">{{ formattedNum(leads) }}</div>
+        <div class="leads">{{ leads }}</div>
         <div class="leads-breakdown">
             <!-- Breakdown by sales leads -->
             <div class="by-sales">
@@ -10,7 +10,7 @@
                     Sales
                 </div>
                 <div class="breakdown-number">
-                    {{ formattedNum(sales) }}
+                    {{ sales }}
                 </div>
             </div>
             <!-- Breakdown by service leads -->
@@ -19,7 +19,7 @@
                     Service
                 </div>
                 <div class="breakdown-number">
-                    {{ formattedNum(service) }}
+                    {{ service }}
                 </div>
             </div>
         </div>
@@ -54,6 +54,7 @@
         width: 180px;
         box-shadow: 0 0 6px 0 silver;
         margin-top: 20px;
+        margin-left: 20px;
     }
 
     .title {
