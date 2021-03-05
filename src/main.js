@@ -6,11 +6,20 @@ import store from "./store";
 import Toast from 'vue-toastification'
 import "vue-toastification/dist/index.css"
 
+import BaseButton from './components/UI/BaseButton.vue'
+import BaseInput from './components/UI/BaseInput.vue'
+
 const app = createApp(App)
   .use(store)
   .use(router)
   .use(Toast)
-  .mount("#app");
+
+
+app.component('base-button', BaseButton)
+app.component('base-input', BaseInput)
 
 app.config.globalProperties.inDev = false
 app.config.globalProperties.apiUrl = "https://codelifepro.herokuapp.com/"
+
+
+app.mount("#app");

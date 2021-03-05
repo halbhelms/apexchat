@@ -13,7 +13,7 @@
             <!-- <img src="./sample-gravatar.jpeg" alt="" id="sample-gravatar"> -->
             <img class="account-logo" src="./account-gear.png" alt="" width="32">
             <span class="account-name">
-                {{ $store.state.currentUser.firstName }} {{ $store.state.currentUser.lastName }}
+                {{ currentUserFirstName }} {{ currentUserLastName }}
             </span>
         </div>
     </div>
@@ -50,10 +50,6 @@
         data() {
             return {
                 accountEditMode: false,
-                accountInfo: {
-                    username: this.$store.state.currentUser.username,
-                    password: this.$store.state.currentUser.password
-                }
             }
         },
         
@@ -76,13 +72,24 @@
             }
         },
         
-        computed: {}
+        computed: {
+            currentUserEmail() {
+                return JSON.parse(sessionStorage.getItem('currentUser')).email
+            },
+            currentUserFirstName() {
+                return JSON.parse(sessionStorage.getItem('currentUser')).first_name
+            },
+            currentUserLastName() {
+                return JSON.parse(sessionStorage.getItem('currentUser')).last_name
+            },
+        }
     }
 </script>
 
 <style scoped>
+
     .account-area{
-        width: 180px;
+        width: 100%;
         margin-top: 20px;
         margin-left: 100px;
         display: grid;
@@ -119,17 +126,19 @@
         background-color: white;
         border-radius: 12px;
         padding: 6px;
-        width: 260px;
+        width: 100%;
         height: 140px;
         z-index: 99;
     }
 
     .account-logo {
         text-align: right;
-        margin-left: 42px;
+        /* margin-left: 42px; */
     }
 
     .account-name {
+        position: relative;
+        left: -100px;
         text-align: left;
         margin-top: 4px;
     }
@@ -147,9 +156,8 @@
 
     .header {
         display: grid;
-        grid-template-columns: 320px 320px 320px;
-        width: 960px;
-        max-width: 960px;
+        grid-template-columns: auto auto auto;
+        width: 100%
     }
 
     #faq-logo{

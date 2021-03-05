@@ -1,30 +1,45 @@
 <template>
-    <div v-if='inDev' class='inDev'>{{ options.name}}</div>
+    login: {{ login }}
+    <div v-if='inDev' class='inDev'>{{ $options.name}}</div>
     <section-header>Login</section-header>
+    <p class="error" v-if="error">We couldn't log you in. Please try again or contact your Moger Media representative.</p>
     <form class="login-form" @submit.prevent="loginUser">
-        <base-input _label="User name" v-model="login.userName" _id="user-name"></base-input>
-        <base-input _label="Password" _type="password" v-model="login.password" _id="password"></base-input>
-        <base-button :_styles="styles.submitButton" _type="submit">Login</base-button>
+        <base-input 
+            _label="email" 
+            v-model.trim="login.email" 
+            _id="email">
+        </base-input>
+        <base-input 
+            _label="Password" 
+            _type="password" 
+            v-model.trim="login.password" 
+            _id="password">
+        </base-input>
+        <base-button 
+            :_styles="styles.submitButton" 
+            _type="submit">
+            Login
+        </base-button>
     </form>
 </template>
 
 <script>
     import axios from 'axios'
-    import BaseInput from '../components/UI/BaseInput'
-    import BaseButton from '../components/UI/BaseButton'
     export default {
         name: 'LoginForm',
 
-        components: {BaseInput, BaseButton},
+        components: {},
 
         props: [],
 
         data() {
             return {
                 login: {
-                    userName: null,
+                    email: null,
                     password: null
                 },
+
+                error: false,
 
                 styles: {
                     submitButton: {
@@ -43,19 +58,28 @@
         },
 
         methods: {
-            loginUser() {
-                
-                axios.post('https://codelifepro.herokuapp.com/', {
-                    headers: {
-                        'apex-company': 'MogerMedia',
-                        'apex-username': 'Admin',
-                        'apex-password': 20171220,
-                        Authorization: 'Basic aGFsLmhlbG1zQGdtYWlsLmNvbTpwYXNzd29yZA=='
-                    }
-                })
-                    .then( response => console.log(response)) 
-                    .then( response => sessionStorage.setItem('currentUser', JSON.stringify(response))) 
-                    .catch(err => console.log(err))    
+            async loginUser() {
+                console.log('in loginUser')                
+                try {
+                    // attempt a login
+                    let login = await axios.get('https://codelifepro.herokuapp.com/users/me', {
+                        headers: {
+                            Authorization: `Basic ${btoa(this.login.email +':' + this.login.password)}` 
+                        }
+                    })
+                    
+                    // set successfully logged-in user as currentUser in sessionStorage
+                    console.log('login', login.data);
+                    // set logged-in user as session currentUser
+                    sessionStorage.setItem('currentUser', JSON.stringify(login.data))
+                    // set the last login of the currentUser
+                    this.$store.dispatch('set_last_login', login.data.last_login_date)
+                    // off we go to the dashboard
+                    location.replace('/')
+                } catch (err) {
+                    this.error = true;
+                    console.log('Login error', err);
+                }
             },
         },
 

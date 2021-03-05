@@ -8,16 +8,7 @@ export default createStore({
     authenticated: true,
     name: 'Store',
 
-    currentUser: {
-      firstName: 'Brad',
-      lastName: 'Chase',
-      username: 'bchase',
-      password: 'password',
-      companyName: 'CJS Heating and Air',
-      role: 'moger-media-customer',
-    },
-
-    lastLogin: new Date('1/15/2021 07:09:10 pm PST'),
+    lastLogin: null,
 
     // where do we start in the leads array?
     leadsOffset: 0,
@@ -332,6 +323,10 @@ export default createStore({
       state.authenticated = value
     },
 
+    SET_LAST_LOGIN(state, lastLogin) {
+      state.lastLogin = lastLogin
+    },
+
     SET_LEADS(state, leads) {
       state.leads = leads
     },
@@ -407,6 +402,9 @@ export default createStore({
       router.push({name: 'Dashboard'})
     },
 
+    set_last_login({ commit }, lastLogin) {
+      commit('SET_LAST_LOGIN', lastLogin)
+    },
 
     set_time_frame({commit, getters}, timeFrame) {
       commit('SET_TIME_FRAME', timeFrame)

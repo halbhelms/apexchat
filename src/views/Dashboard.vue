@@ -5,7 +5,7 @@
       
       <div class="main">
         
-        <EngagedWidget :engaged="engaged"/>
+        <!-- <EngagedWidget :engaged="engaged"/> -->
         <LeadsWidget :leads="leads" :sales="sales" :service="service"/>
         <SinceLoginWidget :videos="timeFilter.videos" :salesLeads="timeFilter.salesLeads" :serviceLeads="timeFilter.serviceLeads"/>
       </div>
@@ -19,8 +19,11 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { dateToApiDateString, dateStringForDaysPrior } from '../utils'
+
 import DashboardHeader from '../components/dashboard/DashboardHeader'
-import EngagedWidget from '../components/dashboard/EngagedWidget'
+// import EngagedWidget from '../components/dashboard/EngagedWidget'
 import LeadsWidget from '../components/dashboard/LeadsWidget'
 import SinceLoginWidget from '../components/dashboard/SinceLoginWidget'
 import LineChart from '../components/charts/LineChart'
@@ -30,21 +33,21 @@ export default {
     name: 'Dashboard',
     components: {
         DashboardHeader,
-        EngagedWidget,
+        // EngagedWidget,
         LeadsWidget,
         SinceLoginWidget,
         LineChart
     },
     data() {
         return {
-            engaged: 7874,
-            leads: 1249,
-            sales: 1000,
-            service: 249,
+            engaged: null,
+            leads: null,
+            sales: null,
+            service: null,
             timeFilter: {
-                videos: 12,
-                salesLeads: 110,
-                serviceLeads: 56
+                videos: null,
+                salesLeads: null,
+                serviceLeads: null
             },
             chartData: [
           ['Mushrooms', 3],
@@ -54,6 +57,50 @@ export default {
           ['Pepperoni', 2]
         ]
         }
+    },
+    methods: {
+        async getDashboardInfo() {
+            let endDate = null
+            let timeFrame = this.$store.state.timeFrame
+
+            // set endDate for lastLogin
+            if (timeFrame == 'lastLogin') {
+                endDate = dateToApiDateString(this.$store.state.lastLogin)
+            }
+            // set endDate for last30
+            if (timeFrame == 'last30') {
+                endDate = dateStringForDaysPrior(30)
+            }
+
+            if (timeFrame == 'last60') {
+                endDate = dateStringForDaysPrior(60)
+            }
+
+            // get dashboard info for appropriate state.timeFrame
+            try {
+                let currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+                let email = currentUser.email
+                let authentication_token = currentUser.authentication_token
+
+                let dashboardInfo = await axios({
+                    method: 'get',
+                    url: 'https://codelifepro.herokuapp.com/dashboard',
+                    params: {
+                        start_date: dateToApiDateString(new Date()),
+                        end_date: endDate
+                    },
+                    headers: {
+                        'X-User-Email': email,
+                        'X-User-Token': authentication_token  
+                    }
+                })
+                console.dir(dashboardInfo)
+            } catch (err) {
+            console.log("🚀 ~ file: Dashboard.vue ~ line 68 ~ getDashboardInfo ~ err", err)
+            }
+        
+        }
+
     }
 }
 </script>

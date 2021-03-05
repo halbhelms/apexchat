@@ -56,7 +56,7 @@ import axios from 'axios'
 
     computed: {
       loggedIn() {
-        return window.sessionStorage.getItem('loggedIn')
+        return sessionStorage.getItem('currentUser')
       }
     },
 
