@@ -1,9 +1,9 @@
 <template>
-    <p v-if="$store.state.leads">All leads: {{ $store.state.leads.length }}</p>
+    <!-- <p v-if="$store.state.leads">All leads: {{ $store.state.leads.length }}</p>
     <p v-if="$store.state.leadsLastLogin">All leads: {{ $store.state.leadsLastLogin.length }}</p>
     <p v-if="$store.state.leadsLast30">All leads: {{ $store.state.leadsLast30.length }}</p>
     <p v-if="$store.state.leadsLast60">All leads: {{ $store.state.leadsLast60.length }}</p>
-    <p>{{ $store.state.timeFrame }}</p>
+    <p>{{ $store.state.timeFrame }}</p> -->
     <div class="leads">
         <LeadsHeader />
         <div class="content">
@@ -16,10 +16,12 @@
 
             <div class="leads">
                 <div class="leads-inner-container">
-                    <div v-if="selectedLeads.length">
+                    <div v-if="true">
                     <!-- LeadLineHeader component -->
                     <LeadLineHeader />
                     <!-- individual LeadLineItems -->
+                        <div v-if="!selectedLeads.length">No leads were found for this time frame</div>
+                        <div v-else>
                         <LeadLineItem 
                             v-for="lead in selectedLeads" 
                             :key="lead.id" 
@@ -33,6 +35,7 @@
                             :leadtype="lead.lead_type"
                             :active="active"
                             @drilldown="showLead"/>
+                        </div>
                     </div>
                 </div>
                 <!-- Pagination -->
