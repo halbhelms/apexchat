@@ -18,6 +18,8 @@
 
         props: [],
 
+        emits: ['modal-closing'],
+
         data() {
             return {}
         },
@@ -27,11 +29,16 @@
                 this.$refs['modal-container'].classList.remove('out')
                 this.$refs['modal-container'].classList.add('one')
             },
+
+            notifyParent() {
+              this.$emit('modal-closing')
+            },
             
             hideModal() {
                 this.$refs['modal-container'].classList.add('out')
                 this.$refs.body.classList.remove('modal-active')
-                this.$emit('modal-closing')
+                // this.$emit('modal-closing')
+                setTimeout(this.notifyParent, 3000)
             },
 
             doNotClose(e) {

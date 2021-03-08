@@ -152,7 +152,6 @@ export default createStore({
         })
         sessionStorage.setItem('currentUser', JSON.stringify(currentUser.data))
         commit('SET_CURRENT_USER', currentUser.data)
-        console.log('router', router)
         router.push('/')
       } catch(e) {
         this.loginError = true
@@ -191,64 +190,39 @@ export default createStore({
 
     load_leads_last_login({ commit, state }) {
       let leads = []
-      let lastLogins = 0
       state.leads.forEach( lead => {
         let lastLoginDate = new Date(state.currentUser.last_login_at)
-        // console.log("🚀 ~ file: index.js ~ line 197 ~ load_leads_last_login ~ lastLoginDate", lastLoginDate)
         let leadDate = new Date(lead.generated_at)
-        
-        // console.log('Number of days in lastLogin', differenceInDays(leadDate, lastLoginDate))
-        
         if (differenceInDays(leadDate, lastLoginDate) > 0) {
-          lastLogins++
           leads.push(lead)
         }
       })
-      console.log('lastLogins', lastLogins);
       
       commit('SET_LEADS_LAST',{timeFrame: 'Login', leads: leads})
     },
     
     load_leads_last_30({ commit, state }) {
       let leads = []
-      let last30 = 0
       state.leads.forEach( lead => {
         let today = new Date()
         let leadDate = new Date(lead.generated_at)
-        
-        // console.log('Number of days in last30', differenceInDays(today, leadDate))
-        
-        if (differenceInDays(today, leadDate) <30) {
-          last30++
+        if (differenceInDays(today, leadDate) <31) {
           leads.push(lead)
         }
       })
-      console.log('last30', last30);
-      
-      
       commit('SET_LEADS_LAST', {timeFrame: 30, leads: leads})
     },
 
     load_leads_last_60({ commit, state }) {
       let leads = []
-      let last60 = 0
-      let moreThan60 = 0
       state.leads.forEach(lead => {
         let today = new Date()
         let leadDate = new Date(lead.generated_at)
-        if (differenceInDays(today, leadDate) > 60) {
-          moreThan60++
-        }
-
-        // console.log('Number of days in last60', differenceInDays(today, leadDate))
 
         if (differenceInDays(today, leadDate) < 61) {
-          last60++
           leads.push(lead)
         }
       })
-      console.log('last60', last60)
-      console.log('moreThan60', moreThan60)
       commit('SET_LEADS_LAST', {timeFrame: 60, leads: leads})
     },
 
@@ -256,14 +230,50 @@ export default createStore({
       commit('SET_ACTIVE_NAV', navElement)
     },
 
-    register_dispute(_, dispute) {
-      console.log('dispute.leadId', dispute.leadId);
-      console.log('dispute.dispute', dispute.dispute);
+    register_dispute({ state }, dispute) {
+      axios({
+        method: 'post',
+        url: `${state.apiUrl}/support`,
+        body: {
+          title: dispute.title,
+          message: dispute.message
+        },
+        headers: {
+          'X-User-Email': state.currentUser.email,
+          'X-User-Token': state.currentUser.authentication_token
+        },
+      })
     },
 
-    register_support_request(_, supportRequest) {
-      console.log('supportRequest', supportRequest);
-      router.push({name: 'Dashboard'})
+    // register_support_request(_, supportRequest) {
+    //   router.push({name: 'Dashboard'})
+    // },
+
+    remove_active_chat({ commit }) {
+      commit('SET_ACTIVE_CHAT', null)
+    },
+
+    remove_active_lead({ commit, dispatch }) {
+      dispatch('remove_active_chat')
+      commit('SET_ACTIVE_LEAD', null)
+    },
+
+    async set_active_chat({ commit, state }, chatId) {
+      let chat = await axios({
+        method: 'get',
+        url: `${state.apiUrl}/chats/${chatId}`,
+        headers: {
+          'X-User-Email': state.currentUser.email,
+          'X-User-Token': state.currentUser.authentication_token
+        },
+      })
+      commit('SET_ACTIVE_CHAT', chat.data)
+    },
+
+    set_active_lead({ commit, dispatch, state }, leadId) {
+      let activeLead = state.leads.find( lead => lead.id == leadId)
+      commit('SET_ACTIVE_LEAD', activeLead)
+      dispatch('set_active_chat', activeLead.chat_id)
     },
 
     set_current_user({ commit }, user) {

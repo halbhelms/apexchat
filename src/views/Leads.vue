@@ -1,22 +1,17 @@
 <template>
-    <!-- <p v-if="$store.state.leads">All leads: {{ $store.state.leads.length }}</p>
-    <p v-if="$store.state.leadsLastLogin">All leads: {{ $store.state.leadsLastLogin.length }}</p>
-    <p v-if="$store.state.leadsLast30">All leads: {{ $store.state.leadsLast30.length }}</p>
-    <p v-if="$store.state.leadsLast60">All leads: {{ $store.state.leadsLast60.length }}</p>
-    <p>{{ $store.state.timeFrame }}</p> -->
     <div class="leads">
         <LeadsHeader />
         <div class="content">
             <!-- Lead Detail inside Modal -->
             <div class="contact-info">
-                <Modal v-if="active" @modal-closing="removeActiveLead">
+                <Modal v-if="activeChat && activeLead" @modal-closing="removeActiveLead">
                     <Contact :lead="activeLead" :chat="activeChat" />
                 </Modal>
             </div>
 
             <div class="leads">
                 <div class="leads-inner-container">
-                    <div v-if="true">
+                    <div>
                     <!-- LeadLineHeader component -->
                     <LeadLineHeader />
                     <!-- individual LeadLineItems -->
@@ -66,17 +61,17 @@
         props: [],
         data() {
             return {
-                active: '',
-                activeLead: null,
-                activeChat: null,
-                timeFrame: 'lastLogin',
+                active: false,
             }
         },
         methods: {
             showLead(id) {
-                this.active = id
-                this.activeLead = this.$store.getters.getLeadById(id)
-                this.activeChat = this.$store.getters.getChatById(this.activeLead.chatId)
+                this.active = true
+                this.$store.dispatch('set_active_lead', id)
+            },
+            removeActiveLead() {
+                console.log('in removeActiveLead');
+                this.$store.dispatch('remove_active_lead')
             }
         },
 
@@ -99,7 +94,13 @@
                 }
                 
                 return []
-            }
+            },
+            activeChat() {
+                return this.$store.state.activeChat
+            },
+            activeLead() {
+                return this.$store.state.activeLead
+            },
         },
 
         created() {

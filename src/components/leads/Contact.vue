@@ -16,7 +16,7 @@
                 <!-- contact name -->
                 <div class="contact-element">
                     <div class="name-label label">Contact</div>
-                    <div class="name-data data">{{ lead.contact }}</div>
+                    <div class="name-data data">{{ lead.raw_data.name }}</div>
                 </div>
                 <!-- contact address -->
                 <div class="contact-element">
@@ -65,8 +65,8 @@
             </div>
             <!-- individual chats messages -->
             <div class="chat-line" v-for="(chatline, index) in chatTexts" :key="index">
-                <span :class="[chatline.participantDisplayName == 'Visitor' ? 'visitor' : 'agent']">
-                    {{ chatline.participantDisplayName }}: {{ chatline.text }}
+                <span :class="[chatline.display_name == 'Visitor' ? 'visitor' : 'agent']">
+                    {{ chatline.display_name }}: {{ chatline.text }}
                 </span>
             </div>
         </div>
@@ -82,11 +82,11 @@
         
         props: {
             lead: {
-                required: false
+                required: true
             },
 
             chat: {
-                required: false
+                required: true
             }
         },
 
@@ -101,7 +101,7 @@
 
         methods: {
             registerDispute() {
-                this.$store.dispatch('register_dispute', {leadId: this.$props.lead.id, dispute: this.disputeMessage})
+                this.$store.dispatch('register_dispute', {title: `Dispute for Lead ${this.$props.lead.id}`, message: this.disputeMessage})
                 this.inDispute = false
                 this.disputeMessage = null
             },
@@ -121,20 +121,19 @@
 
         computed: {
             contactDate() {
-                return format(this.$props.lead.date, "MM.dd.yy")
+                return format(new Date(this.$props.lead.generated_at), "MM.dd.yy")
             },
 
             contactTime() {
-                console.log('this.$props.lead.date', this.$props.lead.date);
-                
-                return format(this.$props.lead.date, 'h.mm bbbb')
+                return format(new Date(this.$props.lead.generated_at), 'h.mm bbbb')
             },
 
             chatTexts() {
+                console.log(this.chat.chat_messages)
                 if (this.visitorOnly) {
-                    return this.chat.texts.filter( chat => chat.participantDisplayName == 'Visitor' )
+                    return this.chat.chat_messages.filter( message => message.display_name == 'Visitor' )
                 } 
-                return this.chat.texts
+                return this.chat.chat_messages
             }
         }
     }
@@ -143,6 +142,8 @@
 <style scoped>
     .agent {
         font-size: 0.8rem;
+        color:black;
+        font-weight: 300;
     }
 
     .card {
@@ -289,8 +290,8 @@
     }
 
     .visitor{
-        font-weight: bolder;
-        color: green;
+        font-weight: 800;
+        color: navy;
         font-size: 0.8rem;
     }
 

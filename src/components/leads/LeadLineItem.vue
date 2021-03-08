@@ -1,7 +1,7 @@
 <template>
     <!-- test to see what real data we get -->
     <!-- lead line item -->
-    <div @click="drillDown" class="line-item" :class="active == id ? 'highlight' : ''">
+    <div @click="drillDown" class="line-item">
         <div class="date data-col">{{ shortDate }}</div>
         <div class="contact data-col">{{ contact }}</div>
         <div class="lead-type data-col">{{ prettyLeadType }}</div>
