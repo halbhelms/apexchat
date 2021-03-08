@@ -1,8 +1,9 @@
 <template>
-    no of leads: {{ $store.state.leads.length }}
-    lastLogin: {{ $store.state.leads.lastLogin.length }}
-    last30: {{ $store.state.leads.last30.length }}
-    last60: {{ $store.state.leads.last60.length }}
+    <p v-if="$store.state.leads">All leads: {{ $store.state.leads.length }}</p>
+    <p v-if="$store.state.leadsLastLogin">All leads: {{ $store.state.leadsLastLogin.length }}</p>
+    <p v-if="$store.state.leadsLast30">All leads: {{ $store.state.leadsLast30.length }}</p>
+    <p v-if="$store.state.leadsLast60">All leads: {{ $store.state.leadsLast60.length }}</p>
+    <p>{{ $store.state.timeFrame }}</p>
     <div class="leads">
         <LeadsHeader />
         <div class="content">
@@ -15,22 +16,24 @@
 
             <div class="leads">
                 <div class="leads-inner-container">
+                    <div v-if="selectedLeads.length">
                     <!-- LeadLineHeader component -->
                     <LeadLineHeader />
                     <!-- individual LeadLineItems -->
-                    <LeadLineItem 
-                        v-for="lead in $store.state.leadsActiveSlice" 
-                        :key="lead.id" 
-                        :id="lead.id" 
-                        :datetime="lead.date" 
-                        :address="lead.address"
-                        :city="lead.city"
-                        :state="lead.state"
-                        :zipcode="lead.zipCode"
-                        :contact="lead.name"
-                        :leadtype="lead.lead_type"
-                        :active="active"
-                        @drilldown="showLead"/>
+                        <LeadLineItem 
+                            v-for="lead in selectedLeads" 
+                            :key="lead.id" 
+                            :id="lead.id" 
+                            :datetime="lead.generated_at" 
+                            :address="lead.address"
+                            :city="lead.city"
+                            :state="lead.state"
+                            :zipcode="lead.zipCode"
+                            :contact="lead.raw_data.name"
+                            :leadtype="lead.lead_type"
+                            :active="active"
+                            @drilldown="showLead"/>
+                    </div>
                 </div>
                 <!-- Pagination -->
                 <div class="pagination">
@@ -71,6 +74,28 @@
                 this.active = id
                 this.activeLead = this.$store.getters.getLeadById(id)
                 this.activeChat = this.$store.getters.getChatById(this.activeLead.chatId)
+            }
+        },
+
+        computed: {
+            selectedLeads() {
+                console.log('this.$store.state.timeFrame', this.$store.state.timeFrame);
+                
+                if (this.$store.state.timeFrame == 'lastLogin' && this.$store.state.leadsLastLogin) {
+                    console.log('this.$store.state.leadsLastLogin.length', this.$store.state.leadsLastLogin.length);
+                    
+                    return this.$store.state.leadsLastLogin
+                }
+                if (this.$store.state.timeFrame == 'last30') {
+                    console.log('this.$store.state.leadsLast30', this.$store.state.leadsLast30);
+                    
+                    return this.$store.state.leadsLast30
+                }
+                if (this.$store.state.leadsLast60 && this.$store.state.timeFrame == 'last60') {
+                    return this.$store.state.leadsLast60
+                }
+                
+                return []
             }
         },
 

@@ -5,12 +5,12 @@
         <div class="date data-col">{{ shortDate }}</div>
         <div class="contact data-col">{{ contact }}</div>
         <div class="lead-type data-col">{{ leadtype }}</div>
-        <div class="location data-col">{{ address }} {{ city }} {{ state }} {{ zipcode }}</div>
+        <div class="location data-col">{{ shortLocation }}</div>
     </div>
 </template>
 
 <script>
-    import {format} from 'date-fns/'
+    // import {format} from 'date-fns/'
     export default {
         name: 'LeadLineItem',
         components: {},
@@ -35,19 +35,29 @@
         },
         computed: {
             shortDate() {
-                let d = this.$props.datetime
-                // let d = new Date(parseInt(this.$props.datetime.substr(6)))
-                // let m = d.getMonth() + 1
-                // let t = d.getDate()
-                // let y = d.getFullYear()-2000
-                // return `${m}.${t}.${y}`
-                return format(d, 'MM.dd.yy')
+                // let d = new Date(this.$props.datetime)
+                let d = new Date(this.$props.datetime)
+                let m = d.getMonth() + 1
+                let t = d.getDate()
+                let y = d.getFullYear()-2000
+                return `${m}.${t}.${y}`
+                // return format(d, 'MM.dd.yy')
                 
               
             },
             shortLocation() {
-                let l = this.$props.location.split(',')
-                return `${l[0]},${l[1]}`
+                let address = this.$props.address || ''
+                let city = this.$props.city || ''
+                let state = this.$props.state || ''
+                let zipcode = this.$props.zipcode || ''
+                let location = `${address}, ${city} ${state} ${zipcode}`
+                console.log("🚀 ~ file: LeadLineItem.vue ~ line 54 ~ shortLocation ~ location", location)
+                
+                if ((address?.trim() + city?.trim() + state?.trim() + zipcode?.trim()) == '') {
+                    return "Missing"
+                } else {
+                    return location
+                }
             }
         }
     }

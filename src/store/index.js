@@ -191,31 +191,64 @@ export default createStore({
 
     load_leads_last_login({ commit, state }) {
       let leads = []
+      let lastLogins = 0
       state.leads.forEach( lead => {
-        if (new Date(lead.generated_at) - new Date(state.currentUser.last_login_at) > 0) {
+        let lastLoginDate = new Date(state.currentUser.last_login_at)
+        // console.log("🚀 ~ file: index.js ~ line 197 ~ load_leads_last_login ~ lastLoginDate", lastLoginDate)
+        let leadDate = new Date(lead.generated_at)
+        
+        // console.log('Number of days in lastLogin', differenceInDays(leadDate, lastLoginDate))
+        
+        if (differenceInDays(leadDate, lastLoginDate) > 0) {
+          lastLogins++
           leads.push(lead)
         }
       })
+      console.log('lastLogins', lastLogins);
+      
       commit('SET_LEADS_LAST',{timeFrame: 'Login', leads: leads})
     },
-
+    
     load_leads_last_30({ commit, state }) {
       let leads = []
+      let last30 = 0
       state.leads.forEach( lead => {
-        if (differenceInDays(new Date(), new Date(lead.generated_at)) < 31) {
+        let today = new Date()
+        let leadDate = new Date(lead.generated_at)
+        
+        // console.log('Number of days in last30', differenceInDays(today, leadDate))
+        
+        if (differenceInDays(today, leadDate) <30) {
+          last30++
           leads.push(lead)
         }
       })
+      console.log('last30', last30);
+      
+      
       commit('SET_LEADS_LAST', {timeFrame: 30, leads: leads})
     },
 
     load_leads_last_60({ commit, state }) {
       let leads = []
-      state.leads.forEach( lead => {
-        if (differenceInDays(new Date(), new Date(lead.generated_at)) < 61) {
+      let last60 = 0
+      let moreThan60 = 0
+      state.leads.forEach(lead => {
+        let today = new Date()
+        let leadDate = new Date(lead.generated_at)
+        if (differenceInDays(today, leadDate) > 60) {
+          moreThan60++
+        }
+
+        // console.log('Number of days in last60', differenceInDays(today, leadDate))
+
+        if (differenceInDays(today, leadDate) < 61) {
+          last60++
           leads.push(lead)
         }
       })
+      console.log('last60', last60)
+      console.log('moreThan60', moreThan60)
       commit('SET_LEADS_LAST', {timeFrame: 60, leads: leads})
     },
 
