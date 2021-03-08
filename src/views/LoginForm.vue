@@ -1,8 +1,7 @@
 <template>
-    login: {{ login }}
     <div v-if='inDev' class='inDev'>{{ $options.name}}</div>
     <section-header>Login</section-header>
-    <p class="error" v-if="error">We couldn't log you in. Please try again or contact your Moger Media representative.</p>
+    <p class="error" v-if="$store.state.loginError">We couldn't log you in. Please try again or contact your Moger Media representative.</p>
     <form class="login-form" @submit.prevent="loginUser">
         <base-input 
             _label="email" 
@@ -24,7 +23,6 @@
 </template>
 
 <script>
-    import axios from 'axios'
     export default {
         name: 'LoginForm',
 
@@ -58,29 +56,15 @@
         },
 
         methods: {
-            async loginUser() {
-                console.log('in loginUser')                
-                try {
-                    // attempt a login
-                    let login = await axios.get('https://codelifepro.herokuapp.com/users/me', {
-                        headers: {
-                            Authorization: `Basic ${btoa(this.login.email +':' + this.login.password)}` 
-                        }
-                    })
-                    
-                    // set successfully logged-in user as currentUser in sessionStorage
-                    console.log('login', login.data);
-                    // set logged-in user as session currentUser
-                    sessionStorage.setItem('currentUser', JSON.stringify(login.data))
-                    // set the last login of the currentUser
-                    this.$store.dispatch('set_last_login', login.data.last_login_date)
-                    // off we go to the dashboard
-                    location.replace('/')
-                } catch (err) {
-                    this.error = true;
-                    console.log('Login error', err);
+            loginUser() {
+                if (JSON.parse(sessionStorage.getItem('currentUser')).email) {
+                    this.$store.dispatch('set_current_user', JSON.parse(sessionStorage.getItem('currentUser')))
+                    this.$router.push('/')
+                } else {
+                    console.log('Did not find session storage')            
+                    this.$store.dispatch('authenticate_login', this.login)
                 }
-            },
+            }
         },
 
         computed: {}

@@ -1,5 +1,4 @@
 <template>
-{{ timeFrame }}
 <div class="container">
     <DashboardHeader />
   <div class="content">

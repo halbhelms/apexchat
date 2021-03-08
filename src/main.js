@@ -3,6 +3,7 @@ import App from "./App.vue";
 import "./styles.css";
 import router from "./router";
 import store from "./store";
+import SectionHeader from './components/UI/SectionHeader.vue'
 import Toast from 'vue-toastification'
 import "vue-toastification/dist/index.css"
 
@@ -17,9 +18,10 @@ const app = createApp(App)
 
 app.component('base-button', BaseButton)
 app.component('base-input', BaseInput)
+app.component('section-header', SectionHeader)
 
 app.config.globalProperties.inDev = false
-app.config.globalProperties.apiUrl = "https://codelifepro.herokuapp.com/"
+app.config.globalProperties.apiUrl = "https://codelifepro.herokuapp.com"
 
 
 app.mount("#app");
