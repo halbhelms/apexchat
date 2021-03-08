@@ -162,7 +162,7 @@ export default createStore({
     async get_active_chat({ commit, state }, chatId) {
       let chat = await axios({
         method: 'get',
-        url: `${this.apiUrl}/chats/${chatId}`,
+        url: `${state.apiUrl}/chats/${chatId}`,
         headers: {
           'X-User-Email': state.currentUser.email,
           'X-User-Token': state.currentUser.authentication_token
@@ -171,10 +171,10 @@ export default createStore({
       commit('SET_ACTIVE_CHAT', chat.data)
     },
 
-    async load_leads({ commit, state }, companyId) {
+    async load_leads({ commit, state, dispatch }, companyId) {
       let leads = await axios({
         method: 'get',
-        url: `${this.apiUrl}/leads`,
+        url: `${state.apiUrl}/leads`,
         headers: {
           'X-User-Email': state.currentUser.email,
           'X-User-Token': state.currentUser.authentication_token
@@ -184,6 +184,9 @@ export default createStore({
         },
       })
       commit('SET_LEADS', leads.data)
+      dispatch('load_leads_last_login')
+      dispatch('load_leads_last_30')
+      dispatch('load_leads_last_60')
     },
 
     load_leads_last_login({ commit, state }) {

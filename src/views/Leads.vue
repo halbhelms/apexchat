@@ -1,4 +1,8 @@
 <template>
+    no of leads: {{ $store.state.leads.length }}
+    lastLogin: {{ $store.state.leads.lastLogin.length }}
+    last30: {{ $store.state.leads.last30.length }}
+    last60: {{ $store.state.leads.last60.length }}
     <div class="leads">
         <LeadsHeader />
         <div class="content">
@@ -63,30 +67,15 @@
             }
         },
         methods: {
-            nextLeads() {
-                this.$store.dispatch('next_leads_active_slice')
-            },
-            
-            previousLeads() {
-                this.$store.dispatch('previous_leads_active_slice')
-            },
-
-            removeActiveLead() {
-                this.active = null;
-                this.activeLead = null;
-                this.activeChat = null;
-            },
-
             showLead(id) {
                 this.active = id
                 this.activeLead = this.$store.getters.getLeadById(id)
                 this.activeChat = this.$store.getters.getChatById(this.activeLead.chatId)
             }
         },
-        computed: {
-            moreLeads() {
-                return this.$store.getters.getNumberOfLeadsPerTimeFrame > this.$store.state.leadsOffset + this.$store.state.leadsPerPage
-            },
+
+        created() {
+            this.$store.dispatch('load_leads', this.$store.state.currentUser.company_id)
         },
     }
 </script>
