@@ -6,21 +6,6 @@
             <div class="time-frame">
                 <TimeFrame />
             </div>
-            <!-- time filter -->
-            <!-- <div class="date-filter">
-                <div class="filter">
-                    <input name="date-filter" type="radio" id="last-login" @change="setDateFilter('lastLogin')" />
-                    <label for="last-login" name="date-filter"> Since last login</label>
-                </div>
-                <div class="filter">
-                    <input name="date-filter" type="radio" id="last-30" @change="setDateFilter('last30')" />
-                    <label for="last-30" name="date-filter"> Last 30 Days</label>
-                </div>
-                <div class="filter">
-                    <input name="date-filter" type="radio" id="last-60" @change="setDateFilter('last60')" />
-                    <label for="last-60" name="date-filter"> Last 60 days</label>
-                </div>
-            </div> -->
         </div>
     </div>
 </template>

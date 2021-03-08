@@ -2,9 +2,9 @@
   <login-form v-if="!loggedIn"></login-form>
 
   <div class="outer-wrapper" v-else>
-    <Header v-if="$store.state.authenticated"/>
+    <Header v-if="$store.state.currentUser"/>
     <div class="inner-wrapper">
-      <div v-if="$store.state.authenticated" class="sidenav">
+      <div v-if="$store.state.currentUser" class="sidenav">
         <div></div>
         <div class="sidebar-element">
           <router-link :to="{name: 'Dashboard'}">
