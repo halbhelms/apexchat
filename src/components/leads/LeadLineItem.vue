@@ -4,13 +4,13 @@
     <div @click="drillDown" class="line-item" :class="active == id ? 'highlight' : ''">
         <div class="date data-col">{{ shortDate }}</div>
         <div class="contact data-col">{{ contact }}</div>
-        <div class="lead-type data-col">{{ leadtype }}</div>
+        <div class="lead-type data-col">{{ prettyLeadType }}</div>
         <div class="location data-col">{{ shortLocation }}</div>
     </div>
 </template>
 
 <script>
-    // import {format} from 'date-fns/'
+    import {format} from 'date-fns/'
     export default {
         name: 'LeadLineItem',
         components: {},
@@ -37,11 +37,17 @@
             shortDate() {
                 // let d = new Date(this.$props.datetime)
                 let d = new Date(this.$props.datetime)
-                let m = d.getMonth() + 1
-                let t = d.getDate()
-                let y = d.getFullYear()-2000
-                return `${m}.${t}.${y}`
-                // return format(d, 'MM.dd.yy')
+                let sd = ''
+                // let m = d.getMonth() + 1
+                // let t = d.getDate()
+                // let y = d.getFullYear()-2000
+                // return `${m}.${t}.${y}`
+                try {
+                    sd = format(d, 'MM.dd.yy')
+                } catch (e) {
+                    sd = ''
+                }
+                return sd
                 
               
             },
@@ -58,6 +64,15 @@
                 } else {
                     return location
                 }
+            },
+            prettyLeadType() {
+                let lt = ''
+                try {
+                    lt =  this.$props.leadtype.charAt(0).toUpperCase() + this.$props.leadtype.slice(1);
+                } catch (e) {
+                    lt = ''
+                }
+                return lt
             }
         }
     }
