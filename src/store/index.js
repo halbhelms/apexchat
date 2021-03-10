@@ -18,6 +18,8 @@ export default createStore({
     // how many leads should be returned?
     leadsPerPage: 15,
 
+    loading: false,
+
     loginError: false,
 
     timeFrame: 'lastLogin',
@@ -133,6 +135,10 @@ export default createStore({
       state.leadsOffset = offset
     },
 
+    SET_LOADING(state, val) {
+      state.loading = val
+    },
+
     SET_TIME_FRAME(state, timeFrame) {
       state.timeFrame = timeFrame
     }
@@ -169,6 +175,7 @@ export default createStore({
     },
 
     async load_leads({ commit, state, dispatch }, companyId) {
+      commit('SET_LOADING', true)
       let leads = await axios({
         method: 'get',
         url: `${state.apiUrl}/leads`,
@@ -184,6 +191,7 @@ export default createStore({
       dispatch('load_leads_last_login')
       dispatch('load_leads_last_30')
       dispatch('load_leads_last_60')
+      commit('SET_LOADING', false)
     },
 
     load_leads_last_login({ commit, state }) {

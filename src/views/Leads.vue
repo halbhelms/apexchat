@@ -14,8 +14,11 @@
                     <div>
                     <!-- LeadLineHeader component -->
                     <LeadLineHeader />
+                        <div v-if="$store.state.loading">
+                            Loading...
+                        </div>
                     <!-- individual LeadLineItems -->
-                        <div v-if="!selectedLeads.length">No leads were found for this time frame</div>
+                        <div v-if="!selectedLeads.length && !$store.state.loading">No leads were found for this time frame</div>
                         <div v-else>
                         <LeadLineItem 
                             v-for="lead in selectedLeads" 
