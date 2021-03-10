@@ -14,8 +14,8 @@
                     <div>
                     <!-- LeadLineHeader component -->
                     <LeadLineHeader />
-                        <div v-if="$store.state.loading">
-                            Loading...
+                        <div class="loading" v-if="$store.state.loading">
+                            <img src="./spinner.gif" width="80" alt="">
                         </div>
                     <!-- individual LeadLineItems -->
                         <div v-if="!selectedLeads.length && !$store.state.loading">No leads were found for this time frame</div>
@@ -130,6 +130,11 @@
     .leads-inner-container {
         margin-left: .6rem;
         margin-right: .6rem;
+    }
+
+    .loading {
+        position: relative;
+        left: 340px;
     }
 
     .content {
