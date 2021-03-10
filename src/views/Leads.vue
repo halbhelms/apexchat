@@ -34,10 +34,11 @@
                     </div>
                 </div>
                 <!-- Pagination -->
-                <div class="pagination">
+                <!-- temporarily removed 03.09 -->
+                <!-- <div class="pagination">
                     <div @click="previousLeads" class="previous arrow" v-if="$store.state.leadsOffset !== 0"><img src="../components/leads/button_left.png" alt=""></div>
                     <div @click="nextLeads" class="next arrow" v-if="moreLeads"><img src="../components/leads/button_right.png" alt=""></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
