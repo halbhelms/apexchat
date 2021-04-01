@@ -8,7 +8,7 @@ export default createStore({
   state: {
     name: 'Store',
 
-    apiUrl: "https://codelifepro.herokuapp.com",
+    apiUrl: process.env.VUE_APP_API_BASE,
 
     currentUser: null,
 
@@ -25,6 +25,8 @@ export default createStore({
     timeFrame: 'lastLogin',
     
     active: 'dashboard',
+
+    ApiBase: process.env.VUE_APP_API_BASE,
     
     videos: [
       `<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_hib29wm9h6 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/hib29wm9h6/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>`,

@@ -86,7 +86,7 @@ export default {
 
                 let dashboardInfo = await axios({
                     method: 'get',
-                    url: 'https://codelifepro.herokuapp.com/dashboard',
+                    url: `https://${process.env.VUE_APP_API_BASE}/dashboard`,
                     params: {
                         start_date: startDate,
                         end_date: dateToApiDateString(new Date())
@@ -107,7 +107,6 @@ export default {
                 this.chartData = dashboardInfo.data.chart_data
                 console.log('array?', Array.isArray(dashboardInfo.data.chart_data))
             } catch (err) {
-            console.log("🚀 ~ file: Dashboard.vue ~ line 68 ~ getDashboardInfo ~ err", err)
             }
         
         }
