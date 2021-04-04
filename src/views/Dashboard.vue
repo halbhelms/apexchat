@@ -107,6 +107,7 @@ export default {
                 this.chartData = dashboardInfo.data.chart_data
                 console.log('array?', Array.isArray(dashboardInfo.data.chart_data))
             } catch (err) {
+                console.log(err)
             }
         
         }

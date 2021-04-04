@@ -10,7 +10,7 @@ import store from '../store/index'
 
 const routes = [
   {
-    path: "/login/",
+    path: "/login",
     name: "Login",
     component: Login
   },

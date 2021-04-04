@@ -151,7 +151,7 @@ export default createStore({
       try {
         let currentUser = await axios({
           method: 'get',
-          url: `${state.apiUrl}/users/me`,
+          url: `https://${state.apiUrl}/users/me`,
           headers: {
             Authorization: `Basic ${btoa(email + ':' + password)}`
           },
@@ -167,7 +167,7 @@ export default createStore({
     async get_active_chat({ commit, state }, chatId) {
       let chat = await axios({
         method: 'get',
-        url: `${state.apiUrl}/chats/${chatId}`,
+        url: `https://${state.apiUrl}/chats/${chatId}`,
         headers: {
           'X-User-Email': state.currentUser.email,
           'X-User-Token': state.currentUser.authentication_token
@@ -180,7 +180,7 @@ export default createStore({
       commit('SET_LOADING', true)
       let leads = await axios({
         method: 'get',
-        url: `${state.apiUrl}/leads`,
+        url: `https://${state.apiUrl}/leads`,
         headers: {
           'X-User-Email': state.currentUser.email,
           'X-User-Token': state.currentUser.authentication_token
@@ -241,7 +241,7 @@ export default createStore({
     register_dispute({ state }, dispute) {
       axios({
         method: 'post',
-        url: `${state.apiUrl}/support`,
+        url: `https://${state.apiUrl}/support`,
         body: {
           title: dispute.title,
           message: dispute.message
@@ -269,7 +269,7 @@ export default createStore({
     async set_active_chat({ commit, state }, chatId) {
       let chat = await axios({
         method: 'get',
-        url: `${state.apiUrl}/chats/${chatId}`,
+        url: `https://${state.apiUrl}/chats/${chatId}`,
         headers: {
           'X-User-Email': state.currentUser.email,
           'X-User-Token': state.currentUser.authentication_token

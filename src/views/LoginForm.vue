@@ -57,11 +57,10 @@
 
         methods: {
             loginUser() {
-                if (JSON.parse(sessionStorage.getItem('currentUser')).email) {
+                if (JSON.parse(sessionStorage.getItem('currentUser'))?.email) {
                     this.$store.dispatch('set_current_user', JSON.parse(sessionStorage.getItem('currentUser')))
                     this.$router.push('/')
                 } else {
-                    console.log('Did not find session storage')            
                     this.$store.dispatch('authenticate_login', this.login)
                 }
             }
