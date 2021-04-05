@@ -5,7 +5,7 @@
       
       <div class="main">
         
-        <!-- <EngagedWidget :engaged="engaged"/> -->
+        <EngagedWidget engaged="654"/>
         <LeadsWidget :leads="leads" :sales="sales" :service="service"/>
         <SinceLoginWidget :videos="timeFilter.videos" :salesLeads="timeFilter.salesLeads" :serviceLeads="timeFilter.serviceLeads"/>
       </div>
@@ -23,7 +23,7 @@ import axios from 'axios'
 import { dateToApiDateString, dateStringForDaysPrior } from '../utils'
 
 import DashboardHeader from '../components/dashboard/DashboardHeader'
-// import EngagedWidget from '../components/dashboard/EngagedWidget'
+import EngagedWidget from '../components/dashboard/EngagedWidget'
 import LeadsWidget from '../components/dashboard/LeadsWidget'
 import SinceLoginWidget from '../components/dashboard/SinceLoginWidget'
 import LineChart from '../components/charts/LineChart'
@@ -33,7 +33,7 @@ export default {
     name: 'Dashboard',
     components: {
         DashboardHeader,
-        // EngagedWidget,
+        EngagedWidget,
         LeadsWidget,
         SinceLoginWidget,
         LineChart
@@ -165,9 +165,10 @@ export default {
     }
 
     .main {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-column-gap: 12px;
+        display: flex;
+        gap: 40px;
+        /* grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 12px; */
     }
 
     /* rect {

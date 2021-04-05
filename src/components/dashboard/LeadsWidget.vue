@@ -54,7 +54,8 @@
         width: 180px;
         box-shadow: 0 0 6px 0 silver;
         margin-top: 20px;
-        margin-left: 20px;
+        /* margin-left: 20px; */
+        margin-right: 20px;
     }
 
     .title {
