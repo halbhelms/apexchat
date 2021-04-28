@@ -6,12 +6,12 @@
         </div>
         <!-- customer logo -->
         <div class="customer-logo">
-            <img src="./sample-client-logo.png" id="customer-logo">
+            <!-- <img src="./sample-client-logo.png" id="customer-logo"> -->
         </div>
         <!-- account area -->
         <div class="account-area" @click="toggleAccountForm">
             <!-- <img src="./sample-gravatar.jpeg" alt="" id="sample-gravatar"> -->
-            <img class="account-logo" src="./account-gear.png" alt="" width="32">
+            <!-- <img class="account-logo" src="./account-gear.png" alt="" width="32"> -->
             <span class="account-name">
                 {{ currentUserFirstName }} {{ currentUserLastName }}
             </span>

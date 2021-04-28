@@ -1,17 +1,19 @@
 <template>
 <div class="container">
-    <DashboardHeader />
+    <DashboardHeader class="dashboard-header" />
   <div class="content">
       
       <div class="main">
-        
+        <!-- engagement widget -->
         <EngagedWidget engaged="654"/>
+        <!-- leads widget -->
         <LeadsWidget :leads="leads" :sales="sales" :service="service"/>
+        <!-- last login widget -->
         <SinceLoginWidget :videos="timeFilter.videos" :salesLeads="timeFilter.salesLeads" :serviceLeads="timeFilter.serviceLeads"/>
       </div>
+      <!-- sales/engagements graph -->
       <div class="graph">
           <div id="curve_chart"></div>
-          <!-- <BarChart :chartData="chartData" /> -->
           <LineChart :chartData="chartData" v-if="chartData"/>
       </div>
   </div>
@@ -131,17 +133,31 @@ export default {
 </script>
 
 <style scoped>
+    .main {
+        position: relative;
+        /* width: 100vw; */
+        margin: 0 auto;
+    }
     .container {
-        background-color: rgb(237,240,245);    
-        height: 100%;    
+        position: relative;
+        height: 100vh;   
+        /* width: 100vw;  */
     }
 
     .content {
         background-color: rgb(237,240);
+        position: relative;
         /* height: 100%; */
         /* overflow-y: auto; */
-        width: 780px;
+        /* width: 780px; */
         /* min-height: 100vh; */
+        /* width: 100vw; */
+        /* margin: 0 auto; */
+
+    }
+
+    .dashboard-header {
+        width: 100vw;
     }
 
     #curve_chart {
@@ -169,9 +185,6 @@ export default {
         gap: 40px;
         /* grid-template-columns: 1fr 1fr 1fr;
         grid-column-gap: 12px; */
-    }
-
-    /* rect {
         
-    } */
+    }
 </style>

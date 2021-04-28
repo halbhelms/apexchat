@@ -37,7 +37,7 @@
         var data = google.visualization.arrayToDataTable(chartData);
 
         var options = {
-          title: 'Sales Leads & Average',
+          title: 'Sales Leads v. Engagements',
           curveType: 'function',
           legend: { position: 'bottom' },
           hAxis: { format:''}
