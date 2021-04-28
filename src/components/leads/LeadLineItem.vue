@@ -56,7 +56,7 @@
                 let city = this.$props.city || ''
                 let state = this.$props.state || ''
                 let zipcode = this.$props.zipcode || ''
-                let location = `${address}, ${city} ${state} ${zipcode}`
+                let location = `${address} ${city} ${state} ${zipcode}`
                 console.log("🚀 ~ file: LeadLineItem.vue ~ line 54 ~ shortLocation ~ location", location)
                 
                 if ((address?.trim() + city?.trim() + state?.trim() + zipcode?.trim()) == '') {

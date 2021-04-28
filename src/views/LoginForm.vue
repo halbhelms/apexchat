@@ -1,25 +1,27 @@
 <template>
-    <div v-if='inDev' class='inDev'>{{ $options.name}}</div>
-    <section-header>Login</section-header>
-    <p class="error" v-if="$store.state.loginError">We couldn't log you in. Please try again or contact your Moger Media representative.</p>
-    <form class="login-form" @submit.prevent="loginUser">
-        <base-input 
-            _label="email" 
-            v-model.trim="login.email" 
-            _id="email">
-        </base-input>
-        <base-input 
-            _label="Password" 
-            _type="password" 
-            v-model.trim="login.password" 
-            _id="password">
-        </base-input>
-        <base-button 
-            :_styles="styles.submitButton" 
-            _type="submit">
-            Login
-        </base-button>
-    </form>
+    <section class="">
+        <div v-if='inDev' class='inDev'>{{ $options.name}}</div>
+        <section-header>Login</section-header>
+        <p class="error" v-if="$store.state.loginError">We couldn't log you in. Please try again or contact your Moger Media representative.</p>
+        <form class="login-form" @submit.prevent="loginUser">
+            <base-input 
+                _label="email" 
+                v-model.trim="login.email" 
+                _id="email">
+            </base-input>
+            <base-input 
+                _label="Password" 
+                _type="password" 
+                v-model.trim="login.password" 
+                _id="password">
+            </base-input>
+            <base-button 
+                :_styles="styles.submitButton" 
+                _type="submit">
+                Login
+            </base-button>
+        </form>
+    </section>
 </template>
 
 <script>
@@ -72,6 +74,7 @@
 
 <style scoped>
     .login-form {
+        position: relative;
         width: 400px;
         margin: 0 auto;
     }
