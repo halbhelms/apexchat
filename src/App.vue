@@ -1,5 +1,5 @@
 <template>
-  <login-form v-if="!loggedIn"></login-form>
+  <login-form v-if="!$store.state.currentUser"></login-form>
 
   <div class="outer-wrapper" v-else>
     <Header v-if="$store.state.currentUser"/>

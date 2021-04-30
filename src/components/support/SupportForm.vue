@@ -39,7 +39,7 @@
         },
         methods: {
             submitForm() {
-                this.$store.dispatch('register_support_request', { title: this.title, message: this.message})
+                this.$store.dispatch('register_support_request', { subject: this.title, message: this.message})
                 this.title = " "
                 this.message = " "
             }

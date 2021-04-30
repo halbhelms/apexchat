@@ -56,8 +56,6 @@ export default createStore({
   },
  
   getters: {
-    
-    
     getLeadsForTimeFrame(state, getters) {
       if(state.timeFrame === 'lastLogin') {
         return getters.getLeadsSinceLastLogin.slice(state.leadsOffset, state.leadsOffset + state.leadsPerPage)
@@ -243,7 +241,7 @@ export default createStore({
         method: 'post',
         url: `https://${state.apiUrl}/support`,
         body: {
-          title: dispute.title,
+          subject: dispute.title,
           message: dispute.message
         },
         headers: {
@@ -253,9 +251,18 @@ export default createStore({
       })
     },
 
-    // register_support_request(_, supportRequest) {
-    //   router.push({name: 'Dashboard'})
-    // },
+    register_support_request({ state }, supportRequest) {
+      axios({
+        method: 'post',
+        url: `https://${state.apiUrl}`,
+        body: supportRequest,
+        headers: {
+          'X-User-Email': state.currentUser.email,
+          'X-User-Token': state.currentUser.authentication_token
+        }
+      })
+      router.push({name: 'Dashboard'})
+    },
 
     remove_active_chat({ commit }) {
       commit('SET_ACTIVE_CHAT', null)
