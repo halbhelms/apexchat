@@ -39,7 +39,7 @@ google.charts.setOnLoadCallback(drawChart);
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
-        console.log('that.$props.chartData', Array.isArray(that.$props.chartData));
+        // console.log('that.$props.chartData', Array.isArray(that.$props.chartData));
         
         data.addRows(that.$props.chartData);
 

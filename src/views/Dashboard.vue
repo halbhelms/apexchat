@@ -77,7 +77,7 @@ export default {
                 startDate = dateStringForDaysPrior(60)
             }
 
-            console.log('startDate', startDate);
+            // console.log('startDate', startDate);
             
 
             // get dashboard info for appropriate state.timeFrame
@@ -98,7 +98,7 @@ export default {
                         'X-User-Token': authentication_token  
                     }
                 })
-                console.log('dashboard info', dashboardInfo.data)
+                // console.log('dashboard info', dashboardInfo.data)
                 // set API results to local state
                 this.leads = dashboardInfo.data.leads
                 this.sales = dashboardInfo.data.sales
@@ -107,7 +107,7 @@ export default {
                 this.timeFilter.salesLeads = dashboardInfo.data.since_last_login.sales_leads
                 this.timeFilter.serviceLeads = dashboardInfo.data.since_last_login.service_leads
                 this.chartData = dashboardInfo.data.chart_data
-                console.log('array?', Array.isArray(dashboardInfo.data.chart_data))
+                // console.log('array?', Array.isArray(dashboardInfo.data.chart_data))
             } catch (err) {
                 console.log(err)
             }

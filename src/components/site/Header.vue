@@ -66,7 +66,7 @@
             },
 
             toggleAccountForm() {
-                console.log('toggleAccountForm', 'toggleAccountForm');
+                // console.log('toggleAccountForm', 'toggleAccountForm');
                 
                 this.accountEditMode = !this.accountEditMode
             }

@@ -38,10 +38,10 @@
                 </div>
                 <!-- Pagination -->
                 <!-- temporarily removed 03.09 -->
-                <!-- <div class="pagination">
+                <div class="pagination">
                     <div @click="previousLeads" class="previous arrow" v-if="$store.state.leadsOffset !== 0"><img src="../components/leads/button_left.png" alt=""></div>
                     <div @click="nextLeads" class="next arrow" v-if="moreLeads"><img src="../components/leads/button_right.png" alt=""></div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
@@ -74,22 +74,22 @@
                 this.$store.dispatch('set_active_lead', id)
             },
             removeActiveLead() {
-                console.log('in removeActiveLead');
+                // console.log('in removeActiveLead');
                 this.$store.dispatch('remove_active_lead')
             }
         },
 
         computed: {
             selectedLeads() {
-                console.log('this.$store.state.timeFrame', this.$store.state.timeFrame);
+                // console.log('this.$store.state.timeFrame', this.$store.state.timeFrame);
                 
                 if (this.$store.state.timeFrame == 'lastLogin' && this.$store.state.leadsLastLogin) {
-                    console.log('this.$store.state.leadsLastLogin.length', this.$store.state.leadsLastLogin.length);
+                    // console.log('this.$store.state.leadsLastLogin.length', this.$store.state.leadsLastLogin.length);
                     
                     return this.$store.state.leadsLastLogin
                 }
                 if (this.$store.state.timeFrame == 'last30') {
-                    console.log('this.$store.state.leadsLast30', this.$store.state.leadsLast30);
+                    // console.log('this.$store.state.leadsLast30', this.$store.state.leadsLast30);
                     
                     return this.$store.state.leadsLast30
                 }

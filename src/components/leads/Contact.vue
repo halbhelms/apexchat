@@ -129,7 +129,7 @@
             },
 
             chatTexts() {
-                console.log(this.chat.chat_messages)
+                // console.log(this.chat.chat_messages)
                 if (this.visitorOnly) {
                     return this.chat.chat_messages.filter( message => message.display_name == 'Visitor' )
                 } 

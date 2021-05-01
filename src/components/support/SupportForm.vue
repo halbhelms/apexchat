@@ -3,14 +3,14 @@
     <div class="floating-form">
         <!-- Title -->
         <div class="floating-label">      
-            <input class="floating-input" type="text" placeholder=" ">
+            <input class="floating-input" type="text" placeholder=" " v-model="title">
             <span class="highlight"></span>
             <label>Title</label>
         </div>
 
         <!-- Message -->
         <div class="floating-label">      
-            <textarea class="floating-input floating-textarea" placeholder=" "></textarea>
+            <textarea class="floating-input floating-textarea" placeholder=" " v-model="message"></textarea>
             <span class="highlight"></span>
             <label>Textarea</label>
         </div>
@@ -33,8 +33,8 @@
         props: {},
         data() {
             return {
-                title: " ",
-                message: " "
+                title: "",
+                message: ""
             }
         },
         methods: {

@@ -21,10 +21,10 @@
             return {}
         },
         methods: {
-            setDateFilter(filter) {
-                console.log('filter', filter);
+            // setDateFilter(filter) {
+            //     console.log('filter', filter);
                 
-            }
+            // }
         },
         computed: {}
     }

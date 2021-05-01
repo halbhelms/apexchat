@@ -240,7 +240,7 @@ export default createStore({
       axios({
         method: 'post',
         url: `https://${state.apiUrl}/support`,
-        body: {
+        params: {
           subject: dispute.title,
           message: dispute.message
         },
@@ -252,10 +252,11 @@ export default createStore({
     },
 
     register_support_request({ state }, supportRequest) {
+      console.log('supportRequest', supportRequest)
       axios({
         method: 'post',
-        url: `https://${state.apiUrl}`,
-        body: supportRequest,
+        url: `https://${state.apiUrl}/support`,
+        params: supportRequest,
         headers: {
           'X-User-Email': state.currentUser.email,
           'X-User-Token': state.currentUser.authentication_token
