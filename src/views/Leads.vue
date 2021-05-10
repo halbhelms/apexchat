@@ -17,6 +17,7 @@
                         <div class="loading" v-if="$store.state.loading">
                             <img src="./spinner.gif" width="80" alt="">
                         </div>
+                        <!-- TODO: Change :contact to 'name' once Wes has fixed the endpoint -->
                     <!-- individual LeadLineItems -->
                         <div v-if="!selectedLeads.length && !$store.state.loading">No leads were found for this time frame</div>
                         <div v-else>
@@ -29,7 +30,7 @@
                             :city="lead.city"
                             :state="lead.state"
                             :zipcode="lead.zipCode"
-                            :contact="lead.raw_data.name"
+                            :contact="lead.name"
                             :leadtype="lead.lead_type"
                             :active="active"
                             @drilldown="showLead"/>
@@ -38,10 +39,10 @@
                 </div>
                 <!-- Pagination -->
                 <!-- temporarily removed 03.09 -->
-                <div class="pagination">
+                <!-- <div class="pagination">
                     <div @click="previousLeads" class="previous arrow" v-if="$store.state.leadsOffset !== 0"><img src="../components/leads/button_left.png" alt=""></div>
                     <div @click="nextLeads" class="next arrow" v-if="moreLeads"><img src="../components/leads/button_right.png" alt=""></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

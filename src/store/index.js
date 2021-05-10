@@ -175,6 +175,9 @@ export default createStore({
     },
 
     async load_leads({ commit, state, dispatch }, companyId) {
+      console.log('companyId', companyId)
+      console.log('state.currentUser.email', state.currentUser.email)
+      console.log('state.currentUser.authentication_token', state.currentUser.authentication_token)
       commit('SET_LOADING', true)
       let leads = await axios({
         method: 'get',
@@ -187,6 +190,7 @@ export default createStore({
           company_id: companyId
         },
       })
+      console.log('leads returned: ', leads)
       commit('SET_LEADS', leads.data)
       dispatch('load_leads_last_login')
       dispatch('load_leads_last_30')
@@ -203,7 +207,7 @@ export default createStore({
           leads.push(lead)
         }
       })
-      
+      console.log('leads last login', leads)
       commit('SET_LEADS_LAST',{timeFrame: 'Login', leads: leads})
     },
     
@@ -229,6 +233,7 @@ export default createStore({
           leads.push(lead)
         }
       })
+      console.log('leads last 60', leads);
       commit('SET_LEADS_LAST', {timeFrame: 60, leads: leads})
     },
 

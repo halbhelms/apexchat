@@ -41,7 +41,6 @@
         methods: {
             setDateFilter(filter) {
                 this.dateFilter = filter
-                // TODO: Get leads based on date filter
             }
         },
         

@@ -114,7 +114,7 @@ h1 {
 .inner-wrapper {
   display: grid;
   grid-template-columns: 180px auto;
-  /* min-height: 100vh; */
+  min-height: 100vh;
 }
 
 .header {
@@ -131,6 +131,10 @@ h1 {
 
 .sidebar-nav-element:hover {
   
+}
+
+main {
+  overflow: scroll;
 }
 
 html, body {
