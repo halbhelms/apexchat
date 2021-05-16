@@ -17,7 +17,6 @@
                         <div class="loading" v-if="$store.state.loading">
                             <img src="./spinner.gif" width="80" alt="">
                         </div>
-                        <!-- TODO: Change :contact to 'name' once Wes has fixed the endpoint -->
                     <!-- individual LeadLineItems -->
                         <div v-if="!selectedLeads.length && !$store.state.loading">No leads were found for this time frame</div>
                         <div v-else>
