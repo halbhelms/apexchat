@@ -122,14 +122,26 @@ export default createStore({
       state.currentUser = currentUser
     },
 
-    SET_LEADS(state, leads) {
-      state.leads = leads
+    // SET_LEADS(state, leads) {
+    //   state.leads = leads
+    // },
+
+    SET_LEADS_LAST_LOGIN(state, leadsLastLogin) {
+      state.leadsLastLogin = leadsLastLogin
+    },
+
+    SET_LEADS_LAST_30(state, leadsLast30) {
+      state.leadsLast30 = leadsLast30
+    },
+
+    SET_LEADS_LAST_60(state, leadsLast60) {
+      state.leadsLast60 = leadsLast60
     },
 
     // timeFrame is 'login' | 30 | 60
-    SET_LEADS_LAST(state, {timeFrame, leads}) {
-      state[`leadsLast${timeFrame}`] = leads
-    },
+    // SET_LEADS_LAST(state, {timeFrame, leads}) {
+    //   state[`leadsLast${timeFrame}`] = leads
+    // },
 
     SET_LEADS_OFFSET(state, offset) {
       state.leadsOffset = offset
@@ -200,7 +212,7 @@ export default createStore({
 
     async load_leads_last_login({ commit,state }, companyId) {
       commit('SET_LOADING', true)
-      state.lastLoginLeads = await axios({
+      let leadsLastLogin = await axios({
         method: 'get',
         url: `http://${state.apiUrl}/leads`,
         params: {
@@ -212,12 +224,13 @@ export default createStore({
           'X-User-Token': state.currentUser.authentication_token 
         }
       })
+      commit('SET_LEADS_LAST_LOGIN', leadsLastLogin)
       commit ('SET_LOADING', false)
     },
 
     async load_leads_last_30({ commit,state }, companyId) {
       commit('SET_LOADING', true)
-      state.last30Leads = await axios({
+      let leadsLast30 = await axios({
         method: 'get',
         url: `http://${state.apiUrl}/leads`,
         params: {
@@ -229,12 +242,13 @@ export default createStore({
           'X-User-Token': state.currentUser.authentication_token 
         }
       })
+      commit('SET_LEADS_LAST_30', leadsLast30)
       commit ('SET_LOADING', false)
     },
 
     async load_leads_last_60({ commit,state }, companyId) {
       commit('SET_LOADING', true)
-      state.last60Leads = await axios({
+      let leadsLast60 = await axios({
         method: 'get',
         url: `http://${state.apiUrl}/leads`,
         params: {
@@ -246,6 +260,7 @@ export default createStore({
           'X-User-Token': state.currentUser.authentication_token 
         }
       })
+      commit('SET_LEADS_LAST_60', leadsLast60)
       commit ('SET_LOADING', false)
     },
 
