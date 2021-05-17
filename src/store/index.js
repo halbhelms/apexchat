@@ -174,68 +174,125 @@ export default createStore({
       commit('SET_ACTIVE_CHAT', chat.data)
     },
 
-    async load_leads({ commit, state, dispatch }, companyId) {
-      console.log('companyId', companyId)
-      console.log('state.currentUser.email', state.currentUser.email)
-      console.log('state.currentUser.authentication_token', state.currentUser.authentication_token)
+    // async load_leads({ commit, state, dispatch }, companyId) {
+    //   console.log('companyId', companyId)
+    //   console.log('state.currentUser.email', state.currentUser.email)
+    //   console.log('state.currentUser.authentication_token', state.currentUser.authentication_token)
+    //   commit('SET_LOADING', true)
+    //   let leads = await axios({
+    //     method: 'get',
+    //     url: `https://${state.apiUrl}/leads`,
+    //     headers: {
+    //       'X-User-Email': state.currentUser.email,
+    //       'X-User-Token': state.currentUser.authentication_token
+    //     },
+    //     params: {
+    //       company_id: companyId
+    //     },
+    //   })
+    //   console.log('leads returned: ', leads)
+    //   commit('SET_LEADS', leads.data)
+    //   dispatch('load_leads_last_login')
+    //   dispatch('load_leads_last_30')
+    //   dispatch('load_leads_last_60')
+    //   commit('SET_LOADING', false)
+    // },
+
+    async load_leads_last_login({ commit,state }, companyId) {
       commit('SET_LOADING', true)
-      let leads = await axios({
+      state.lastLoginLeads = await axios({
         method: 'get',
-        url: `https://${state.apiUrl}/leads`,
+        url: `http://${state.apiUrl}/leads`,
+        params: {
+          company_id: companyId,
+          start_date: 'last_login'
+        },
         headers: {
           'X-User-Email': state.currentUser.email,
-          'X-User-Token': state.currentUser.authentication_token
-        },
+          'X-User-Token': state.currentUser.authentication_token 
+        }
+      })
+      commit ('SET_LOADING', false)
+    },
+
+    async load_leads_last_30({ commit,state }, companyId) {
+      commit('SET_LOADING', true)
+      state.last30Leads = await axios({
+        method: 'get',
+        url: `http://${state.apiUrl}/leads`,
         params: {
-          company_id: companyId
+          company_id: companyId,
+          start_date: 'last_30'
         },
-      })
-      console.log('leads returned: ', leads)
-      commit('SET_LEADS', leads.data)
-      dispatch('load_leads_last_login')
-      dispatch('load_leads_last_30')
-      dispatch('load_leads_last_60')
-      commit('SET_LOADING', false)
-    },
-
-    load_leads_last_login({ commit, state }) {
-      let leads = []
-      state.leads.forEach( lead => {
-        let lastLoginDate = new Date(state.currentUser.last_login_at)
-        let leadDate = new Date(lead.generated_at)
-        if (differenceInDays(leadDate, lastLoginDate) > 0) {
-          leads.push(lead)
+        headers: {
+          'X-User-Email': state.currentUser.email,
+          'X-User-Token': state.currentUser.authentication_token 
         }
       })
-      console.log('leads last login', leads)
-      commit('SET_LEADS_LAST',{timeFrame: 'Login', leads: leads})
+      commit ('SET_LOADING', false)
     },
+
+    async load_leads_last_60({ commit,state }, companyId) {
+      commit('SET_LOADING', true)
+      state.last60Leads = await axios({
+        method: 'get',
+        url: `http://${state.apiUrl}/leads`,
+        params: {
+          company_id: companyId,
+          start_date: 'last_60'
+        },
+        headers: {
+          'X-User-Email': state.currentUser.email,
+          'X-User-Token': state.currentUser.authentication_token 
+        }
+      })
+      commit ('SET_LOADING', false)
+    },
+
+    async load_leads({ dispatch }, companyId) {
+      dispatch('load_leads_last_login', companyId)
+      dispatch('load_leads_last_30', companyId)
+      dispatch('load_leads_last_60', companyId)
+    },
+
+    // load_leads_last_login({ commit, state }) {
+    //   let leads = []
+    //   state.leads.forEach( lead => {
+    //     let lastLoginDate = new Date(state.currentUser.last_login_at)
+    //     let leadDate = new Date(lead.generated_at)
+    //     if (differenceInDays(leadDate, lastLoginDate) > 0) {
+    //       leads.push(lead)
+    //     }
+    //   })
+    //   console.log('leads last login', leads)
+    //   commit('SET_LEADS_LAST',{timeFrame: 'Login', leads: leads})
+    // },
     
-    load_leads_last_30({ commit, state }) {
-      let leads = []
-      state.leads.forEach( lead => {
-        let today = new Date()
-        let leadDate = new Date(lead.generated_at)
-        if (differenceInDays(today, leadDate) <31) {
-          leads.push(lead)
-        }
-      })
-      commit('SET_LEADS_LAST', {timeFrame: 30, leads: leads})
-    },
+    // load_leads_last_30({ commit, state }) {
+    //   let leads = []
+    //   state.leads.forEach( lead => {
+    //     let today = new Date()
+    //     let leadDate = new Date(lead.generated_at)
+    //     if (differenceInDays(today, leadDate) <31) {
+    //       leads.push(lead)
+    //     }
+    //   })
+    //   commit('SET_LEADS_LAST', {timeFrame: 30, leads: leads})
+    // },
 
-    load_leads_last_60({ commit, state }) {
-      let leads = []
-      state.leads.forEach(lead => {
-        let today = new Date()
-        let leadDate = new Date(lead.generated_at)
+    // load_leads_last_60({ commit, state }) {
+    //   let leads = []
+    //   state.leads.forEach(lead => {
+    //     let today = new Date()
+    //     let leadDate = new Date(lead.generated_at)
 
-        if (differenceInDays(today, leadDate) < 61) {
-          leads.push(lead)
-        }
-      })
-      console.log('leads last 60', leads);
-      commit('SET_LEADS_LAST', {timeFrame: 60, leads: leads})
-    },
+    //     if (differenceInDays(today, leadDate) < 61) {
+    //       leads.push(lead)
+    //     }
+    //   })
+    //   console.log('leads last 60', leads);
+    //   commit('SET_LEADS_LAST', {timeFrame: 60, leads: leads})
+    // },
 
     set_active_nav({ commit }, navElement) {
       commit('SET_ACTIVE_NAV', navElement)
