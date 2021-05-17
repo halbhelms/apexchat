@@ -16,7 +16,7 @@
                 <!-- contact name -->
                 <div class="contact-element">
                     <div class="name-label label">Contact</div>
-                    <div class="name-data data">{{ lead.raw_data.name }}</div>
+                    <div class="name-data data">{{ lead.contact }}</div>
                 </div>
                 <!-- contact address -->
                 <div class="contact-element">

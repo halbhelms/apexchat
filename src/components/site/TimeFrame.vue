@@ -3,7 +3,7 @@
 
         <label class="radio radio-before">
         <span class="radio__input">
-            <input type="radio" name="timeframe" value="lastLogin" v-model="picked" @change="changeTimeFrame">
+            <input type="radio" name="timeframe" checked @click="changeTimeFrame('leadsLastLogin')">
             <span class="radio__control"></span>
         </span>
         <span class="radio__label"> Since last login</span>
@@ -11,7 +11,7 @@
 
         <label class="radio radio-before">
         <span class="radio__input">
-            <input type="radio" name="timeframe" value="last30" v-model="picked" @change="changeTimeFrame">
+            <input type="radio" name="timeframe"  @click="changeTimeFrame('leadsLast30')">
             <span class="radio__control"></span>
         </span>
         <span class="radio__label"> Last 30 days</span>
@@ -19,7 +19,7 @@
 
         <label class="radio radio-before">
         <span class="radio__input">
-            <input type="radio" name="timeframe" value="last60" v-model="picked" @change="changeTimeFrame">
+            <input type="radio" name="timeframe"  @click="changeTimeFrame('leadsLast60')">
             <span class="radio__control"></span>
         </span>
         <span class="radio__label"> Last 60 days</span>
@@ -42,8 +42,8 @@
         },
 
         methods: {
-            changeTimeFrame() {
-                this.$store.dispatch('set_time_frame', this.picked)
+            changeTimeFrame(timeFrame) {
+                this.$store.dispatch('set_time_frame', timeFrame)
             }
         },
 

@@ -1,4 +1,5 @@
 <template>
+
     <div class="leads">
         <LeadsHeader />
         <div class="content">
@@ -82,22 +83,27 @@
         computed: {
             selectedLeads() {
                 // console.log('this.$store.state.timeFrame', this.$store.state.timeFrame);
+                if (this.$store.state.leadsLast60) {
+                return this.$store.state[this.$store.state.timeFrame]
+                } else {
+                    return []
+                }
                 
-                if (this.$store.state.timeFrame == 'lastLogin' && this.$store.state.leadsLastLogin) {
+                // if (this.$store.state.timeFrame == 'lastLogin' && this.$store.state.leadsLastLogin) {
                     // console.log('this.$store.state.leadsLastLogin.length', this.$store.state.leadsLastLogin.length);
                     
-                    return this.$store.state.leadsLastLogin
-                }
-                if (this.$store.state.timeFrame == 'last30') {
+                //     return this.$store.state.leadsLastLogin
+                // }
+                // if (this.$store.state.timeFrame == 'last30') {
                     // console.log('this.$store.state.leadsLast30', this.$store.state.leadsLast30);
                     
-                    return this.$store.state.leadsLast30
-                }
-                if (this.$store.state.leadsLast60 && this.$store.state.timeFrame == 'last60') {
-                    return this.$store.state.leadsLast60
-                }
+                //     return this.$store.state.leadsLast30
+                // }
+                // if (this.$store.state.leadsLast60 && this.$store.state.timeFrame == 'last60') {
+                //     return this.$store.state.leadsLast60
+                // }
                 
-                return []
+                // return []
             },
             activeChat() {
                 return this.$store.state.activeChat
