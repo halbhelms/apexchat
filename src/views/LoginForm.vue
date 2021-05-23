@@ -1,7 +1,7 @@
 <template>
     <section class="login-form-wrapper">
         <div v-if='inDev' class='inDev'>{{ $options.name}}</div>
-        <section-header>Login</section-header>
+        <section-header>FAQ NOW Client Login</section-header>
         <p class="error" v-if="$store.state.loginError">We couldn't log you in. Please try again or contact your Moger Media representative.</p>
         <form class="login-form" @submit.prevent="loginUser">
             <!-- email -->
