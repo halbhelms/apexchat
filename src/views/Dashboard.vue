@@ -1,11 +1,12 @@
 <template>
+{{  }}
 <div class="container">
     <DashboardHeader class="dashboard-header" />
   <div class="content">
       
       <div class="main">
         <!-- engagement widget -->
-        <EngagedWidget engaged="654"/>
+        <EngagedWidget :engaged="engaged"/>
         <!-- leads widget -->
         <LeadsWidget :leads="leads" :sales="sales" :service="service"/>
         <!-- last login widget -->
@@ -61,19 +62,21 @@ export default {
             
 
             // set startDate for lastLogin
-            if (this.$store.state.timeFrame == 'lastLogin') {
+            if (this.$store.state.timeFrame == 'leadsLastLogin') {
                 if (currentUser.last_login_at) {
                     startDate = dateToApiDateString(currentUser.last_login_at)
                 } else {
                     this.$store.dispatch('set_time_frame', 'last30')
                 }
             }
+            console.log('store.state.timeFrame',this.$store.state.timeFrame)
             // set startDate for last30
-            if (this.$store.state.timeFrame == 'last30') {
+            if (this.$store.state.timeFrame == 'leadsLast30') {
+                console.log('in last30')
                 startDate = dateStringForDaysPrior(30)
             }
 
-            if (this.$store.state.timeFrame == 'last60') {
+            if (this.$store.state.timeFrame == 'leadsLast60') {
                 startDate = dateStringForDaysPrior(60)
             }
 
@@ -85,10 +88,10 @@ export default {
                 let currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
                 let email = currentUser.email
                 let authentication_token = currentUser.authentication_token
-
+                console.log('startDate', startDate)
                 let dashboardInfo = await axios({
                     method: 'get',
-                    url: `https://${process.env.VUE_APP_API_BASE}/dashboard`,
+                    url: `${process.env.VUE_APP_API_BASE}/dashboard`,
                     params: {
                         start_date: startDate,
                         end_date: dateToApiDateString(new Date())
@@ -103,6 +106,7 @@ export default {
                 this.leads = dashboardInfo.data.leads
                 this.sales = dashboardInfo.data.sales
                 this.service = dashboardInfo.data.service
+                this.engaged = dashboardInfo.data.engagements
                 this.timeFilter.videos = dashboardInfo.data.since_last_login.videos
                 this.timeFilter.salesLeads = dashboardInfo.data.since_last_login.sales_leads
                 this.timeFilter.serviceLeads = dashboardInfo.data.since_last_login.service_leads

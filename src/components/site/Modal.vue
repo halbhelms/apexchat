@@ -71,7 +71,7 @@ div.modal {
 html, body {
   min-height: 100%;
   height: 100%;
-  background-image: url(http://theartmad.com/wp-content/uploads/Dark-Grey-Texture-Wallpaper-5.jpg);
+  background-image: url(https://theartmad.com/wp-content/uploads/Dark-Grey-Texture-Wallpaper-5.jpg);
   background-size: cover;
   background-position: top center;
   /* font-family: helvetica neue, helvetica, arial, sans-serif; */

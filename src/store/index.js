@@ -159,7 +159,7 @@ export default createStore({
       try {
         let currentUser = await axios({
           method: 'get',
-          url: `https://${state.apiUrl}/users/me`,
+          url: `${state.apiUrl}/users/me`,
           headers: {
             Authorization: `Basic ${btoa(email + ':' + password)}`
           },
@@ -175,7 +175,7 @@ export default createStore({
     async get_active_chat({ commit, state }, chatId) {
       let chat = await axios({
         method: 'get',
-        url: `https://${state.apiUrl}/chats/${chatId}`,
+        url: `${state.apiUrl}/chats/${chatId}`,
         headers: {
           'X-User-Email': state.currentUser.email,
           'X-User-Token': state.currentUser.authentication_token
@@ -212,7 +212,7 @@ export default createStore({
       commit('SET_LOADING', true)
       let leads = await axios({
         method: 'get',
-        url: `http://${state.apiUrl}/leads`,
+        url: `${state.apiUrl}/leads`,
         params: {
           company_id: companyId,
         },
@@ -230,7 +230,7 @@ export default createStore({
       commit('SET_LOADING', true)
       let leadsLastLogin = await axios({
         method: 'get',
-        url: `http://${state.apiUrl}/leads`,
+        url: `${state.apiUrl}/leads`,
         params: {
           company_id: companyId,
           start_date: 'last_login'
@@ -249,7 +249,7 @@ export default createStore({
       commit('SET_LOADING', true)
       let leadsLast30 = await axios({
         method: 'get',
-        url: `http://${state.apiUrl}/leads`,
+        url: `${state.apiUrl}/leads`,
         params: {
           company_id: companyId,
           start_date: 'last_30'
@@ -267,7 +267,7 @@ export default createStore({
       commit('SET_LOADING', true)
       let leadsLast60 = await axios({
         method: 'get',
-        url: `http://${state.apiUrl}/leads`,
+        url: `${state.apiUrl}/leads`,
         params: {
           company_id: companyId,
           start_date: 'last_60'
@@ -295,7 +295,7 @@ export default createStore({
     register_dispute({ state }, dispute) {
       axios({
         method: 'post',
-        url: `https://${state.apiUrl}/support`,
+        url: `${state.apiUrl}/support`,
         params: {
           subject: dispute.title,
           message: dispute.message
@@ -311,7 +311,7 @@ export default createStore({
       console.log('supportRequest', supportRequest)
       axios({
         method: 'post',
-        url: `https://${state.apiUrl}/support`,
+        url: `${state.apiUrl}/support`,
         params: supportRequest,
         headers: {
           'X-User-Email': state.currentUser.email,
@@ -333,7 +333,7 @@ export default createStore({
     async set_active_chat({ commit, state }, chatId) {
       let chat = await axios({
         method: 'get',
-        url: `https://${state.apiUrl}/chats/${chatId}`,
+        url: `${state.apiUrl}/chats/${chatId}`,
         headers: {
           'X-User-Email': state.currentUser.email,
           'X-User-Token': state.currentUser.authentication_token

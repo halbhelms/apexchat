@@ -17,7 +17,7 @@
         methods: {},
         computed: {
             formattedEngage() {
-                return this.engaged.toLocaleString('en-US')
+                return this.engaged
             }
         }
     }

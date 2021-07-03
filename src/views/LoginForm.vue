@@ -55,12 +55,12 @@
 
         methods: {
             loginUser() {
-                if (JSON.parse(sessionStorage.getItem('currentUser'))?.email) {
-                    this.$store.dispatch('set_current_user', JSON.parse(sessionStorage.getItem('currentUser')))
-                    this.$router.push('/')
-                } else {
+                // if (JSON.parse(sessionStorage.getItem('currentUser'))?.email) {
+                //     this.$store.dispatch('set_current_user', JSON.parse(sessionStorage.getItem('currentUser')))
+                //     this.$router.push('/')
+                // } else {
                     this.$store.dispatch('authenticate_login', this.login)
-                }
+                // }
             }
         },
 
