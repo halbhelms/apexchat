@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    name: 'Store',
+    name: "Store",
 
     apiUrl: process.env.VUE_APP_API_BASE,
 
@@ -50,53 +50,7 @@ export default createStore({
 
     activeLead: null,
 
-    timeFrame: 'leadsLastLogin',
-  },
- 
-  getters: {
-    // getLeadsForTimeFrame(state, getters) {
-    //   if(state.timeFrame === 'lastLogin') {
-    //     return getters.getLeadsSinceLastLogin.slice(state.leadsOffset, state.leadsOffset + state.leadsPerPage)
-    //   }
-
-    //   if(state.timeFrame === 'last30') {
-    //     return getters.getLeadsLast30.slice(state.leadsOffset, state.leadsOffset + state.leadsPerPage)
-    //   }
-
-    //   if (state.timeFrame === 'last60') {
-    //     return getters.getLeadsLast60.slice(state.leadsOffset, state.leadsOffset + state.leadsPerPage)
-    //   }
-    // },
-
-    // getLeadsSinceLastLogin(state) {
-    //   let leads = []
-    //   state.leads.forEach( lead => {
-    //     if (lead.date - state.lastLogin > 0) {
-    //       leads.push(lead)
-    //     }
-    //   })
-    //   return leads;
-    // },
-
-    // getLeadsLast30(state) {
-    //   let leads = []
-    //   state.leads.forEach( lead => {
-    //     if (differenceInDays(new Date(), lead.date) < 31) {
-    //       leads.push(lead)
-    //     }
-    //   })
-    //   return leads;
-    // },
-
-    // getLeadsLast60(state) {
-    //   let leads = []
-    //   state.leads.forEach( lead => {
-    //     if (differenceInDays(new Date(), lead.date) < 61) {
-    //       leads.push(lead)
-    //     }
-    //   })
-    //   return leads;
-    // },
+    timeFrame: "leadsLastLogin",
   },
 
   mutations: {
@@ -136,11 +90,6 @@ export default createStore({
       state.leadsLast60 = leadsLast60
     },
 
-    // timeFrame is 'login' | 30 | 60
-    // SET_LEADS_LAST(state, {timeFrame, leads}) {
-    //   state[`leadsLast${timeFrame}`] = leads
-    // },
-
     SET_LEADS_OFFSET(state, offset) {
       state.leadsOffset = offset
     },
@@ -165,6 +114,7 @@ export default createStore({
           },
         })
         sessionStorage.setItem('currentUser', JSON.stringify(currentUser.data))
+        console.log('currentUser', state.currentUser)
         commit('SET_CURRENT_USER', currentUser.data)
         router.push('/')
       } catch(e) {
@@ -199,7 +149,6 @@ export default createStore({
       })
       commit('SET_LEADS_ALL', leads.data)
       commit ('SET_LOADING', false)
-      console.log('leads.data ', state.leads)
     },
     async load_leads_last_login({ commit,state }, companyId) {
       commit('SET_LOADING', true)
@@ -217,7 +166,6 @@ export default createStore({
       })
       commit('SET_LEADS_LAST_LOGIN', leadsLastLogin.data)
       commit ('SET_LOADING', false)
-      console.log('leadsLastLogin count of ', state.leadsLastLogin)
     },
 
     async load_leads_last_30({ commit,state }, companyId) {
@@ -283,7 +231,6 @@ export default createStore({
     },
 
     register_support_request({ state }, supportRequest) {
-      console.log('supportRequest', supportRequest)
       axios({
         method: 'post',
         url: `${state.apiUrl}/support`,
@@ -320,12 +267,12 @@ export default createStore({
     set_active_lead({ commit, dispatch, state }, leadId) {
       let activeLead = state.leads.find( lead => lead.id == leadId)
       commit('SET_ACTIVE_LEAD', activeLead)
-      console.log('activeLead', activeLead)
       dispatch('set_active_chat', activeLead.chat_id)
     },
 
     set_current_user({ commit }, user) {
       commit('SET_CURRENT_USER', user)
+      router.push({name: 'Login'})
     },
 
     set_time_frame({ commit }, timeFrame) {

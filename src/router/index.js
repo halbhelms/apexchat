@@ -52,7 +52,8 @@ const router = createRouter({
 });
 
 router.beforeEach( (to, _, next) => {
-  let currentUser = sessionStorage.getItem('currentUser')
+  // let currentUser = sessionStorage.getItem('currentUser')
+  let currentUser = store.state.currentUser
   if (to.name !== 'Login' && typeof currentUser == 'undefined') {
     next({name: 'Login'})
   } else {

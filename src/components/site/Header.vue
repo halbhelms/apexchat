@@ -8,7 +8,6 @@
         <div class="customer-logo">
             <!-- <img src="./sample-client-logo.png" id="customer-logo"> -->
         </div>
-        <!-- account area -->
         <div class="account-area" @click="toggleAccountForm">
             <!-- <img src="./sample-gravatar.jpeg" alt="" id="sample-gravatar"> -->
             <!-- <img class="account-logo" src="./account-gear.png" alt="" width="32"> -->
@@ -16,6 +15,9 @@
                 {{ currentUserFirstName }} {{ currentUserLastName }}
             </span>
         </div>
+        <!-- Logout -->
+        <button class="logout" @click="logout">Log out</button>
+        <!-- account area -->
     </div>
     <!-- initially hidden account info form -->
     <div class="account-info-form" v-if="accountEditMode">
@@ -61,8 +63,12 @@
             },
 
             changeAccountInfo() {
-                this.$store.dispatch('change_account_info', this.accountInfo)
+                this.$store.dispatch("change_account_info", this.accountInfo)
                 this.accountEditMode = false;
+            },
+
+            logout() {
+                this.$store.dispatch("set_current_user", null)
             },
 
             toggleAccountForm() {
@@ -74,13 +80,13 @@
         
         computed: {
             currentUserEmail() {
-                return JSON.parse(sessionStorage.getItem('currentUser')).email
+                return this.$store.state.currentUser.email
             },
             currentUserFirstName() {
-                return JSON.parse(sessionStorage.getItem('currentUser')).first_name
+                return this.$store.state.currentUser.first_name
             },
             currentUserLastName() {
-                return JSON.parse(sessionStorage.getItem('currentUser')).last_name
+                return this.$store.state.currentUser.last_name
             },
         }
     }
@@ -156,7 +162,7 @@
 
     .header {
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto auto 60px;
         width: 100%
     }
 
