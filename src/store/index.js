@@ -184,30 +184,6 @@ export default createStore({
       commit('SET_ACTIVE_CHAT', chat.data)
     },
 
-    // async load_leads({ commit, state, dispatch }, companyId) {
-    //   console.log('companyId', companyId)
-    //   console.log('state.currentUser.email', state.currentUser.email)
-    //   console.log('state.currentUser.authentication_token', state.currentUser.authentication_token)
-    //   commit('SET_LOADING', true)
-    //   let leads = await axios({
-    //     method: 'get',
-    //     url: `https://${state.apiUrl}/leads`,
-    //     headers: {
-    //       'X-User-Email': state.currentUser.email,
-    //       'X-User-Token': state.currentUser.authentication_token
-    //     },
-    //     params: {
-    //       company_id: companyId
-    //     },
-    //   })
-    //   console.log('leads returned: ', leads)
-    //   commit('SET_LEADS', leads.data)
-    //   dispatch('load_leads_last_login')
-    //   dispatch('load_leads_last_30')
-    //   dispatch('load_leads_last_60')
-    //   commit('SET_LOADING', false)
-    // },
-
     async load_leads_all({ commit,state }, companyId) {
       commit('SET_LOADING', true)
       let leads = await axios({
@@ -226,7 +202,6 @@ export default createStore({
       console.log('leads.data ', state.leads)
     },
     async load_leads_last_login({ commit,state }, companyId) {
-      console.log('in load_leads_last_login with companyId of ', companyId)
       commit('SET_LOADING', true)
       let leadsLastLogin = await axios({
         method: 'get',
