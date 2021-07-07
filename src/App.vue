@@ -55,7 +55,7 @@ import LoginForm from './views/LoginForm'
 
     computed: {
       loggedIn() {
-        return typeof JSON.parse(sessionStorage.getItem('currentUser')) !== 'undefined'
+        return this.$store.state.currentUser
       }
     },
 

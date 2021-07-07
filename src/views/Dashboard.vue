@@ -57,7 +57,7 @@ export default {
     },
     methods: {
         async getDashboardInfo() {
-            let currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+            let currentUser = this.$store.state.currentUser
             let startDate = null
             
 
@@ -85,7 +85,7 @@ export default {
 
             // get dashboard info for appropriate state.timeFrame
             try {
-                let currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+                let currentUser = this.$store.state.currentUser
                 let email = currentUser.email
                 let authentication_token = currentUser.authentication_token
                 console.log('startDate', startDate)
