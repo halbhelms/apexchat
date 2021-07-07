@@ -19,7 +19,7 @@
 
         components: {},
 
-        props: ['_embedCode', '_rand'],
+        props: ['_embedCode'],
 
         data() {
             return {
