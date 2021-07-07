@@ -1,4 +1,5 @@
 <template>
+    <!-- currentUser: {{ $store.state.currentUser }} -->
     <div class="header">
         <!-- faq logo -->
         <div class="faq-logo">
@@ -6,6 +7,8 @@
         </div>
         <!-- customer logo -->
         <div class="customer-logo">
+            <img src="$store.state.currentUser.logo_url" v-if="$store.state.currentUser.logo_url" alt="">
+            <div class="client-name" v-else>{{$store.state.currentUser.company_name}}</div>
             <!-- <img src="./sample-client-logo.png" id="customer-logo"> -->
         </div>
         <div class="account-area" @click="toggleAccountForm">
@@ -94,6 +97,12 @@
 
 <style scoped>
 
+    .logout {
+        border: none;
+        background: none;
+        margin-bottom: 18px;
+    }
+
     .account-area{
         width: 100%;
         margin-top: 20px;
@@ -147,6 +156,10 @@
         left: -100px;
         text-align: left;
         margin-top: 4px;
+    }
+
+    .client-name {
+        margin-top: 24px;
     }
 
     .form-control {
