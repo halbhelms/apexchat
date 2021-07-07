@@ -6,7 +6,7 @@ import Leads from '../views/Leads'
 import Login from '../views/LoginForm.vue'
 import Temp from '../views/Temp.vue'
 
-import store from '../store/index'
+// import store from '../store/index'
 
 const routes = [
   {
@@ -51,17 +51,17 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach( (to, _, next) => {
-  // let currentUser = sessionStorage.getItem('currentUser')
-  let currentUser = store.state.currentUser
-  if (to.name !== 'Login' && typeof currentUser == 'undefined') {
-    next({name: 'Login'})
-  } else {
-    if (!store.state.currentUser) {
-      store.dispatch('set_current_user', JSON.parse(sessionStorage.getItem('currentUser')))
-    }
-    next()
-  }
-})
+// router.beforeEach( (to, _, next) => {
+  
+//   let currentUser = store.state.currentUser
+//   if (to.name !== 'Login' && typeof currentUser == 'undefined') {
+//     next({name: 'Login'})
+//   } else {
+//     if (!store.state.currentUser) {
+//       store.dispatch('set_current_user', JSON.parse(sessionStorage.getItem('currentUser')))
+//     }
+//     next()
+//   }
+// })
 
 export default router;

@@ -1,7 +1,7 @@
 <template>
     <VideoHeader />
     <div class="video-thumbnails">
-        <Video v-for="(embedCode, index) in $store.state.videos" :key="index" :_embedCode="embedCode" />
+        <Video v-for="(video, index) in $store.state.videos" :key="index" :_embedCode="video.embed_code" />
 
     </div>
     
