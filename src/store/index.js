@@ -101,6 +101,7 @@ export default createStore({
             Authorization: `Basic ${btoa(email + ':' + password)}`
           },
         })
+        console.log(currentUser)
         commit('SET_CURRENT_USER', currentUser.data)
         let videos = await axios({
           method: 'get',

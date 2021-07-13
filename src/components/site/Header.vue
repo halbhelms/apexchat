@@ -1,4 +1,5 @@
 <template>
+
     <!-- currentUser: {{ $store.state.currentUser }} -->
     <div class="header">
         <!-- faq logo -->
