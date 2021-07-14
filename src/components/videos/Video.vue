@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div class="video" v-html="_embedCode"></div>
+        
+        <div class="video" v-html="cleanVideoUrl"></div>
         <textarea ref="input" :value="embedCode"></textarea>
         <button @click="showEmbedCode" class="embed-code">
             Get embed code
@@ -44,7 +45,11 @@
             }
         },
         
-        computed: {},
+        computed: {
+            cleanVideoUrl() {
+                return this._embedCode.replace(/<script.*?>.*?<\/script>/igm, '')
+            }
+        },
 
         mounted() {
             this.embedCode = this.$props._embedCode 

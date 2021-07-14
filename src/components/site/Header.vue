@@ -1,5 +1,4 @@
 <template>
-
     <!-- currentUser: {{ $store.state.currentUser }} -->
     <div class="header">
         <!-- faq logo -->
@@ -8,7 +7,7 @@
         </div>
         <!-- customer logo -->
         <div class="customer-logo">
-            <img src="$store.state.currentUser.logo_url" v-if="$store.state.currentUser.logo_url" alt="">
+            <img height="70" :src="$store.state.currentUser.logo_url" v-if="$store.state.currentUser.logo_url" alt="">
             <div class="client-name" v-else>{{$store.state.currentUser.company_name}}</div>
             <!-- <img src="./sample-client-logo.png" id="customer-logo"> -->
         </div>
