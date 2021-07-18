@@ -12,7 +12,7 @@
             <!-- <img src="./sample-client-logo.png" id="customer-logo"> -->
         </div>
         <!-- <div class="account-area" @click="toggleAccountForm"> -->
-        <div class="account-area"">
+        <div class="account-area">
             <!-- <img src="./sample-gravatar.jpeg" alt="" id="sample-gravatar"> -->
             <!-- <img class="account-logo" src="./account-gear.png" alt="" width="32"> -->
             <span class="account-name">
