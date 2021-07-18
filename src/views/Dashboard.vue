@@ -1,5 +1,5 @@
 <template>
-{{  }}
+{{ $store.state.timeFrame }}
 <div class="container">
     <DashboardHeader class="dashboard-header" />
   <div class="content">
@@ -23,7 +23,7 @@
 
 <script>
 import axios from 'axios'
-import { dateToApiDateString, dateStringForDaysPrior } from '../utils'
+// import { dateToApiDateString, dateStringForDaysPrior } from '../utils'
 
 import DashboardHeader from '../components/dashboard/DashboardHeader'
 import EngagedWidget from '../components/dashboard/EngagedWidget'
@@ -64,7 +64,8 @@ export default {
             // set startDate for lastLogin
             if (this.$store.state.timeFrame == 'leadsLastLogin') {
                 if (currentUser.last_login_at) {
-                    startDate = dateToApiDateString(currentUser.last_login_at)
+                    // startDate = dateToApiDateString(currentUser.last_login_at)
+                    startDate = 'last_login'
                 } else {
                     this.$store.dispatch('set_time_frame', 'last30')
                 }
@@ -73,11 +74,13 @@ export default {
             // set startDate for last30
             if (this.$store.state.timeFrame == 'leadsLast30') {
                 console.log('in last30')
-                startDate = dateStringForDaysPrior(30)
+                // startDate = dateStringForDaysPrior(30)
+                startDate = '30_days_ago'
             }
 
             if (this.$store.state.timeFrame == 'leadsLast60') {
-                startDate = dateStringForDaysPrior(60)
+                // startDate = dateStringForDaysPrior(60)
+                startDate = '60_days_ago'
             }
 
             // console.log('startDate', startDate);
@@ -93,8 +96,10 @@ export default {
                     method: 'get',
                     url: `${process.env.VUE_APP_API_BASE}/dashboard`,
                     params: {
+                        // replace with last_login, 30_days_ago, or 60_days_ago
                         start_date: startDate,
-                        end_date: dateToApiDateString(new Date())
+                        // remove end_date
+                        // end_date: 'removed'
                     },
                     headers: {
                         'X-User-Email': email,
