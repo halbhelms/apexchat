@@ -131,9 +131,9 @@
 }
 .radio-before input + .radio__control::before {
   content: "";
-  width: 0.5em;
-  height: 0.5em;
-  box-shadow: inset 0.5em 0.5em rgb(0,138,230);;
+  width: 8px;
+  height: 8px;
+  box-shadow: inset 0.5em 0.5em rgb(0,138,230);
   border-radius: 50%;
   transition: 200ms transform ease-in-out;
   transform: scale(0);
@@ -144,8 +144,8 @@
 
 .radio__control {
   display: block;
-  width: 1em;
-  height: 1em;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   border: 0.1em solid rgb(0,138,230);;
   transform: translateY(-0.05em);
