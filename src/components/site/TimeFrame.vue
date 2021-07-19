@@ -1,9 +1,9 @@
 <template>
     <div class="time-frame">
-
+      <!-- {{ $store.state.timeFrame }} -->
         <label class="radio radio-before">
         <span class="radio__input">
-            <input type="radio" name="timeframe" checked @click="changeTimeFrame('leadsLastLogin')">
+            <input type="radio" name="timeframe" :checked="$store.state.timeFrame == 'leadsLastLogin' ? true : false" @click="changeTimeFrame('leadsLastLogin')">
             <span class="radio__control"></span>
         </span>
         <span class="radio__label"> Since last login</span>
@@ -11,7 +11,7 @@
 
         <label class="radio radio-before">
         <span class="radio__input">
-            <input type="radio" name="timeframe"  @click="changeTimeFrame('leadsLast30')">
+            <input type="radio" name="timeframe" :checked="$store.state.timeFrame == 'leadsLast30' ? true : false"   @click="changeTimeFrame('leadsLast30')">
             <span class="radio__control"></span>
         </span>
         <span class="radio__label"> Last 30 days</span>
@@ -19,7 +19,7 @@
 
         <label class="radio radio-before">
         <span class="radio__input">
-            <input type="radio" name="timeframe"  @click="changeTimeFrame('leadsLast60')">
+            <input type="radio" name="timeframe" :checked="$store.state.timeFrame == 'leadsLast60' ? true : false"  @click="changeTimeFrame('leadsLast60')">
             <span class="radio__control"></span>
         </span>
         <span class="radio__label"> Last 60 days</span>
