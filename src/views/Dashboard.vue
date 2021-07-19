@@ -1,5 +1,4 @@
 <template>
-{{ $store.state.timeFrame }}
 <div class="container">
     <DashboardHeader class="dashboard-header" />
   <div class="content">
